@@ -529,6 +529,32 @@ body{background:radial-gradient(ellipse 90% 20% at 70% 70%,#13223577,transparent
 @media(max-width:950px){.nx-divisions{grid-template-columns:repeat(2,minmax(0,1fr))}.nx-divisions .nx-division{min-height:225px}}
 @media(max-width:650px){.nx-divisions{grid-template-columns:1fr;gap:12px;margin-bottom:47px}.nx-divisions .nx-division{min-height:198px;padding:19px 20px 16px}.nx-div-core{margin-top:18px}.nx-divisions .nx-division p{margin:13px 0 15px}.nx-div-icon{width:46px;height:46px;flex-basis:46px}.nx-div-icon svg{width:22px;height:22px}.nx-divisions .nx-div-heading h3{font-size:20px}}
 @media(prefers-reduced-motion:reduce){.nx-divisions .nx-division,.nx-divisions .nx-division:before,.nx-divisions .nx-division:after,.nx-div-icon{transition:none!important}}
+
+/* v4.19 — correct legacy .division span override: keep all six glyphs centered */
+.nx-divisions .nx-division .nx-div-icon {
+  display: grid;
+  place-items: center;
+  justify-items: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  flex: 0 0 56px;
+  padding: 0;
+  line-height: 0;
+  box-sizing: border-box;
+}
+.nx-divisions .nx-division .nx-div-icon svg {
+  display: block;
+  width: 27px;
+  height: 27px;
+  margin: 0;
+  padding: 0;
+  flex: none;
+}
+@media (max-width: 650px) {
+  .nx-divisions .nx-division .nx-div-icon { width: 50px; height: 50px; flex-basis: 50px; }
+  .nx-divisions .nx-division .nx-div-icon svg { width: 24px; height: 24px; }
+}
 </style></head><body><header class="header"><a class="identity" href="index.html"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><img class="metal-wordmark-header" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></a><nav class="navigation" id="navigation" aria-label="주 메뉴"><a href="index.html" aria-current="page">홈</a><a href="index.html#about">아카데미</a><a href="facilities.html">시설 안내</a><a href="index.html#divisions">교육·훈련</a><a href="index.html#divisions">연구·정보</a><a href="index.html#divisions">평가 시스템</a></nav><a class="access" href="internal.html">♙ 내부 네트워크 ↗</a><button class="menu" aria-label="메뉴 펼치기" onclick="document.getElementById('navigation').classList.toggle('open')">☰</button></header><main><section class="hero"><div class="hero-img" role="img" aria-label="NEXUS 아카데미 야간 외관"></div><div class="hero-content"><div class="hero-overline">NX-01 / SPECIAL OPERATIONS ACADEMY</div><div class="brand-large"><img src="images/branding/seal-complete.png" alt="NEXUS 공식 엠블럼"><img class="metal-wordmark-hero" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></div><p class="hero-copy">보이는 것 너머에서, 미래의 작전을 준비한다.<br>전략·정보·기술·전투·심리·지원 분야의 전문 교육기관.</p><div class="hero-actions"><a class="primary" href="#about">NEXUS 소개　↗</a><a class="outline-button" href="facilities.html">시설 둘러보기　↗</a></div><div class="hero-caption">NEXUS HEADQUARTERS &nbsp; / &nbsp; OFFICIAL ARCHIVE</div></div></section><div class="wrap"><div class="section-heading"><div><div class="kicker">EXPLORE THE ACADEMY</div><h2>ACADEMY DIRECTORY</h2></div><p>넥서스의 주요 시설 및 시스템을 탐색한다.</p></div><div class="tiles">
 <a class="tile" href="facilities.html" aria-label="시설 안내 보기"><div class="tile-image"><img src="images/headquarters/lobby.webp" alt="넥서스 본관 로비" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21h16"></path><path d="M6 21V9l6-4 6 4v12"></path><path d="M9 21v-7h6v7"></path></svg></span><span class="tile-label"><strong>시설 안내</strong><small>FACILITY DIRECTORY</small></span></span></div></a>
 <a class="tile" href="facilities.html#NX-04" aria-label="종합 훈련관 보기"><div class="tile-image"><img src="images/training/lobby.webp" alt="넥서스 종합 훈련관" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4"></path><path d="M6 8v8"></path><path d="M9 10v4"></path><path d="M15 10v4"></path><path d="M18 8v8"></path><path d="M21 10v4"></path><path d="M6 12h12"></path></svg></span><span class="tile-label"><strong>종합 훈련관</strong><small>TACTICAL TRAINING COMPLEX</small></span></span></div></a>
