@@ -228,109 +228,155 @@ body{background:radial-gradient(ellipse 90% 20% at 70% 70%,#13223577,transparent
  .brand-large img.metal-wordmark-hero{width:min(216px,51vw)!important;max-width:51vw!important;max-height:100px!important}
 }
 
-/* v4.13 — ACADEMY DIRECTORY / refined card UI */
+/* v4.14 — ACADEMY DIRECTORY / premium metallic control cards */
 .tiles{
-  gap:16px;
-  padding-top:14px;
-  padding-bottom:56px;
+  gap:18px;
+  padding-top:16px;
+  padding-bottom:64px;
 }
 .tile{
-  isolation:isolate;
   position:relative;
-  display:flex;
-  flex-direction:column;
+  isolation:isolate;
   min-width:0;
   overflow:hidden;
-  background:linear-gradient(160deg,#142033 0%,#0b1320 100%);
-  border:1px solid #4f6175;
-  box-shadow:inset 0 1px 0 #dcebff12,0 14px 30px #0007;
-  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease;
+  display:flex;
+  flex-direction:column;
+  background:linear-gradient(160deg,#111b2b 0%,#0a1220 100%);
+  border:1px solid #506176;
+  box-shadow:inset 0 1px 0 #ebf6ff10, 0 14px 32px #0006;
+  transition:transform .32s ease, border-color .32s ease, box-shadow .32s ease;
 }
 .tile::before{
   content:"";
   position:absolute;
   inset:0;
-  z-index:4;
-  border:1px solid transparent;
   pointer-events:none;
-  background:linear-gradient(135deg,#cbe5ff78,#8ab6d11a 30%,transparent 65%,#8bb6d52e) border-box;
-  -webkit-mask:linear-gradient(#fff 0 0) padding-box,linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;
-  mask-composite:exclude;
-  opacity:.34;
-  transition:opacity .28s ease;
+  z-index:6;
+  background:linear-gradient(125deg,transparent 0%,transparent 35%,#eaf6ff18 49%,transparent 62%,transparent 100%);
+  transform:translateX(-140%);
+  transition:transform .75s cubic-bezier(.2,.7,.2,1), opacity .3s ease;
+  opacity:.0;
 }
 .tile::after{
   content:"";
   position:absolute;
-  left:0;right:0;bottom:0;
-  height:2px;
-  z-index:4;
-  background:linear-gradient(90deg,transparent,#97cdf4 28%,#f5fbff 50%,#97cdf4 72%,transparent);
-  opacity:.18;
-  transition:opacity .28s ease,box-shadow .28s ease;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 14% 12%, #84bde218 0%, transparent 34%),
+    linear-gradient(180deg, #ffffff06 0%, transparent 22%),
+    linear-gradient(180deg, transparent 65%, #8ebad515 100%);
+  opacity:.8;
+}
+.tile:hover,.tile:focus-visible{
+  transform:translateY(-8px);
+  border-color:#b6d7ef;
+  box-shadow:0 24px 44px #000a, 0 0 24px #8ebde330, inset 0 1px 0 #f7fbff16;
+}
+.tile:hover::before,.tile:focus-visible::before{
+  transform:translateX(140%);
+  opacity:1;
 }
 .tile-image{
   position:relative;
   overflow:hidden;
-  height:194px;
+  height:198px;
   background:#111a27;
 }
 .tile-image::before{
   content:"";
   position:absolute;
-  top:0;left:0;right:0;
-  height:1px;
-  background:linear-gradient(90deg,transparent,#d7eeff99,transparent);
+  inset:0;
   z-index:2;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,#d7eeff12 0%, transparent 16%),
+    linear-gradient(180deg,transparent 0%,transparent 58%,#08111fd8 100%);
 }
 .tile-image::after{
   content:"";
   position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:linear-gradient(180deg,#06122014 0%,#07101d00 45%,#0b1320da 100%);
+  left:0; top:0; bottom:0;
+  width:4px;
+  z-index:3;
+  background:linear-gradient(180deg,#dcefff 0%,#88b6d6 38%,#0f1e31 100%);
+  box-shadow:0 0 14px #8ec4e744;
+  opacity:.7;
 }
 .tile-image img{
   display:block;
-  width:100%;height:100%;
+  width:100%;
+  height:100%;
   object-fit:cover;
-  filter:brightness(.9) saturate(.68);
-  transition:transform .5s cubic-bezier(.2,.7,.2,1),filter .35s ease;
+  filter:brightness(.9) saturate(.66) contrast(1.02);
+  transform:scale(1.001);
+  transition:transform .55s cubic-bezier(.2,.7,.2,1), filter .35s ease;
+}
+.tile:hover .tile-image img,.tile:focus-visible .tile-image img{
+  transform:scale(1.06);
+  filter:brightness(1.04) saturate(.82) contrast(1.04);
 }
 .tile-text{
-  min-height:102px;
+  position:relative;
+  z-index:3;
+  min-height:112px;
   display:flex;
   align-items:center;
-  gap:12px;
-  padding:16px 18px 17px;
-  border-top:1px solid #687f9640;
-  position:relative;
-  z-index:2;
+  padding:18px 18px 18px;
+  border-top:1px solid #6d83984d;
+  background:linear-gradient(180deg,#101a29 0%,#0b1320 100%);
+}
+.tile-text::before{
+  content:"";
+  position:absolute;
+  left:18px; right:18px; top:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,#cfe7fb6b 50%,transparent);
 }
 .tile-head{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:13px;
   min-width:0;
+  width:100%;
 }
 .tile-icon{
-  width:42px;height:42px;
-  flex-shrink:0;
+  width:46px;
+  height:46px;
+  flex:0 0 46px;
   display:grid;
   place-items:center;
-  color:#e6f3ff;
-  border:1px solid #89a9c56e;
-  background:linear-gradient(180deg,#132131,#0d1826 100%);
-  box-shadow:inset 0 1px 0 #dff1ff18,0 0 0 1px #ffffff05;
+  color:#f2f8ff;
+  border:1px solid #a6c6de72;
+  background:
+    linear-gradient(180deg,#1a2a3d 0%,#0f1927 55%,#0a1420 100%);
+  box-shadow:
+    inset 0 1px 0 #f5fbff24,
+    inset 0 -10px 18px #00000040,
+    0 0 0 1px #ffffff05,
+    0 10px 18px #00000026;
+  transition:border-color .32s ease, box-shadow .32s ease, transform .32s ease;
 }
 .tile-icon svg{
-  width:20px;height:20px;
+  width:20px;
+  height:20px;
   stroke:currentColor;
   fill:none;
   stroke-width:1.8;
   stroke-linecap:round;
   stroke-linejoin:round;
+  filter:drop-shadow(0 0 4px #dcefff18);
+}
+.tile:hover .tile-icon,.tile:focus-visible .tile-icon{
+  transform:translateY(-1px);
+  border-color:#cfe6f8;
+  box-shadow:
+    inset 0 1px 0 #ffffff30,
+    inset 0 -10px 18px #00000035,
+    0 0 0 1px #ffffff07,
+    0 0 20px #7fb7dd2c,
+    0 12px 24px #00000030;
 }
 .tile-label{
   min-width:0;
@@ -341,41 +387,30 @@ body{background:radial-gradient(ellipse 90% 20% at 70% 70%,#13223577,transparent
 .tile-text strong{
   display:block;
   font-family:"Inter","Pretendard","Noto Sans KR",system-ui,sans-serif;
-  font-size:17px;
-  letter-spacing:.01em;
-  font-weight:650;
-  color:#f2f7fc;
+  font-size:18px;
+  font-weight:700;
+  letter-spacing:-.01em;
+  color:#f5f9fc;
+  text-shadow:0 0 10px #ffffff08;
 }
 .tile-text small{
   display:block;
-  margin:0;
   font-family:"Inter","Pretendard","Noto Sans KR",system-ui,sans-serif;
   font-size:10px;
-  letter-spacing:.16em;
-  color:#93b5c9;
   line-height:1.4;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:#96b8cb;
 }
-.tile:hover,.tile:focus-visible{
-  transform:translateY(-6px);
-  border-color:#a6cee8;
-  box-shadow:0 18px 36px #0009,0 0 22px #82b7df2a;
+@media(max-width:950px){
+  .tiles{gap:12px}
+  .tile-image{height:182px}
 }
-.tile:hover::before,.tile:focus-visible::before{opacity:.9}
-.tile:hover::after,.tile:focus-visible::after{opacity:1;box-shadow:0 0 16px #97d5ff}
-.tile:hover .tile-image img,.tile:focus-visible .tile-image img{
-  transform:scale(1.05);
-  filter:brightness(1.06) saturate(.82);
-}
-.tile:hover .tile-icon,.tile:focus-visible .tile-icon{
-  border-color:#b6d7f0;
-  box-shadow:inset 0 1px 0 #eef8ff28,0 0 18px #7bb7de2f;
-}
-@media(max-width:950px){.tile-image{height:178px}}
 @media(max-width:650px){
-  .tiles{gap:10px}
-  .tile-image{height:136px}
-  .tile-text{padding:12px 12px 13px;min-height:84px}
-  .tile-icon{width:34px;height:34px}
+  .tiles{gap:10px;padding-bottom:46px}
+  .tile-image{height:138px}
+  .tile-text{min-height:88px;padding:12px}
+  .tile-icon{width:36px;height:36px;flex-basis:36px}
   .tile-icon svg{width:16px;height:16px}
   .tile-text strong{font-size:13px}
   .tile-text small{font-size:8px}
@@ -384,9 +419,9 @@ body{background:radial-gradient(ellipse 90% 20% at 70% 70%,#13223577,transparent
   .tile,.tile::before,.tile::after,.tile-image img,.tile-icon{transition:none!important}
 }
 </style></head><body><header class="header"><a class="identity" href="index.html"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><img class="metal-wordmark-header" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></a><nav class="navigation" id="navigation" aria-label="주 메뉴"><a href="index.html" aria-current="page">홈</a><a href="index.html#about">아카데미</a><a href="facilities.html">시설 안내</a><a href="index.html#divisions">교육·훈련</a><a href="index.html#divisions">연구·정보</a><a href="index.html#divisions">평가 시스템</a></nav><a class="access" href="internal.html">♙ 내부 네트워크 ↗</a><button class="menu" aria-label="메뉴 펼치기" onclick="document.getElementById('navigation').classList.toggle('open')">☰</button></header><main><section class="hero"><div class="hero-img" role="img" aria-label="NEXUS 아카데미 야간 외관"></div><div class="hero-content"><div class="hero-overline">NX-01 / SPECIAL OPERATIONS ACADEMY</div><div class="brand-large"><img src="images/branding/seal-complete.png" alt="NEXUS 공식 엠블럼"><img class="metal-wordmark-hero" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></div><p class="hero-copy">보이는 것 너머에서, 미래의 작전을 준비한다.<br>전략·정보·기술·전투·심리·지원 분야의 전문 교육기관.</p><div class="hero-actions"><a class="primary" href="#about">NEXUS 소개　↗</a><a class="outline-button" href="facilities.html">시설 둘러보기　↗</a></div><div class="hero-caption">NEXUS HEADQUARTERS &nbsp; / &nbsp; OFFICIAL ARCHIVE</div></div></section><div class="wrap"><div class="section-heading"><div><div class="kicker">EXPLORE THE ACADEMY</div><h2>ACADEMY DIRECTORY</h2></div><p>넥서스의 주요 시설 및 시스템을 탐색한다.</p></div><div class="tiles">
-<a class="tile" href="facilities.html" aria-label="시설 안내 보기"><div class="tile-image"><img src="images/headquarters/lobby.webp" alt="넥서스 본관 로비" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21h16"></path><path d="M6 21V9l6-4 6 4v12"></path><path d="M9 21v-7h6v7"></path></svg></span><span class="tile-label"><strong>시설 안내</strong><small>FACILITIES</small></span></span></div></a>
-<a class="tile" href="facilities.html#NX-04" aria-label="종합 훈련관 보기"><div class="tile-image"><img src="images/training/lobby.webp" alt="넥서스 종합 훈련관" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4"></path><path d="M6 8v8"></path><path d="M9 10v4"></path><path d="M15 10v4"></path><path d="M18 8v8"></path><path d="M21 10v4"></path><path d="M6 12h12"></path></svg></span><span class="tile-label"><strong>종합 훈련관</strong><small>TRAINING CENTER</small></span></span></div></a>
-<a class="tile" href="facilities.html#NX-05" aria-label="정보 연구동 보기"><div class="tile-image"><img src="images/research/central.webp" alt="넥서스 정보 연구동" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4l8 4-8 4-8-4 8-4z"></path><path d="M4 12l8 4 8-4"></path><path d="M4 16l8 4 8-4"></path></svg></span><span class="tile-label"><strong>정보 연구동</strong><small>INTELLIGENCE &amp; RESEARCH</small></span></span></div></a>
-<a class="tile" href="facilities.html#NX-06" aria-label="평가 센터 보기"><div class="tile-image"><img src="images/evaluation/lobby.webp" alt="넥서스 평가 센터" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"></circle><path d="M12 3v4"></path><path d="M12 17v4"></path><path d="M3 12h4"></path><path d="M17 12h4"></path><circle cx="12" cy="12" r="2"></circle></svg></span><span class="tile-label"><strong>평가 센터</strong><small>EVALUATION CENTER</small></span></span></div></a>
-<a class="tile" href="internal.html" aria-label="내부 네트워크 진입"><div class="tile-image"><img src="images/branding/nexus-agent-id.webp" alt="넥서스 요원 신분증과 전술 장비" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"></rect><circle cx="12" cy="9" r="2.2"></circle><path d="M9 15c.9-1.2 2-1.8 3-1.8s2.1.6 3 1.8"></path></svg></span><span class="tile-label"><strong>내부 네트워크</strong><small>INTERNAL ACCESS</small></span></span></div></a>
+<a class="tile" href="facilities.html" aria-label="시설 안내 보기"><div class="tile-image"><img src="images/headquarters/lobby.webp" alt="넥서스 본관 로비" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21h16"></path><path d="M6 21V9l6-4 6 4v12"></path><path d="M9 21v-7h6v7"></path></svg></span><span class="tile-label"><strong>시설 안내</strong><small>FACILITY DIRECTORY</small></span></span></div></a>
+<a class="tile" href="facilities.html#NX-04" aria-label="종합 훈련관 보기"><div class="tile-image"><img src="images/training/lobby.webp" alt="넥서스 종합 훈련관" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4"></path><path d="M6 8v8"></path><path d="M9 10v4"></path><path d="M15 10v4"></path><path d="M18 8v8"></path><path d="M21 10v4"></path><path d="M6 12h12"></path></svg></span><span class="tile-label"><strong>종합 훈련관</strong><small>TACTICAL TRAINING COMPLEX</small></span></span></div></a>
+<a class="tile" href="facilities.html#NX-05" aria-label="정보 연구동 보기"><div class="tile-image"><img src="images/research/central.webp" alt="넥서스 정보 연구동" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4l8 4-8 4-8-4 8-4z"></path><path d="M4 12l8 4 8-4"></path><path d="M4 16l8 4 8-4"></path></svg></span><span class="tile-label"><strong>정보 연구동</strong><small>INTELLIGENCE DIVISION</small></span></span></div></a>
+<a class="tile" href="facilities.html#NX-06" aria-label="평가 센터 보기"><div class="tile-image"><img src="images/evaluation/lobby.webp" alt="넥서스 평가 센터" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"></circle><path d="M12 3v4"></path><path d="M12 17v4"></path><path d="M3 12h4"></path><path d="M17 12h4"></path><circle cx="12" cy="12" r="2"></circle></svg></span><span class="tile-label"><strong>평가 센터</strong><small>OPERATION EVALUATION</small></span></span></div></a>
+<a class="tile" href="internal.html" aria-label="내부 네트워크 진입"><div class="tile-image"><img src="images/branding/nexus-agent-id.webp" alt="넥서스 요원 신분증과 전술 장비" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"></rect><circle cx="12" cy="9" r="2.2"></circle><path d="M9 15c.9-1.2 2-1.8 3-1.8s2.1.6 3 1.8"></path></svg></span><span class="tile-label"><strong>내부 네트워크</strong><small>SECURE INTERNAL ACCESS</small></span></span></div></a>
 </div></div></div><section class="about" id="about"><div class="wrap about-grid"><div><span class="kicker">ABOUT NEXUS</span><h2>THE ACADEMY</h2><p>NEXUS는 고도의 전문성과 판단력을 갖춘 인재를 양성하는 가상의 특수작전 교육기관이다. 교육생은 장기 교육과 체계적인 평가를 거치며, 분야별 역량과 협업 능력을 검증받는다.</p><p>본 페이지는 기관의 공개 안내 정보를 제공하며, 인원·평가·작전 기록은 내부 네트워크 영역으로 구분된다.</p></div><div class="about-list"><div><b>05</b><span>YEAR PROGRAM</span></div><div><b>06</b><span>SPECIALTIES</span></div><div><b>07</b><span>FACILITY ZONES</span></div></div></div></section><div class="wrap" id="divisions"><div class="section-heading"><div><span class="kicker">ACADEMIC DIVISIONS</span><h2>SPECIALIZATIONS</h2></div></div><div class="divisions"><div class="division"><span>01 / COMBAT</span><h3>전투</h3><p>현장 대응, 체력, 근접 전투</p></div><div class="division"><span>02 / INTELLIGENCE</span><h3>정보</h3><p>정보 수집, 분석, 판단</p></div><div class="division"><span>03 / TECH</span><h3>기술</h3><p>디지털 정보, 첨단 기술</p></div><div class="division"><span>04 / PSYCHOLOGY</span><h3>심리</h3><p>행동 분석, 협상, 심리 평가</p></div><div class="division"><span>05 / STRATEGY</span><h3>전략</h3><p>작전 기획, 지휘, 위험 분석</p></div><div class="division"><span>06 / SUPPORT</span><h3>지원</h3><p>의료, 구조, 군수 및 현장 지원</p></div></div></div></main><footer class="footer"><strong>◢　NEXUS / SPECIAL OPERATIONS ACADEMY</strong><div class="foot-dots"><span>FACILITY DATA</span><span>INTERNAL NETWORK</span><span>ACADEMY RECORDS</span></div><span>FICTIONAL ROLEPLAY WEBSITE · 실제 기관 아님</span></footer></body></html>
