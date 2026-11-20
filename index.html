@@ -386,21 +386,23 @@ body{background:radial-gradient(ellipse 90% 20% at 70% 70%,#13223577,transparent
 }
 .tile-text strong{
   display:block;
-  font-family:"Inter","Pretendard","Noto Sans KR",system-ui,sans-serif;
-  font-size:18px;
-  font-weight:700;
-  letter-spacing:-.01em;
-  color:#f5f9fc;
-  text-shadow:0 0 10px #ffffff08;
+  font-family:"Pretendard","Noto Sans KR","Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  font-size:16px;
+  font-weight:300;
+  letter-spacing:.055em;
+  line-height:1.45;
+  color:#d9e3ed;
+  text-shadow:none;
 }
 .tile-text small{
   display:block;
   font-family:"Inter","Pretendard","Noto Sans KR",system-ui,sans-serif;
-  font-size:10px;
-  line-height:1.4;
-  letter-spacing:.18em;
+  font-size:9px;
+  font-weight:400;
+  line-height:1.5;
+  letter-spacing:.12em;
   text-transform:uppercase;
-  color:#96b8cb;
+  color:#8eaabd;
 }
 @media(max-width:950px){
   .tiles{gap:12px}
@@ -412,8 +414,8 @@ body{background:radial-gradient(ellipse 90% 20% at 70% 70%,#13223577,transparent
   .tile-text{min-height:88px;padding:12px}
   .tile-icon{width:36px;height:36px;flex-basis:36px}
   .tile-icon svg{width:16px;height:16px}
-  .tile-text strong{font-size:13px}
-  .tile-text small{font-size:8px}
+  .tile-text strong{font-size:12px;font-weight:300;letter-spacing:.025em}
+  .tile-text small{font-size:8px;letter-spacing:.06em}
 }
 @media(prefers-reduced-motion:reduce){
   .tile,.tile::before,.tile::after,.tile-image img,.tile-icon{transition:none!important}
