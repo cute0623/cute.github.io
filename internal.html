@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080e17">
+<title>NEXUS | Internal Network</title>
+<style>
+:root{--bg:#080e17;--panel:#101a26;--panel2:#142131;--line:#294054;--text:#e5edf3;--muted:#8095a5;--cyan:#69d4e5;--green:#81cba9;--red:#e48c8c;--gold:#e3c38d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,'Pretendard','Noto Sans KR',system-ui,sans-serif;letter-spacing:.01em}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(68,125,149,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(68,125,149,.1) 1px,transparent 1px);background-size:52px 52px}
+.login-page{min-height:100vh;display:grid;place-items:center;padding:24px;position:relative}.login-layout{width:min(1080px,100%);min-height:590px;display:grid;grid-template-columns:1.05fr .95fr;border:1px solid var(--line);background:#0c1520;box-shadow:0 30px 100px #0008;position:relative}.login-art{padding:52px;background:radial-gradient(circle at 42% 46%,#173749 0%,#0b1927 47%,#0b1420 75%);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative;border-right:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px;font-size:19px;font-weight:750;letter-spacing:.35em}.logo{width:35px;height:35px;display:grid;place-items:center;border:1px solid var(--cyan);color:var(--cyan);transform:rotate(45deg)}.logo span{transform:rotate(-45deg);font-size:19px}.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:.27em;font-weight:750}.hero-title{font-size:clamp(34px,4.2vw,62px);font-weight:650;line-height:1.12;letter-spacing:-.055em;margin:18px 0}.hero-copy{color:#92a9b7;line-height:1.8;font-size:13px;max-width:340px}.rings{position:absolute;width:400px;height:400px;border:1px solid #35627966;border-radius:50%;top:50%;left:45%;transform:translate(-50%,-50%);pointer-events:none}.rings:after,.rings:before{content:"";position:absolute;border:1px dashed #4c99ad55;border-radius:50%;inset:38px}.rings:after{inset:93px;border-style:solid;border-color:#5fbcd966}.orb{position:absolute;top:50%;left:45%;transform:translate(-50%,-50%);width:90px;height:90px;border:1px solid #7de6f4;border-radius:50%;box-shadow:0 0 65px #1a839b88,inset 0 0 30px #268a9a55}.art-content{position:relative;z-index:1}.footerline{position:relative;z-index:1;color:#7794a4;font-size:10px;letter-spacing:.16em}.login-form-wrap{padding:66px 58px;display:flex;flex-direction:column;justify-content:center}.tag{display:inline-flex;gap:8px;align-items:center;font-size:10px;color:var(--gold);letter-spacing:.18em}.dot{width:6px;height:6px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}h1,h2,h3,p{margin-top:0}.login-form-wrap h2{font-size:29px;letter-spacing:-.035em;margin:24px 0 12px}.sub{color:var(--muted);font-size:13px;line-height:1.7}.field{margin-top:24px}.field label{display:block;font-size:10px;letter-spacing:.16em;color:#a4b6c2;font-weight:700;margin-bottom:11px}.field input{width:100%;background:#0a111b;color:var(--text);border:1px solid #2d4355;padding:15px 16px;border-radius:3px;outline:none}.field input:focus{border-color:var(--cyan)}.cta{background:var(--cyan);color:#07202a;border:0;padding:15px 18px;font-weight:780;letter-spacing:.11em;border-radius:3px}.cta:hover{background:#9ae8ef}.login-form-wrap .cta{width:100%;margin-top:29px}.hint{font-size:11px;color:#7d95a5;line-height:1.7;margin-top:24px}.notice{border-left:2px solid var(--gold);padding:10px 13px;background:#e3c38d0e;color:#cdbb9a;font-size:11px;line-height:1.7;margin-top:19px}.msg{min-height:19px;color:var(--red);font-size:12px;margin-top:12px}.hidden{display:none!important}
+.app{min-height:100vh;display:grid;grid-template-columns:235px minmax(0,1fr);position:relative}.sidebar{background:#0c1621;border-right:1px solid var(--line);padding:30px 18px;display:flex;flex-direction:column;gap:24px}.sidebar .brand{padding:0 12px;font-size:16px}.side-caption{font-size:10px;letter-spacing:.18em;color:#647f91;margin:12px}.side-nav{display:flex;flex-direction:column;gap:5px}.nav-item{background:none;color:#9eb0bc;border:1px solid transparent;text-align:left;padding:12px 15px;border-radius:3px;font-size:12px;display:flex;align-items:center;gap:13px}.nav-item:hover{background:#152434}.nav-item.active{background:#162a37;border-color:#315567;color:#9de6eb}.nav-icon{font-size:16px;width:18px;text-align:center}.side-bottom{margin-top:auto;border-top:1px solid var(--line);padding:22px 12px 0;font-size:11px;color:#8197a6;line-height:2}.main{min-width:0;padding:27px clamp(20px,4vw,60px) 55px}.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:26px;border-bottom:1px solid var(--line)}.breadcrumb{color:#8da5b3;font-size:11px;letter-spacing:.13em}.top-right{display:flex;align-items:center;gap:13px}.online{color:var(--green);font-size:10px;letter-spacing:.12em}.avatar{background:#223b49;color:#b3e7ed;border:1px solid #4b7786;width:34px;height:34px;display:grid;place-items:center;font-weight:800;font-size:12px}.logout{color:#aec6d3;border:1px solid #385163;background:none;padding:9px 12px;font-size:11px}.logout:hover{background:#162838}.dashboard-header{padding:35px 0 26px;display:flex;justify-content:space-between;align-items:end;gap:20px}.dashboard-header h1{font-size:29px;letter-spacing:-.04em;margin:7px 0 9px}.date{color:#91a6b5;font-size:12px}.status{border:1px solid #426657;background:#0f2e29;padding:9px 13px;color:#a1ddc1;font-size:11px;letter-spacing:.09em}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat,.panel{background:linear-gradient(135deg,#121f2c,#101a26);border:1px solid var(--line)}.stat{padding:19px 19px 17px;min-height:122px}.stat-label{color:#849eaf;letter-spacing:.12em;font-size:10px}.stat-value{font-size:27px;font-weight:650;margin:16px 0 3px}.stat-desc{color:#708f9c;font-size:10px}.content-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(250px,1fr);gap:14px;margin-top:14px}.panel{padding:25px}.panel-header{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:25px}.panel-title{font-size:13px;font-weight:700;letter-spacing:.06em}.panel-tag{font-size:10px;color:var(--cyan)}.system-list{display:grid;gap:15px}.sys-row{display:grid;grid-template-columns:130px 1fr 54px;gap:14px;align-items:center;font-size:11px;color:#afc0cb}.bar{height:5px;background:#203241;overflow:hidden}.bar>i{height:100%;display:block;background:linear-gradient(90deg,#327e8d,#82e0e5)}.sys-row strong{text-align:right;color:#98d4dd;font-size:11px}.activity{display:grid;gap:0}.activity-item{padding:14px 0;border-bottom:1px solid #243748;display:flex;gap:12px;align-items:flex-start}.activity-item:last-child{border:0}.act-dot{width:7px;height:7px;border-radius:50%;background:var(--cyan);margin-top:5px;flex-shrink:0}.act-dot.warn{background:var(--gold)}.activity-item strong{font-size:11px;font-weight:600}.activity-item p{margin:5px 0 0;font-size:10px;color:#7895a4}.small-time{font-size:10px;color:#688899;margin-left:auto;white-space:nowrap}.announcement{margin-top:14px;border:1px solid #526046;background:#18251e;padding:23px 25px;display:flex;gap:20px;align-items:center}.announce-icon{font-size:27px;color:#9abf89}.announcement h3{margin:0 0 7px;font-size:13px}.announcement p{margin:0;color:#9eae9d;font-size:11px;line-height:1.6}.section-view{display:none}.section-view.active{display:block}.view-note{font-size:12px;color:#9aafbd;line-height:1.8;max-width:740px}.data-table{width:100%;border-collapse:collapse;font-size:12px}.data-table th{text-align:left;font-size:10px;color:#7898a8;letter-spacing:.1em;padding:15px;border-bottom:1px solid var(--line)}.data-table td{padding:16px 15px;border-bottom:1px solid #233747}.pill{display:inline-block;color:#9ed8bb;border:1px solid #3c6b57;padding:4px 8px;font-size:10px}.mono{font-family:ui-monospace,monospace;color:#9ecad7}.search{background:#0b1520;color:#dcebf2;border:1px solid #325066;padding:12px;width:min(400px,100%);margin:18px 0}.empty{color:#7c98a9;font-size:12px;padding:24px;text-align:center}.mobile-menu{display:none}.screen-notice{position:fixed;bottom:15px;right:15px;font-size:10px;background:#172734;color:#90abba;padding:9px 12px;border:1px solid #315064;z-index:4}
+@media(max-width:850px){.login-layout{grid-template-columns:1fr;max-width:500px}.login-art{min-height:220px;padding:30px;border-right:0;border-bottom:1px solid var(--line)}.rings{left:75%}.orb{left:75%}.hero-title{font-size:32px}.hero-copy{display:none}.login-form-wrap{padding:35px}.app{grid-template-columns:1fr}.sidebar{display:none;position:fixed;z-index:9;top:0;bottom:0;left:0;width:235px;box-shadow:15px 0 45px #000a}.sidebar.open{display:flex}.mobile-menu{display:inline-flex;background:none;border:1px solid var(--line);color:var(--text);padding:7px 9px}.stats{grid-template-columns:repeat(2,1fr)}.content-grid{grid-template-columns:1fr}.dashboard-header{align-items:start}.topbar{gap:8px}.breadcrumb{font-size:9px}}@media(max-width:440px){.main{padding:18px}.stats{gap:8px}.stat{padding:14px}.stat-value{font-size:22px}.panel{padding:18px}.sys-row{grid-template-columns:95px 1fr 40px;gap:8px}.status{display:none}.screen-notice{position:static;text-align:center}.login-form-wrap{padding:28px}.top-right{gap:7px}.online{display:none}}
+
+/* FACILITY DIRECTORY */
+.facility-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 20px}.facility-toolbar .search{margin:0;flex:1;min-width:200px}.filter-button{border:1px solid var(--line);background:#0d1a26;color:#a9c2cc;padding:11px 14px;font-size:11px;border-radius:3px}.filter-button.active,.filter-button:hover{border-color:#5ba9b8;color:#b5eef0;background:#162d38}.facility-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.facility-card{border:1px solid #2b465a;background:linear-gradient(155deg,#142535,#0c1722);padding:0;overflow:hidden;min-width:0}.facility-art{height:124px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;background:radial-gradient(circle at 65% 30%,#245062,#102433 55%,#0a1722 100%);border-bottom:1px solid #365367}.facility-art:before{content:'';position:absolute;inset:-40px;opacity:.25;background:repeating-linear-gradient(90deg,transparent 0 26px,#4d9bad 27px 28px),repeating-linear-gradient(0deg,transparent 0 26px,#4d9bad 27px 28px);transform:perspective(180px) rotateX(38deg)}.facility-art .building-symbol{font-size:46px;position:relative;color:#a3e5eb;text-shadow:0 0 28px #4bb9cb66}.facility-art .facility-code{position:absolute;top:13px;left:16px;font-size:10px;color:#a7cbd5;letter-spacing:.15em}.facility-art .facility-zone{position:absolute;bottom:12px;right:15px;font-size:10px;color:#88bcc8}.facility-content{padding:22px}.facility-content h3{font-size:17px;letter-spacing:-.02em;margin:6px 0}.facility-content .en{font-size:9px;letter-spacing:.18em;color:var(--cyan)}.facility-desc{min-height:48px;color:#9ab0bc;line-height:1.7;font-size:12px;margin:11px 0 16px}.facility-meta{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px}.facility-chip{border:1px solid #355268;color:#a7c2cf;font-size:10px;padding:5px 8px}.facility-open{background:transparent;color:var(--cyan);border:1px solid #477889;width:100%;padding:10px 12px;text-align:left;font-size:11px;display:flex;justify-content:space-between}.facility-open:hover{background:#163341}.facility-detail{margin-top:19px;border:1px solid #38556a;background:linear-gradient(140deg,#142637,#0b1722);padding:26px}.facility-detail[hidden]{display:none}.facility-detail h2{font-size:22px;margin:9px 0 6px}.facility-detail p{font-size:12px;line-height:1.85;color:#a8bfca}.facility-rooms{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}.facility-room{border:1px solid #2e4a5d;background:#0d1b27;padding:13px 15px;color:#d4e6ed;font-size:12px}.facility-room span{display:block;font-size:10px;color:#739eac;letter-spacing:.08em;margin-bottom:6px}.facility-smallprint{color:#7894a4;font-size:10px;line-height:1.7;margin-top:17px}.close-detail{color:#9cdde6;border:1px solid #3d6b7c;background:transparent;padding:9px 13px;font-size:11px;float:right}.facility-count{font-size:11px;color:#819fad;margin-bottom:15px}.facility-empty{grid-column:1/-1;padding:32px;text-align:center;color:#8ca5b3;border:1px dashed #344e60}.facility-feature{display:flex;gap:18px;align-items:center;margin-bottom:17px;padding:15px 18px;border-left:2px solid var(--cyan);background:#112432}.facility-feature strong{font-size:12px;display:block}.facility-feature span{font-size:11px;color:#8aabb9;line-height:1.8}@media(max-width:700px){.facility-grid,.facility-rooms{grid-template-columns:1fr}.facility-detail{padding:18px}}
+
+/* Gallery addition: facility detail view (original portal preserved) */
+.nx-gallery{margin:22px 0 4px;border:1px solid #35566c;background:#08131f;overflow:hidden}
+.nx-gallery-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 15px;background:#112331;color:#a4c5d1;font-size:11px}
+.nx-gallery-stage{position:relative;background:#050d16;display:flex;align-items:center;justify-content:center;min-height:220px}
+.nx-gallery-stage img{display:block;width:100%;max-height:530px;object-fit:contain;cursor:zoom-in}
+.nx-gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);border:1px solid #7096a2aa;background:#081723e8;color:#e4f5f9;padding:13px;font-size:21px;cursor:pointer;z-index:1}
+.nx-gallery-arrow.prev{left:9px}.nx-gallery-arrow.next{right:9px}.nx-gallery-arrow:disabled{opacity:.25;cursor:default}
+.nx-gallery-caption{padding:14px 17px 17px;border-top:1px solid #203b4b}.nx-gallery-caption strong{font-size:15px;color:#edfaff}.nx-gallery-caption small{margin-left:10px;color:#6eacba;font-size:10px}.nx-gallery-caption p{margin:8px 0 0!important}
+.nx-gallery-thumbs{display:flex;gap:8px;padding:12px;overflow-x:auto;border-top:1px solid #29495b}.nx-thumb{flex:0 0 100px;cursor:pointer;border:2px solid transparent;padding:0;background:#162734;text-align:left;color:#bfd1d9}.nx-thumb.active{border-color:#63bacc}.nx-thumb img{display:block;width:100%;height:55px;object-fit:cover}.nx-thumb span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:5px;font-size:10px}
+.nx-lightbox{position:fixed;inset:0;background:#000e;z-index:9999;display:none;align-items:center;justify-content:center;flex-direction:column;padding:18px}.nx-lightbox.open{display:flex}.nx-lightbox img{max-width:96vw;max-height:83vh;object-fit:contain}.nx-lightbox button{align-self:flex-end;margin-bottom:8px;background:#142c3b;color:white;border:1px solid #5f8b9b;padding:10px 15px;cursor:pointer}.nx-lightbox span{color:#b3cbd2;margin-top:12px;font-size:13px}
+@media(max-width:600px){.nx-gallery-stage{min-height:145px}.nx-gallery-arrow{padding:8px}.nx-thumb{flex-basis:76px}.nx-thumb img{height:43px}}
+
+/* NEXUS BRAND DESIGN v3 — logo assets cropped from the supplied 1/3/7 collage */
+:root{--bg:#080e17;--panel:#111c2a;--panel2:#162435;--line:#304356;--text:#e3e9ef;--muted:#97aabd;--cyan:#7bb9e0;--green:#8ecdb6;--red:#c96c72;--gold:#c5b191}
+body{background:radial-gradient(ellipse at 80% 0%,#122338 0%,transparent 38%),#080e17}
+body:before{opacity:.12;background-size:64px 64px}
+.login-layout{border:1px solid #405467;box-shadow:0 25px 110px #000b,0 0 0 1px #85a7bb13;min-height:630px}
+.login-art{background:radial-gradient(ellipse at 48% 52%,#263b50 0%,#0b1523 68%);isolation:isolate;overflow:hidden}
+.login-art:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#0b1425b8,transparent 55%);pointer-events:none;z-index:-1}
+.crest-backdrop{position:absolute;right:-11%;top:11%;width:95%;max-width:490px;object-fit:contain;opacity:.5;filter:drop-shadow(0 8px 35px #000);z-index:-1;pointer-events:none;mix-blend-mode:screen}
+.brand-image{display:flex;align-items:center;line-height:1;min-height:54px;overflow:hidden}
+.brand-image img{display:block;width:240px;max-width:100%;height:auto;mix-blend-mode:screen;filter:brightness(1.28) contrast(1.08)}
+.sidebar .brand-image{padding:0;min-height:75px}.sidebar .brand-image img{width:195px}
+.login-art .brand-image img{width:255px}
+.login-form-wrap{position:relative;background:linear-gradient(155deg,#101b2a,#090e17)}
+.login-seal{display:block;width:108px;height:108px;margin:6px auto 14px;object-fit:contain;mix-blend-mode:screen;filter:brightness(1.2)}
+.login-form-wrap h2{letter-spacing:.025em}
+.cta{background:linear-gradient(100deg,#285c77,#3b7190)!important;color:#f3f9ff!important;border:1px solid #679cb6!important;box-shadow:0 6px 30px #0b314e6e}
+.cta:hover{filter:brightness(1.18)}
+.nav-item.active{background:linear-gradient(90deg,#1c3548,#132538)!important;border-color:#5489ab!important}
+.panel,.stat{background:linear-gradient(155deg,#142132,#0d1724)}
+.main .topbar{background:#0a1420e8;backdrop-filter:blur(10px)}
+.nx-gallery{border-color:#496a80;box-shadow:0 12px 35px #0005}
+.nx-gallery-top{background:linear-gradient(90deg,#173046,#0e1c2b)}
+.nx-gallery-caption strong{color:#e6f0f7}
+.nx-thumb.active{border-color:#7bb9e0}
+@media(max-width:850px){.crest-backdrop{width:68%;right:0;top:-28%;opacity:.3}.login-seal{width:82px;height:82px}}
+</style>
+</head>
+<body>
+<section class="login-page" id="loginPage">
+  <div class="login-layout">
+    <div class="login-art">
+      <div class="brand brand-image"><img src="images/branding/wordmark.webp" alt="NEXUS Special Operations Academy"></div>
+      <div class="rings"></div><div class="orb"></div><img class="crest-backdrop" src="images/branding/crest.webp" alt="" aria-hidden="true">
+      <div class="art-content"><div class="eyebrow">SECURE OPERATIONS NETWORK</div><div class="hero-title">BEYOND<br>THE VISIBLE.</div><p class="hero-copy">넥서스 통합 운영 네트워크.<br>모든 시스템은 하나의 연결로부터 시작됩니다.</p></div>
+      <div class="footerline">NEXUS INTERNAL SYSTEM // NX-01</div>
+    </div>
+    <div class="login-form-wrap">
+      <div class="tag"><span class="dot"></span> NX-01 / RESTRICTED ACCESS · FICTIONAL DEMO</div><img class="login-seal" src="images/branding/seal.webp" alt="NEXUS 공식 엠블럼">
+      <h2>내부 네트워크 접속</h2>
+      <p class="sub">승인된 요원 전용 포털 콘셉트 화면입니다.<br>현재 버전은 실제 인증이 아닌 디자인 데모입니다.</p>
+      <form id="loginForm">
+        <div class="field"><label for="agentId">AGENT IDENTIFIER</label><input id="agentId" maxlength="28" autocomplete="off" placeholder="요원 호출명 입력" required></div>
+        <div class="field"><label for="accessCode">ACCESS CODE</label><input id="accessCode" type="password" autocomplete="off" placeholder="데모: 아무 문구나 입력" required></div>
+        <button type="submit" class="cta">ENTER NEXUS NETWORK →</button>
+        <div class="msg" id="loginMsg" role="status" aria-live="polite"></div>
+      </form>
+      <div class="notice">⚠ 실제 비밀번호를 입력하지 마세요. 이 페이지에는 회원 인증 서버가 연결되어 있지 않습니다. 데모를 체험하려면 임의의 호출명과 임의의 문구를 입력하세요.</div>
+      <p class="hint">NEXUS INFORMATION SECURITY DIVISION<br>UNAUTHORIZED ACCESS IS PROHIBITED — FICTIONAL INTERFACE</p>
+    </div>
+  </div>
+</section>
+<div class="app hidden" id="app">
+  <aside class="sidebar" id="sidebar">
+    <div class="brand brand-image"><img src="images/branding/wordmark.webp" alt="NEXUS Special Operations Academy"></div>
+    <div class="side-caption">AUTHORIZED NETWORK / OPERATIONS MENU</div>
+    <nav class="side-nav" aria-label="내부 메뉴">
+      <button class="nav-item active" data-view="overview"><span class="nav-icon">◫</span>종합 대시보드</button>
+      <button class="nav-item" data-view="personnel"><span class="nav-icon">♙</span>요원 명부</button>
+      <button class="nav-item" data-view="operations"><span class="nav-icon">⌖</span>작전 현황</button>
+      <button class="nav-item" data-view="facilities"><span class="nav-icon">▦</span>시설 안내</button>
+      <button class="nav-item" data-view="archives"><span class="nav-icon">▤</span>기밀 기록 보관소</button>
+    </nav>
+    <div class="side-bottom">NETWORK STATUS: <span style="color:var(--green)">ONLINE</span><br>SECURITY LEVEL: <span style="color:var(--gold)">DEMO</span><br>© NEXUS SYSTEM</div>
+  </aside>
+  <main class="main">
+    <header class="topbar">
+      <div style="display:flex;align-items:center;gap:12px"><button class="mobile-menu" id="menuToggle" aria-label="메뉴 열기">☰</button><div class="breadcrumb">NEXUS / <span id="breadView">OVERVIEW</span></div></div>
+      <div class="top-right"><span class="online">● SYSTEM ONLINE</span><div class="avatar" id="avatar">NX</div><button class="logout" id="logout">LOG OUT</button></div>
+    </header>
+    <section class="section-view active" id="view-overview">
+      <div class="dashboard-header"><div><div class="eyebrow">NEXUS CONTROL CENTER / NX-01</div><h1>통합 운영 대시보드</h1><div class="date"><span id="welcomeAgent">요원</span> 님, 넥서스 네트워크에 접속했습니다. <span id="currentDate"></span></div></div><div class="status">● NETWORK STABLE</div></div>
+      <div class="stats">
+        <div class="stat"><div class="stat-label">ACTIVE PERSONNEL</div><div class="stat-value">128</div><div class="stat-desc">등록 요원 수 · 데모 데이터</div></div>
+        <div class="stat"><div class="stat-label">OPERATIONS</div><div class="stat-value">07</div><div class="stat-desc">진행 중인 작전 · 데모 데이터</div></div>
+        <div class="stat"><div class="stat-label">SYSTEM INTEGRITY</div><div class="stat-value">99.8<span style="font-size:14px">%</span></div><div class="stat-desc">시스템 무결성 · 데모 데이터</div></div>
+        <div class="stat"><div class="stat-label">SECURITY ALERTS</div><div class="stat-value" style="color:var(--gold)">02</div><div class="stat-desc">검토 요청 · 데모 데이터</div></div>
+      </div>
+      <div class="content-grid">
+        <section class="panel"><div class="panel-header"><div class="panel-title">◈ 주요 시스템 상태</div><div class="panel-tag">ALL SYSTEMS</div></div><div class="system-list">
+          <div class="sys-row"><span>중앙 데이터 코어</span><span class="bar"><i style="width:96%"></i></span><strong>96%</strong></div>
+          <div class="sys-row"><span>전술 통신망</span><span class="bar"><i style="width:89%"></i></span><strong>89%</strong></div>
+          <div class="sys-row"><span>내부 보안망</span><span class="bar"><i style="width:99%"></i></span><strong>99%</strong></div>
+          <div class="sys-row"><span>작전 정보 시스템</span><span class="bar"><i style="width:78%"></i></span><strong>78%</strong></div>
+          <div class="sys-row"><span>연구 시설 네트워크</span><span class="bar"><i style="width:92%"></i></span><strong>92%</strong></div>
+        </div></section>
+        <section class="panel"><div class="panel-header"><div class="panel-title">◈ 최신 활동 기록</div><div class="panel-tag">LIVE FEED / MOCK</div></div><div class="activity">
+          <div class="activity-item"><span class="act-dot"></span><div><strong>중앙 통신망 동기화 완료</strong><p>NETWORK / 자동 점검</p></div><span class="small-time">09:42</span></div>
+          <div class="activity-item"><span class="act-dot warn"></span><div><strong>보안 로그 추가 검토 요청</strong><p>SECURITY / 내부 경보</p></div><span class="small-time">08:15</span></div>
+          <div class="activity-item"><span class="act-dot"></span><div><strong>작전 보고서 갱신</strong><p>OPERATIONS / 기록 업데이트</p></div><span class="small-time">07:36</span></div>
+          <div class="activity-item"><span class="act-dot"></span><div><strong>연구 부서 점검 완료</strong><p>RESEARCH / 정기 점검</p></div><span class="small-time">06:50</span></div>
+        </div></section>
+      </div>
+      <div class="announcement"><span class="announce-icon">◇</span><div><h3>내부 공지 // 작전 보안 규정 안내</h3><p>본 화면은 넥서스 세계관을 위한 프론트엔드 시연입니다. 표시된 수치와 기록은 모두 예시이며 실제 내부 정보가 아닙니다.</p></div></div>
+    </section>
+    <section class="section-view" id="view-personnel"><div class="dashboard-header"><div><div class="eyebrow">PERSONNEL DIRECTORY</div><h1>요원 명부</h1><div class="view-note">넥서스 소속 요원 목록의 디자인 예시입니다. 실데이터가 아닙니다.</div></div></div><div class="panel"><input class="search" id="personSearch" placeholder="호출명 또는 부서 검색" aria-label="요원 검색"><table class="data-table"><thead><tr><th>호출명</th><th>부서</th><th>등급</th><th>상태</th></tr></thead><tbody id="personBody"></tbody></table><div class="empty hidden" id="personEmpty">검색 결과가 없습니다.</div></div></section>
+    <section class="section-view" id="view-operations"><div class="dashboard-header"><div><div class="eyebrow">FIELD OPERATIONS</div><h1>작전 현황</h1><div class="view-note">진행 중인 작전 보드의 레이아웃 예시입니다.</div></div></div><div class="panel"><table class="data-table"><thead><tr><th>작전 코드</th><th>담당 부서</th><th>우선순위</th><th>상태</th></tr></thead><tbody><tr><td class="mono">NX-OP-042</td><td>전술 작전부</td><td>높음</td><td><span class="pill">진행 중</span></td></tr><tr><td class="mono">NX-OP-037</td><td>정보 분석부</td><td>보통</td><td><span class="pill">진행 중</span></td></tr><tr><td class="mono">NX-OP-029</td><td>연구 지원부</td><td>낮음</td><td><span class="pill">검토 중</span></td></tr></tbody></table></div></section>
+
+    <section class="section-view" id="view-facilities">
+      <div class="dashboard-header"><div><div class="eyebrow">NEXUS CAMPUS / FACILITY DIRECTORY</div><h1>시설 안내</h1><p class="view-note">넥서스 캠퍼스의 주요 시설과 운영 구역을 확인한다. 시설을 선택하면 내부 공간 및 이용 목적을 열람할 수 있다.</p></div><div class="status">● 07 FACILITIES</div></div>
+      <div class="facility-feature"><span style="font-size:25px;color:var(--cyan)">⌑</span><div><strong>NEXUS / CAMPUS INDEX</strong><span>시설 정보는 세계관 설정용 안내 자료다. 위치 도면과 층별 상세 배치는 향후 공식 등록 예정이다.</span></div></div>
+      <div class="facility-toolbar"><input class="search" id="facilitySearch" type="search" placeholder="시설명 또는 공간 검색" aria-label="시설 검색"><button type="button" class="filter-button active" data-facility-filter="all">전체</button><button type="button" class="filter-button" data-facility-filter="core">교육 · 행정</button><button type="button" class="filter-button" data-facility-filter="living">생활 · 의료</button><button type="button" class="filter-button" data-facility-filter="restricted">평가 · 보호</button></div>
+      <div class="facility-count" id="facilityCount" aria-live="polite"></div>
+      <div class="facility-grid" id="facilityGrid"></div>
+      <div class="facility-detail" id="facilityDetail" hidden aria-live="polite"></div>
+      <p class="facility-smallprint">※ 구역 이름과 시설 구성은 NEXUS 세계관 설정에 따른 것이다. 실제 회원 권한 관리나 출입 통제는 적용되어 있지 않다.</p>
+    </section>
+    <section class="section-view" id="view-archives"><div class="dashboard-header"><div><div class="eyebrow">CLASSIFIED ARCHIVES</div><h1>기밀 기록 보관소</h1><div class="view-note">실제 기밀 파일이나 개인정보를 이 HTML 파일에 직접 넣지 마세요. GitHub Pages에서는 HTML과 JavaScript 원본을 누구나 볼 수 있습니다.</div></div></div><div class="panel"><div class="panel-title">◇ RECORD ACCESS</div><p class="sub" style="margin:18px 0 0">서버 기반 회원 인증 및 접근 권한 검증이 구성되면 이곳에 승인된 회원만 조회할 수 있는 문서를 연동할 수 있습니다.</p><div class="notice">현재 버전: 데모 화면만 제공 · 비공개 데이터 조회 기능 없음</div></div></section>
+  </main>
+</div>
+<div class="screen-notice">NEXUS DEMO · NOT AN AUTHENTICATION SYSTEM</div>
+<script>
+(()=>{
+'use strict';
+const loginPage=document.getElementById('loginPage'),app=document.getElementById('app');
+const views={overview:'OVERVIEW',personnel:'PERSONNEL',operations:'OPERATIONS',facilities:'FACILITIES',archives:'ARCHIVES'};
+const personnel=[['RAVEN','전술 작전부','A-1','활동 중'],['ECHO','정보 분석부','A-2','활동 중'],['NOVA','연구 개발부','B-1','활동 중'],['VEX','보안 통제부','A-2','대기 중'],['LYNX','의료 지원부','B-2','활동 중']];
+const tbody=document.getElementById('personBody');
+function renderPersonnel(q=''){
+const rows=personnel.filter(r=>r.some(v=>v.toLowerCase().includes(q.toLowerCase())));
+tbody.replaceChildren();rows.forEach(r=>{const tr=document.createElement('tr');r.forEach((v,i)=>{const td=document.createElement('td');if(i===0)td.className='mono';if(i===3){const span=document.createElement('span');span.className='pill';span.textContent=v;td.append(span)}else td.textContent=v;tr.append(td)});tbody.append(tr)});
+document.getElementById('personEmpty').classList.toggle('hidden',rows.length>0)}
+function showView(name){if(!views[name])return;document.querySelectorAll('.section-view').forEach(e=>e.classList.toggle('active',e.id==='view-'+name));document.querySelectorAll('.nav-item').forEach(e=>e.classList.toggle('active',e.dataset.view===name));document.getElementById('breadView').textContent=views[name];document.getElementById('sidebar').classList.remove('open')}
+function enter(){let name=document.getElementById('agentId').value.trim();let code=document.getElementById('accessCode').value;if(!name||!code){document.getElementById('loginMsg').textContent='호출명과 임의의 데모 문구를 입력해 주세요.';return}loginPage.classList.add('hidden');app.classList.remove('hidden');document.getElementById('welcomeAgent').textContent=name;document.getElementById('avatar').textContent=name.slice(0,2).toUpperCase();document.getElementById('accessCode').value='';window.scrollTo(0,0);showView('overview')}
+document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();enter()});
+document.getElementById('logout').addEventListener('click',()=>{app.classList.add('hidden');loginPage.classList.remove('hidden');document.getElementById('agentId').value='';document.getElementById('accessCode').value='';document.getElementById('loginMsg').textContent='';window.scrollTo(0,0)});
+document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
+document.getElementById('personSearch').addEventListener('input',e=>renderPersonnel(e.target.value));
+document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('sidebar').classList.toggle('open'));
+
+const facilities=[
+ {code:'NX-01',name:'본관',en:'HEADQUARTERS',cat:'core',icon:'▥',zone:'COMMAND & ADMIN',desc:'기관 행정과 교육 운영, 중앙 통제를 담당하는 핵심 시설.',rooms:["본관 로비","본관 복도","강의실","행정실","교관사무실","중앙 통제실","회의실","브리핑룸","식당","카페"]},
+ {code:'NX-02',name:'기숙사',en:'CADET RESIDENCE',cat:'living',icon:'▤',zone:'LIVING QUARTERS',desc:'교육생 전용 거주 구역. 남녀 구분 없는 1인실과 2인실을 혼합 운영한다.',rooms:["2인 기숙사 (1·2·3 CADET)","1인 기숙사 (4 CADET)","1인 기숙사 (5 CADET)","공용 주방","공용 라운지"],note:'학년과 평가 등급에 따라 연 1회 숙소를 재배정한다.'},
+ {code:'NX-03',name:'의료센터',en:'MEDICAL CENTER',cat:'living',icon:'✚',zone:'HEALTH & RECOVERY',desc:'일반 진료부터 심리 상담, 재활 및 정밀 검진까지 지원하는 의료 시설.',rooms:["로비","진료실","회복실","재활치료실","정밀검사실","심리상담실"]},
+ {code:'NX-04',name:'종합 훈련관',en:'TRAINING COMPLEX',cat:'core',icon:'⌖',zone:'FIELD READINESS',desc:'체력·전투·상황 대응·협동 훈련을 수행하는 종합 교육 공간.',rooms:["로비","피트니스룸","전투훈련실","사격훈련장","훈련장 관제실"]},
+ {code:'NX-05',name:'정보 연구동',en:'INTELLIGENCE & RESEARCH',cat:'core',icon:'◇',zone:'ANALYSIS & TECH',desc:'정보 분석, 외국어, 심리학 및 기술 교육을 위한 전문 연구 시설.',rooms:["로비 겸 중앙 연구 구역","정보 분석실","기술 연구소","언어 훈련실","심리 분석실","자료 보관실"]},
+ {code:'NX-06',name:'평가 구역',en:'ASSESSMENT SECTOR',cat:'restricted',icon:'▣',zone:'EXAMINATION',desc:'학기별 종합시험과 모의 상황 평가를 진행하는 독립 시설.',rooms:["종합평가센터 로비","개별 평가실","종합 상황 평가실","실전 상황 평가장","최종 평가 심의실"]},
+ {code:'NX-07',name:'격리 관찰실',en:'PROTECTIVE OBSERVATION',cat:'restricted',icon:'◎',zone:'CARE & ASSESSMENT',desc:'중대한 규정 위반 또는 심리적 위기 상황에 놓인 교육생을 보호하고 평가하는 공간.',rooms:["격리 관찰실"],note:'보호와 평가를 목적으로 하는 설정이며 징벌 시설로 묘사하지 않는다.'}
+];
+
+const facilityPhotoData={"NX-01":[{"name":"본관 로비","en":"Main Lobby","description":"넥서스 방문자와 교육생이 처음 진입하는 중앙 로비다.","src":"images/headquarters/lobby.webp"},{"name":"본관 복도","en":"Main Corridor","description":"본관의 강의실과 행정 구역을 연결하는 주요 통로다.","src":"images/headquarters/corridor.webp"},{"name":"강의실","en":"Lecture Room","description":"전문 이론 교육과 정기 강의를 진행하는 교육 공간이다.","src":"images/headquarters/classroom.webp"},{"name":"행정실","en":"Administrative Office","description":"교육생 기록과 기관 운영 행정을 담당한다.","src":"images/headquarters/administration.webp"},{"name":"교관사무실","en":"Instructors’ Office","description":"교관들이 교육 계획과 훈련 기록을 관리하는 업무 공간이다.","src":"images/headquarters/instructors.webp"},{"name":"중앙 통제실","en":"Central Control Room","description":"기관 내 주요 시스템과 운영 현황을 통합 감시한다.","src":"images/headquarters/control.webp"},{"name":"회의실","en":"Conference Room","description":"평가 및 운영 관련 내부 회의를 진행한다.","src":"images/headquarters/meeting.webp"},{"name":"브리핑룸","en":"Briefing Room","description":"작전·훈련 진행 전 상황을 공유하고 계획을 검토한다.","src":"images/headquarters/briefing.webp"},{"name":"식당","en":"Main Dining Hall","description":"교육생과 교직원의 정규 식사를 제공하는 공용 식당이다.","src":"images/headquarters/dining.webp"},{"name":"카페","en":"Cafeteria","description":"음료와 간단한 간식을 제공하는 휴게 공간이다.","src":"images/headquarters/cafe.webp"}],"NX-02":[{"name":"2인 기숙사 (1·2·3 CADET)","en":"Junior Cadet Double Room","description":"1~3학년 교육생을 위한 2인실이다.","src":"images/dormitory/double.webp"},{"name":"1인 기숙사 (4 CADET)","en":"Fourth-Year Single Room","description":"4학년 교육생을 위한 독립 생활 공간이다.","src":"images/dormitory/year4.webp"},{"name":"1인 기숙사 (5 CADET)","en":"Senior Cadet Suite","description":"5학년 상급 교육생을 위한 독립 생활 공간이다.","src":"images/dormitory/year5.webp"},{"name":"공용 주방","en":"Communal Kitchen","description":"교육생들이 공동으로 이용하는 조리 공간이다.","src":"images/dormitory/kitchen.webp"},{"name":"공용 라운지","en":"Communal Lounge","description":"휴식과 교류 및 여가 활동을 위한 공용 공간이다.","src":"images/dormitory/lounge.webp"}],"NX-03":[{"name":"로비","en":"Medical Lobby","description":"의료센터의 접수와 안내가 이루어지는 공간이다.","src":"images/medical/lobby.webp"},{"name":"진료실","en":"Examination Room","description":"기본 진료와 신체 상태 확인을 진행한다.","src":"images/medical/exam.webp"},{"name":"회복실","en":"Recovery Room","description":"치료 이후 안정과 경과 관찰을 지원한다.","src":"images/medical/recovery.webp"},{"name":"재활치료실","en":"Rehabilitation Room","description":"회복 훈련과 재활 치료를 진행하는 공간이다.","src":"images/medical/rehab.webp"},{"name":"정밀검사실","en":"Diagnostic Laboratory","description":"정밀 영상 검사와 심화 신체 검진을 지원한다.","src":"images/medical/diagnostics.webp"},{"name":"심리상담실","en":"Psychological Counseling Room","description":"심리 상담과 안정 회복을 위한 독립 상담 공간이다.","src":"images/medical/counseling.webp"}],"NX-04":[{"name":"로비","en":"Training Center Lobby","description":"훈련관의 주요 구역을 연결하는 안내 및 집결 공간이다.","src":"images/training/lobby.webp"},{"name":"피트니스룸","en":"Physical Training Room","description":"체력과 근력·지구력 강화를 위한 전문 공간이다.","src":"images/training/fitness.webp"},{"name":"전투훈련실","en":"Combat Training Room","description":"근접 전투 및 방어 기술을 훈련하는 공간이다.","src":"images/training/combat.webp"},{"name":"사격훈련장","en":"Indoor Shooting Range","description":"실내 사격 훈련과 정밀도 평가를 진행한다.","src":"images/training/shooting.webp"},{"name":"훈련장 관제실","en":"Training Control Room","description":"훈련 진행과 기록, 안전 상태를 관찰·관리한다.","src":"images/training/control.webp"}],"NX-05":[{"name":"로비 겸 중앙 연구 구역","en":"Central Research Area","description":"정보 연구동의 공용 연구·교류 공간이다.","src":"images/research/central.webp"},{"name":"정보 분석실","en":"Intelligence Analysis Room","description":"수집한 정보를 종합 분석하는 공간이다.","src":"images/research/intelligence.webp"},{"name":"기술 연구소","en":"Technology Laboratory","description":"첨단 장비와 전술 기술을 연구·개발한다.","src":"images/research/technology.webp"},{"name":"언어 훈련실","en":"Language Training Room","description":"외국어 및 상황별 의사소통을 훈련한다.","src":"images/research/language.webp"},{"name":"심리 분석실","en":"Behavioral Analysis Room","description":"행동 패턴과 심리 상태를 분석한다.","src":"images/research/behavior.webp"},{"name":"자료 보관실","en":"Classified Archives","description":"중요 기록과 연구 자료를 보관하는 제한 접근 구역이다.","src":"images/research/archive.webp"}],"NX-06":[{"name":"종합평가센터 로비","en":"Evaluation Center Lobby","description":"평가 대상자 접수와 안내를 위한 공용 구역이다.","src":"images/evaluation/lobby.webp"},{"name":"개별 평가실","en":"Individual Assessment Room","description":"개인 면담과 판단 능력을 점검한다.","src":"images/evaluation/individual.webp"},{"name":"종합 상황 평가실","en":"Scenario Assessment Room","description":"가상 시나리오를 이용한 판단·협업 평가를 진행한다.","src":"images/evaluation/scenario.webp"},{"name":"실전 상황 평가장","en":"Practical Assessment Arena","description":"실전형 종합 대응 능력을 평가하는 공간이다.","src":"images/evaluation/practical.webp"},{"name":"최종 평가 심의실","en":"Final Evaluation Committee Room","description":"최종 등급 및 진급에 관한 평가 결과를 심의한다.","src":"images/evaluation/final.webp"}],"NX-07":[{"name":"격리 관찰실","en":"Isolation & Observation Room","description":"교육생의 상태를 보호 관찰하고 안전과 심리 안정을 평가하는 공간이다.","src":"images/observation/unit.webp"}]};
+function addFacilityGallery(panel,facilityCode){
+ const photos=facilityPhotoData[facilityCode]||[]; if(!photos.length)return;
+ let active=0;
+ const box=document.createElement('section');box.className='nx-gallery';box.setAttribute('aria-label','시설 사진 갤러리');
+ const bar=document.createElement('div');bar.className='nx-gallery-top';
+ const title=document.createElement('strong');title.textContent='SPACE PHOTO ARCHIVE / 공간 사진';
+ const counter=document.createElement('span');bar.append(title,counter);box.append(bar);
+ const stage=document.createElement('div');stage.className='nx-gallery-stage';
+ const photo=document.createElement('img');photo.alt='';photo.loading='lazy';
+ const prev=document.createElement('button');prev.className='nx-gallery-arrow prev';prev.textContent='❮';prev.type='button';prev.setAttribute('aria-label','이전 사진');
+ const next=document.createElement('button');next.className='nx-gallery-arrow next';next.textContent='❯';next.type='button';next.setAttribute('aria-label','다음 사진');
+ stage.append(photo,prev,next);box.append(stage);
+ const caption=document.createElement('div');caption.className='nx-gallery-caption';
+ const name=document.createElement('strong'),en=document.createElement('small'),description=document.createElement('p');caption.append(name,en,description);box.append(caption);
+ const thumbs=document.createElement('div');thumbs.className='nx-gallery-thumbs';box.append(thumbs);
+ const thumbButtons=photos.map((p,i)=>{const b=document.createElement('button');b.type='button';b.className='nx-thumb';b.setAttribute('aria-label',p.name+' 사진 선택');const im=document.createElement('img');im.src=p.src;im.alt='';im.loading='lazy';const s=document.createElement('span');s.textContent=p.name;b.append(im,s);b.addEventListener('click',()=>setPhoto(i));thumbs.append(b);return b});
+ function setPhoto(i){active=(i+photos.length)%photos.length;const p=photos[active];photo.src=p.src;photo.alt=p.name;name.textContent=p.name;en.textContent=p.en;description.textContent=p.description;counter.textContent=String(active+1).padStart(2,'0')+' / '+String(photos.length).padStart(2,'0');thumbButtons.forEach((b,j)=>b.classList.toggle('active',j===active));thumbButtons[active].scrollIntoView({block:'nearest',inline:'nearest'});}
+ prev.addEventListener('click',()=>setPhoto(active-1));next.addEventListener('click',()=>setPhoto(active+1));
+ const lightbox=document.getElementById('nxLightbox');const full=lightbox.querySelector('img');const info=lightbox.querySelector('span');
+ photo.addEventListener('click',()=>{full.src=photos[active].src;full.alt=photos[active].name;info.textContent=photos[active].name;lightbox.classList.add('open');lightbox.setAttribute('aria-hidden','false')});
+ panel.append(box);setPhoto(0);
+}
+
+let facilityFilter='all';
+function renderFacilities(){
+ const term=document.getElementById('facilitySearch').value.trim().toLocaleLowerCase();
+ const items=facilities.filter(f=>(facilityFilter==='all'||f.cat===facilityFilter)&&[f.name,f.en,f.desc,...f.rooms].join(' ').toLocaleLowerCase().includes(term));
+ const grid=document.getElementById('facilityGrid');grid.replaceChildren();
+ document.getElementById('facilityCount').textContent='DISPLAYING '+items.length+' / '+facilities.length+' FACILITIES';
+ if(!items.length){const empty=document.createElement('div');empty.className='facility-empty';empty.textContent='검색 조건에 해당하는 시설이 없습니다.';grid.append(empty);return}
+ items.forEach(f=>{
+  const card=document.createElement('article');card.className='facility-card';
+  card.innerHTML=`<div class="facility-art"><span class="facility-code"></span><span class="building-symbol" aria-hidden="true"></span><span class="facility-zone"></span></div><div class="facility-content"><div class="en"></div><h3></h3><p class="facility-desc"></p><div class="facility-meta"></div><button class="facility-open" type="button">시설 상세 보기 <span aria-hidden="true">↗</span></button></div>`;
+  card.querySelector('.facility-code').textContent=f.code;card.querySelector('.building-symbol').textContent=f.icon;card.querySelector('.facility-zone').textContent=f.zone;
+  card.querySelector('.en').textContent=f.en;card.querySelector('h3').textContent=f.name;card.querySelector('.facility-desc').textContent=f.desc;
+  f.rooms.slice(0,3).forEach(r=>{const chip=document.createElement('span');chip.className='facility-chip';chip.textContent=r;card.querySelector('.facility-meta').append(chip)});
+  card.querySelector('.facility-open').addEventListener('click',()=>openFacility(f.code));grid.append(card)
+ });
+}
+function openFacility(code){
+ const f=facilities.find(x=>x.code===code);if(!f)return;
+ const panel=document.getElementById('facilityDetail');panel.replaceChildren();
+ const close=document.createElement('button');close.type='button';close.className='close-detail';close.textContent='✕ 닫기';close.addEventListener('click',()=>{panel.hidden=true});panel.append(close);
+ const eye=document.createElement('div');eye.className='eyebrow';eye.textContent=f.code+' / '+f.en;panel.append(eye);
+ const heading=document.createElement('h2');heading.textContent=f.name;panel.append(heading);
+ const desc=document.createElement('p');desc.textContent=f.desc;panel.append(desc);
+ addFacilityGallery(panel,code);
+ const roomTitle=document.createElement('div');roomTitle.className='panel-title';roomTitle.style.marginTop='23px';roomTitle.textContent='내부 구역 / AREA DIRECTORY';panel.append(roomTitle);
+ const rooms=document.createElement('div');rooms.className='facility-rooms';f.rooms.forEach((r,i)=>{const cell=document.createElement('div');cell.className='facility-room';const code=document.createElement('span');code.textContent='AREA '+String(i+1).padStart(2,'0');cell.append(code,document.createTextNode(r));rooms.append(cell)});panel.append(rooms);
+ if(f.note){const note=document.createElement('p');note.textContent='운영 안내 · '+f.note;note.style.marginTop='16px';panel.append(note)}
+ const disclaimer=document.createElement('div');disclaimer.className='facility-smallprint';disclaimer.textContent='세부 층수 및 실제 동선은 아직 지정되지 않았습니다. 목록의 AREA 번호는 층수가 아닌 화면 표시 순서입니다.';panel.append(disclaimer);
+ panel.hidden=false;panel.scrollIntoView({behavior:'smooth',block:'start'});
+}
+document.getElementById('facilitySearch').addEventListener('input',renderFacilities);
+document.querySelectorAll('[data-facility-filter]').forEach(button=>button.addEventListener('click',()=>{facilityFilter=button.dataset.facilityFilter;document.querySelectorAll('[data-facility-filter]').forEach(b=>b.classList.toggle('active',b===button));document.getElementById('facilityDetail').hidden=true;renderFacilities()}));
+renderFacilities();
+
+document.getElementById('currentDate').textContent='· '+new Intl.DateTimeFormat('ko-KR',{year:'numeric',month:'long',day:'numeric'}).format(new Date());renderPersonnel();
+})();
+</script>
+<div id="nxLightbox" class="nx-lightbox" aria-hidden="true" role="dialog" aria-label="확대된 시설 사진"><button type="button" id="nxLightboxClose">✕ 닫기 / ESC</button><img alt=""><span></span></div>
+<script>document.getElementById('nxLightboxClose').addEventListener('click',()=>{const el=document.getElementById('nxLightbox');el.classList.remove('open');el.setAttribute('aria-hidden','true')});document.getElementById('nxLightbox').addEventListener('click',e=>{if(e.target.id==='nxLightbox')document.getElementById('nxLightboxClose').click()});document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('nxLightboxClose').click()});</script>
+<a href="index.html" style="position:fixed;left:14px;bottom:14px;z-index:999;background:#132338;color:#cfdae4;padding:10px 14px;border:1px solid #456077;text-decoration:none;font:12px sans-serif">← 공식 홈페이지</a></body>
+</html>
