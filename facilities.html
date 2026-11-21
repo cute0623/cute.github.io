@@ -158,6 +158,90 @@ button:focus-visible,a:focus-visible{outline:2px solid #addcff;outline-offset:3p
   .thumbs button{flex-basis:80px}
   .thumbs img{height:52px}
 }
+
+/* v4.24 — Facility Archive photo banner & silver metal typography */
+.facility-hero{
+  isolation:isolate;
+  min-height:370px;
+  background:#09111e;
+  border-bottom:1px solid #62768b70;
+}
+.facility-hero .facility-hero-image{
+  position:absolute;
+  z-index:-2;
+  inset:0 0 0 34%;
+  background-image:url('images/site/facility-archive-moodboard-exterior.webp');
+  background-position:center center;
+  background-repeat:no-repeat;
+  background-size:cover;
+  filter:saturate(.84) brightness(.81);
+}
+.facility-hero::before{
+  content:'';
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  height:auto;
+  background:
+    linear-gradient(90deg,#0b1322 0%,#0b1322 25%,rgba(11,19,34,.97) 34%,rgba(11,19,34,.73) 48%,rgba(11,19,34,.19) 72%,rgba(11,19,34,.07) 100%),
+    linear-gradient(0deg,rgba(6,11,19,.88),transparent 30%);
+  pointer-events:none;
+}
+.facility-hero::after{
+  content:'';
+  position:absolute;
+  bottom:0;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent 3%,rgba(192,223,248,.68) 30%,rgba(144,178,204,.25) 70%,transparent);
+  box-shadow:0 0 13px rgba(155,194,224,.35);
+}
+.facility-hero .wrap{
+  position:relative;
+  min-height:370px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-start;
+  padding-top:42px;
+  padding-bottom:42px;
+}
+.facility-hero .hero-copy{position:relative;max-width:690px;z-index:1;}
+.facility-hero .hero-copy h1{
+  font-family:Georgia,'Times New Roman',serif;
+  font-size:clamp(44px,5.5vw,72px);
+  font-weight:400;
+  letter-spacing:.08em;
+  line-height:.95;
+  margin:14px 0 16px;
+  color:#e4ebf2;
+  background:linear-gradient(180deg,#f8fbff 1%,#b4bfca 25%,#fcfdff 45%,#9da9b7 58%,#e5ecf5 80%,#8e9aa9 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-shadow:0 10px 24px rgba(0,0,0,.24);
+  filter:drop-shadow(0 1px 0 rgba(255,255,255,.1));
+}
+.facility-hero .hero-steel-rule{height:1px;width:min(310px,64vw);margin:0 0 19px;background:linear-gradient(90deg,rgba(206,230,247,.9),rgba(171,207,235,.42),transparent);box-shadow:0 0 10px rgba(166,203,232,.25)}
+.facility-hero .hero-steel-rule span{display:block;width:70px;height:2px;background:linear-gradient(90deg,transparent,#c6e3f8,transparent);transform:translateY(-.5px)}
+.facility-hero .hero-copy p{color:#c3d0dd;text-shadow:0 1px 8px #050a12;}
+.facility-hero .hero-note{margin-top:20px;gap:9px}
+.facility-hero .hero-pill{padding:8px 11px;background:rgba(13,23,38,.58);border-color:rgba(133,165,194,.48);font-size:10px;letter-spacing:.09em;backdrop-filter:blur(2px)}
+.facility-hero-label{position:absolute;right:clamp(20px,4vw,62px);bottom:15px;color:#c0d2e2;font-size:9px;letter-spacing:.22em;text-shadow:0 1px 6px #030811;}
+@media(max-width:970px){
+ .facility-hero .wrap{min-height:360px}
+ .facility-hero .facility-hero-image{left:25%}
+}
+@media(max-width:650px){
+ .facility-hero{min-height:345px}
+ .facility-hero .wrap{min-height:345px;padding-top:34px;padding-bottom:43px}
+ .facility-hero .facility-hero-image{left:15%;background-position:45% center}
+ .facility-hero::before{background:linear-gradient(90deg,rgba(9,17,29,.98),rgba(9,17,29,.86) 54%,rgba(9,17,29,.48)),linear-gradient(0deg,rgba(6,11,19,.85),transparent 35%)}
+ .facility-hero .hero-copy h1{font-size:clamp(41px,9.5vw,56px)}
+ .facility-hero .hero-copy p{font-size:12px;line-height:1.75}
+ .facility-hero .hero-note{gap:7px}
+ .facility-hero .hero-pill{font-size:8px;padding:7px 9px}
+ .facility-hero-label{font-size:7px;letter-spacing:.12em}
+}
+
 </style>
 </head>
 <body>
@@ -168,27 +252,21 @@ button:focus-visible,a:focus-visible{outline:2px solid #addcff;outline-offset:3p
   <button class="menu" aria-label="메뉴 펼치기" onclick="document.getElementById('navigation').classList.toggle('open')">☰</button>
 </header>
 <main>
-  <section class="facility-hero">
+  <section class="facility-hero" aria-labelledby="facility-archive-title">
+    <div class="facility-hero-image" role="img" aria-label="산림에 둘러싸인 넥서스 본관 야간 외관"></div>
     <div class="wrap">
       <div class="hero-copy">
         <span class="kicker">NEXUS / FACILITY DIRECTORY</span>
-        <h1>FACILITY<br>ARCHIVE</h1>
+        <h1 id="facility-archive-title">FACILITY<br>ARCHIVE</h1>
+        <div class="hero-steel-rule" aria-hidden="true"><span></span></div>
         <p>넥서스의 주요 시설 구역과 내부 공간 아카이브를 열람할 수 있다.<br>시설을 선택하면 대표 이미지와 각 공간의 상세 설명을 확인할 수 있다.</p>
         <div class="hero-note">
-          <span class="hero-pill"><span></span> 07 Facility Zones</span>
-          <span class="hero-pill"><span></span> 38 Space Records</span>
-          <span class="hero-pill"><span></span> Public Access Archive</span>
-        </div>
-        <div class="hero-actions">
-          <a class="hero-btn" href="#archive"><span><strong>전체 시설 보기</strong><small>DIRECTORY INDEX</small></span><span class="arrow">↘</span></a>
-          <a class="hero-btn" href="internal.html"><span><strong>AGENT LOGIN</strong><small>INTERNAL NETWORK</small></span><span class="arrow">↗</span></a>
+          <span class="hero-pill"><span></span> 07 FACILITY ZONES</span>
+          <span class="hero-pill"><span></span> 38 SPACE RECORDS</span>
+          <span class="hero-pill"><span></span> PUBLIC ACCESS ARCHIVE</span>
         </div>
       </div>
-      <div class="hero-stats" aria-label="시설 개요 통계">
-        <div class="stat-card"><b>07</b><span>Facility Zones</span><small>본관, 기숙사, 의료센터, 종합 훈련관, 정보 연구동, 평가 구역, 격리 관찰 구역</small></div>
-        <div class="stat-card"><b>38</b><span>Archived Spaces</span><small>실내 주요 공간과 구역별 사진 아카이브 수록</small></div>
-        <div class="stat-card wide"><b>VIEW</b><span>Archive Access</span><small>필터로 구역을 좁힌 뒤 카드를 눌러 상세 갤러리를 열람한다. 승인된 내부 기록은 AGENT LOGIN 이후 접근 가능하다.</small></div>
-      </div>
+      <div class="facility-hero-label" aria-hidden="true">NEXUS HEADQUARTERS &nbsp; / &nbsp; FACILITY ARCHIVE</div>
     </div>
   </section>
   <section class="archive-shell" id="archive">
