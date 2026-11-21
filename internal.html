@@ -111,6 +111,7 @@ body:before{opacity:.10;background-size:68px 68px}
 @media(max-width:420px){.login-topbrand img:nth-child(2){width:125px}.login-topbrand img:first-child{width:33px;height:33px}.login-back{font-size:8px;letter-spacing:.07em}.login-art{min-height:225px;padding:21px}.art-status{width:100%;margin:2px 0 0 40px}.login-art-title{font-size:46px}.login-form-wrap{padding:27px 20px}.login-form-wrap .sub{font-size:11px}.login-bottomline{font-size:8px;letter-spacing:.07em}}
 @media(prefers-reduced-motion:reduce){.login-form-wrap .cta,.login-back{transition:none}}
 </style>
+<link rel="stylesheet" href="image-protection.css">
 </head>
 <body>
 <section class="login-page" id="loginPage">
@@ -299,5 +300,6 @@ document.getElementById('currentDate').textContent='· '+new Intl.DateTimeFormat
 </script>
 <div id="nxLightbox" class="nx-lightbox" aria-hidden="true" role="dialog" aria-label="확대된 시설 사진"><button type="button" id="nxLightboxClose">✕ 닫기 / ESC</button><img alt=""><span></span></div>
 <script>document.getElementById('nxLightboxClose').addEventListener('click',()=>{const el=document.getElementById('nxLightbox');el.classList.remove('open');el.setAttribute('aria-hidden','true')});document.getElementById('nxLightbox').addEventListener('click',e=>{if(e.target.id==='nxLightbox')document.getElementById('nxLightboxClose').click()});document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('nxLightboxClose').click()});</script>
+<script src="image-protection.js" defer></script>
 </body>
 </html>

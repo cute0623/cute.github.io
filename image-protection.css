@@ -1,0 +1,11 @@
+/* NEXUS image interaction protection (deterrence, not DRM) */
+img, picture, svg, canvas,
+.hero-img, .login-art, .facility-hero, .visual, .tile-image {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+img, picture, svg, canvas {
+  user-select: none;
+  -webkit-user-select: none;
+}
+/* Preserve mouse/touch pointer input for the gallery's swipe controls. */
