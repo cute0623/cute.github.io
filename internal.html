@@ -198,24 +198,85 @@ body.nx-thumb-locked{overflow:hidden}
 @media(max-height:640px){.nx-thumb-kicker{margin-bottom:8px}.nx-thumb-strap{margin-bottom:12px}.nx-thumb-sensor{width:min(38vh,220px)}.nx-thumb-status{margin-top:20px}.nx-thumb-progress-label{margin-top:8px}}
 @media(prefers-reduced-motion:reduce){.nx-thumb-gate:after{animation:none}.nx-thumb-gate[data-state="success"] .nx-thumb-sensor{animation:none}.nx-thumb-gate.nx-thumb-exit{animation:none}}
 
+
+/* v4.40 — Emblem display and independent thumb-sized sensor */
+.nx-thumb-core{gap:0}
+.nx-thumb-strap{margin-bottom:18px}
+.nx-thumb-emblem{
+  display:grid;place-items:center;
+  width:clamp(245px,37vmin,355px);
+  height:clamp(245px,37vmin,355px);
+  flex:none;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(113,167,199,.09) 0%,rgba(82,135,173,.03) 57%,transparent 75%);
+  box-shadow:0 0 0 1px rgba(132,178,207,.11),0 0 0 18px rgba(132,178,207,.025),0 0 40px rgba(112,177,212,.05);
+}
+.nx-thumb-emblem .nx-thumb-seal{
+  display:block;width:94%;height:94%;max-width:none;object-fit:contain;
+  opacity:1;filter:drop-shadow(0 0 20px rgba(160,205,231,.25));
+  pointer-events:none;
+}
+.nx-thumb-sensor{
+  display:grid;place-items:center;
+  width:76px;height:76px;aspect-ratio:1;flex:none;
+  margin-top:22px;
+  padding:0;border:1px solid rgba(151,202,232,.60);
+  border-radius:50%;
+  background:radial-gradient(circle at 48% 39%,#294558 0%,#122433 62%,#08131e 100%);
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.17),0 0 0 8px rgba(142,196,223,.075),0 0 23px rgba(126,189,226,.15);
+  cursor:pointer;touch-action:none;
+}
+.nx-thumb-sensor:before,.nx-thumb-sensor:after{display:none}
+.nx-thumb-sensor .nx-thumb-ring{inset:-6px;opacity:.94}
+.nx-thumb-icon{width:40px;height:40px;display:block;color:#b9e3f7;pointer-events:none;filter:drop-shadow(0 0 9px rgba(142,215,255,.25));transition:transform .2s,opacity .25s}
+.nx-thumb-sensor:hover .nx-thumb-icon{transform:scale(1.06)}
+.nx-thumb-sensor:hover .nx-thumb-seal{filter:none}
+.nx-thumb-success-icon{inset:9px;font-size:35px;border-width:1px}
+.nx-thumb-status{margin:23px 0 7px}
+.nx-thumb-gate[data-state="holding"] .nx-thumb-sensor{box-shadow:inset 0 1px 1px rgba(255,255,255,.16),0 0 0 8px rgba(148,218,248,.10),0 0 30px rgba(141,220,252,.25)}
+.nx-thumb-gate[data-state="success"] .nx-thumb-sensor{box-shadow:0 0 0 1px #a6ffdc,0 0 0 12px rgba(148,255,210,.12),0 0 0 30px rgba(131,255,210,.06),0 0 56px rgba(91,255,189,.38)}
+.nx-thumb-gate[data-state="success"] .nx-thumb-emblem .nx-thumb-seal{opacity:1;transform:none;filter:drop-shadow(0 0 25px rgba(148,255,210,.35))}
+.nx-thumb-gate[data-state="success"] .nx-thumb-icon{opacity:0}
+@media(max-width:600px){
+  .nx-thumb-gate{padding:12px}
+  .nx-thumb-strap{margin-bottom:12px}
+  .nx-thumb-emblem{width:min(62vw,280px);height:min(62vw,280px)}
+  .nx-thumb-sensor{width:72px;height:72px;margin-top:20px}
+  .nx-thumb-status{margin-top:23px}
+}
+@media(max-height:650px){
+  .nx-thumb-kicker{margin-bottom:7px}
+  .nx-thumb-strap{margin-bottom:8px}
+  .nx-thumb-emblem{width:min(37vh,250px);height:min(37vh,250px)}
+  .nx-thumb-sensor{width:64px;height:64px;margin-top:13px}
+  .nx-thumb-icon{width:33px;height:33px}
+  .nx-thumb-status{margin-top:12px}
+  .nx-thumb-progress-label{margin-top:7px}
+}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
 <body>
 
-<!-- NEXUS v4.39: fictional second-stage thumb verification, no biometric capture -->
+<!-- NEXUS v4.40: separate logo and thumb-size verification sensor, no biometric capture -->
 <div class="nx-thumb-gate" id="nxThumbGate" data-state="idle" role="dialog" aria-modal="true" aria-label="NEXUS 모의 엄지 인증" hidden>
   <div class="nx-thumb-core">
     <div class="nx-thumb-kicker">NEXUS / INTERNAL AUTHORIZATION</div>
     <div class="nx-thumb-mark">NEXUS</div>
     <div class="nx-thumb-strap">AGENT ACCESS · VERIFICATION 02</div>
-    <button class="nx-thumb-sensor" type="button" id="nxThumbSensor" aria-label="엄지손가락으로 원형 NEXUS 엠블럼을 길게 눌러 모의 인증 완료">
-      <span class="nx-thumb-ring" aria-hidden="true"></span>
+    <div class="nx-thumb-emblem" aria-label="NEXUS 원형 엠블럼">
       <img class="nx-thumb-seal" src="images/branding/seal-complete.png" draggable="false" alt="NEXUS 원형 엠블럼">
+    </div>
+    <button class="nx-thumb-sensor" type="button" id="nxThumbSensor" aria-label="엄지손가락으로 아래 지문 센서를 약 2.2초 동안 길게 눌러 모의 인증 완료">
+      <span class="nx-thumb-ring" aria-hidden="true"></span>
+      <svg class="nx-thumb-icon" viewBox="0 0 64 64" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M14 30v-4a18 18 0 0 1 36 0v9M20 41c-3-11-1-19 0-23M27 48c-4-12-5-23-2-29 2-5 7-7 11-7 8 0 14 6 14 15v12M33 52c-4-10-6-21-6-27 0-6 4-10 9-10s9 4 9 11v20M39 53c-4-12-5-21-5-27 0-2 1-3 3-3s3 1 3 4v22M20 30c0-11 6-19 16-19"/>
+      </svg>
       <span class="nx-thumb-success-icon" aria-hidden="true">✓</span>
     </button>
     <div class="nx-thumb-status" id="nxThumbStatus" role="status" aria-live="polite">THUMB VERIFICATION</div>
-    <p class="nx-thumb-instruction" id="nxThumbInstruction">엄지손가락으로 엠블럼을 길게 누르세요</p>
+    <p class="nx-thumb-instruction" id="nxThumbInstruction">아래 지문 센서를 엄지손가락으로 길게 누르세요</p>
     <div class="nx-thumb-progress-label" id="nxThumbPct">AWAITING INPUT</div>
   </div>
 </div>
@@ -344,7 +405,7 @@ function thumbReset(){
   if(thumbState==='success')return;
   thumbState='idle';thumbGate.dataset.state='idle';thumbSensor.style.setProperty('--thumb-progress','0%');
   thumbStatus.textContent='THUMB VERIFICATION';
-  thumbInstruction.textContent='엄지손가락으로 엠블럼을 길게 누르세요';
+  thumbInstruction.textContent='아래 지문 센서를 엄지손가락으로 길게 누르세요';
   thumbPct.textContent='AWAITING INPUT';
 }
 function thumbOpen(name){
