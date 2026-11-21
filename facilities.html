@@ -487,6 +487,63 @@ button:focus-visible,a:focus-visible{outline:2px solid #addcff;outline-offset:3p
 @media(max-width:970px){.header a.access{min-width:136px!important}}
 @media(max-width:650px){.header a.access{min-width:0!important;min-height:37px!important;padding:8px 12px!important;font-size:9px!important;letter-spacing:.15em!important}}
 
+
+/* v4.47 — facility header access button proportion adjustment */
+.header a.access{min-width:128px!important;min-height:36px!important;padding:8px 12px!important;font-size:10px!important;letter-spacing:.13em!important}
+.header a.access::before{inset:4px!important}
+@media(max-width:970px){.header a.access{min-width:125px!important}}
+@media(max-width:650px){.header a.access{min-width:0!important;min-height:34px!important;padding:7px 10px!important;font-size:9px!important;letter-spacing:.10em!important}}
+/* v4.47 — campus & floor guide. The map drawings are shown in full, uncropped. */
+.guide-shell{position:relative;border-bottom:1px solid rgba(128,165,194,.22);background:linear-gradient(180deg,#091322 0%,#0b1422 55%,#09111d 100%);padding:46px 0 54px}
+.guide-head{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:22px}
+.guide-head .eyebrow{font-size:10px;letter-spacing:.26em;color:#a7c5db}
+.guide-head h2{margin:9px 0 0;font:clamp(29px,3vw,43px) Georgia,serif;font-weight:400;letter-spacing:.07em;color:#eef4fb}
+.guide-head p{margin:0;max-width:400px;font-size:12px;line-height:1.85;color:#a7b8c8}
+.guide-list{display:grid;gap:20px}
+.guide-article{position:relative;display:grid;grid-template-columns:minmax(220px,.30fr) minmax(0,.70fr);gap:0;overflow:hidden;border:1px solid #53697d;background:linear-gradient(145deg,#121e2c,#09111c);box-shadow:0 20px 42px #0004,inset 0 1px 0 #ffffff0c}
+.guide-article::after{content:"";position:absolute;inset:7px;border:1px solid #aec6db0b;pointer-events:none}
+.guide-info{position:relative;z-index:1;display:flex;flex-direction:column;align-items:start;padding:clamp(23px,3vw,42px);border-right:1px solid #354b60}
+.guide-count{font-size:10px;letter-spacing:.24em;color:#9dbdd4}
+.guide-info h3{font:clamp(23px,2.6vw,33px) Georgia,serif;font-weight:400;letter-spacing:.065em;line-height:1.25;margin:16px 0 11px;color:#f0f5fa}
+.guide-info .ko{font-size:13px;letter-spacing:.02em;color:#d3e2ee}
+.guide-info p{font-size:12px;line-height:1.95;color:#a5b9cb;margin:20px 0 22px}
+.guide-view{margin-top:auto;display:inline-flex;justify-content:space-between;align-items:center;gap:20px;min-width:182px;border:1px solid #9daec0;padding:12px 17px;font-size:11px;letter-spacing:.16em;color:#f3f8fe;background:linear-gradient(180deg,#43566b 0%,#26394e 36%,#111d2e 100%);box-shadow:inset 0 1px 0 #fff3,0 12px 22px #0004;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.guide-view::after{content:'↗';font-size:17px;line-height:1;color:#deebf7}
+.guide-view:hover{border-color:#dcebf8;box-shadow:inset 0 1px 0 #fff3,0 0 20px #9bcaed2a}
+.guide-preview{display:flex;justify-content:center;align-items:center;min-width:0;padding:20px 24px;background:radial-gradient(ellipse at 50% 45%,#243349 0%,#0a111a 70%);cursor:zoom-in;border:0;color:inherit}
+.guide-preview img{display:block;width:auto;height:auto;max-height:480px;max-width:100%;object-fit:contain;filter:drop-shadow(0 14px 25px #0009)}
+.guide-preview:focus-visible{outline:2px solid #b7e2ff;outline-offset:-5px}
+.guide-article:nth-child(2) .guide-preview img{max-height:520px}
+.guide-image-note{margin-top:15px;text-align:center;color:#91aabd;font-size:10px;letter-spacing:.13em}
+.guide-lightbox[hidden]{display:none!important}
+.guide-lightbox{position:fixed;inset:0;z-index:120;display:flex;flex-direction:column;background:rgba(3,8,15,.97);color:#e9f4fc;padding:14px clamp(10px,2vw,30px) 20px}
+.guide-lightbox-header{flex:none;display:flex;align-items:center;justify-content:space-between;gap:14px;border-bottom:1px solid #44576d;padding:0 0 13px}
+.guide-lightbox-header .left{min-width:0;display:flex;flex-direction:column;gap:4px}
+.guide-lightbox-header strong{font:21px Georgia,serif;font-weight:400;letter-spacing:.08em}
+.guide-lightbox-header small{color:#a7c0d2;font-size:10px;letter-spacing:.17em}
+.guide-lightbox-header button{flex:none;border:1px solid #7f95a9;color:#edf8ff;background:#142033;padding:8px 14px;font-size:12px}
+.guide-lightbox-toolbar{display:flex;align-items:center;gap:10px;padding:10px 0;flex:none;font-size:11px;color:#9fbacd}
+.guide-lightbox-toolbar button{border:1px solid #647f97;background:#18293b;padding:7px 12px;color:#e7f1fa;letter-spacing:.08em}
+.guide-lightbox-toolbar button[aria-pressed=true]{background:#2f4960;border-color:#b2d4eb}
+.guide-lightbox-scroller{flex:1;min-height:0;overflow:auto;display:flex;align-items:flex-start;justify-content:center;overscroll-behavior:contain}
+.guide-lightbox-scroller img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;margin:auto}
+.guide-lightbox-scroller.zoomed{display:block;text-align:center}
+.guide-lightbox-scroller.zoomed img{max-height:none;max-width:none;width:min(1200px,195vw);height:auto;margin:0 auto}
+body.guide-lightbox-open{overflow:hidden}
+@media(max-width:750px){
+ .guide-shell{padding:36px 0 42px}.guide-head{display:block;margin-bottom:18px}.guide-head p{margin-top:10px}
+ .guide-article{grid-template-columns:1fr}
+ .guide-info{padding:20px 20px 15px;border-right:0;border-bottom:1px solid #354b60}
+ .guide-info h3{font-size:25px;margin:10px 0 6px}
+ .guide-info p{margin:12px 0 16px}
+ .guide-view{min-width:0;padding:10px 14px}
+ .guide-preview{padding:14px}
+ .guide-preview img,.guide-article:nth-child(2) .guide-preview img{max-height:390px}
+ .guide-lightbox-header strong{font-size:17px}
+ .guide-lightbox-scroller.zoomed img{width:220vw;max-width:none}
+}
+@media(prefers-reduced-motion:reduce){.guide-view{transition:none}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -513,6 +570,42 @@ button:focus-visible,a:focus-visible{outline:2px solid #addcff;outline-offset:3p
         </div>
       </div>
       <div class="facility-hero-label" aria-hidden="true">NEXUS COMPLEX &nbsp; / &nbsp; FACILITY ARCHIVE</div>
+    </div>
+  </section>
+
+  <section class="guide-shell" id="campus-guide" aria-labelledby="guide-section-title">
+    <div class="wrap">
+      <div class="guide-head">
+        <div><span class="eyebrow">NEXUS / CAMPUS DOCUMENTATION</span><h2 id="guide-section-title">FACILITY GUIDE</h2></div>
+        <p>캠퍼스의 전체 배치와 건물별 층 구조를 살펴본 뒤, 아래 시설 아카이브에서 내부 공간을 확인할 수 있다.</p>
+      </div>
+      <div class="guide-list">
+        <article class="guide-article">
+          <div class="guide-info">
+            <span class="guide-count">DOCUMENT 01 / SITE OVERVIEW</span>
+            <h3>CAMPUS OVERVIEW</h3>
+            <span class="ko">캠퍼스 전체 배치 안내도</span>
+            <p>본관, 기숙사, 종합 훈련관, 정보 연구동과 주요 지원 시설이 캠퍼스 안에 어떻게 배치되어 있는지 보여준다.</p>
+            <button class="guide-view" type="button" data-guide-open="campus">VIEW CAMPUS GUIDE</button>
+          </div>
+          <button type="button" class="guide-preview" data-guide-open="campus" aria-label="캠퍼스 전체 배치 안내도 확대 보기">
+            <img src="images/guides/nexus-campus-overview.png" alt="NEXUS 캠퍼스 주요 시설의 전체 배치 안내도" loading="lazy" draggable="false">
+          </button>
+        </article>
+        <article class="guide-article">
+          <div class="guide-info">
+            <span class="guide-count">DOCUMENT 02 / FLOOR DIRECTORY</span>
+            <h3>FACILITY FLOOR GUIDE</h3>
+            <span class="ko">시설별 층 구조도</span>
+            <p>본관과 기숙사를 비롯한 시설의 층별 구성, 주요 공간 및 구역 구분을 시각적으로 확인할 수 있다.</p>
+            <button class="guide-view" type="button" data-guide-open="floor">VIEW FLOOR GUIDE</button>
+          </div>
+          <button type="button" class="guide-preview" data-guide-open="floor" aria-label="시설별 층 구조도 확대 보기">
+            <img src="images/guides/nexus-floor-guide.png" alt="NEXUS 본관, 기숙사, 의료센터, 종합 훈련관 등 층별 구조도" loading="lazy" draggable="false">
+          </button>
+        </article>
+      </div>
+      <div class="guide-image-note">SELECT A GUIDE TO OPEN THE FULL DIAGRAM &nbsp; / &nbsp; 안내도를 선택하면 확대하여 열람할 수 있다.</div>
     </div>
   </section>
   <section class="archive-shell" id="archive">
@@ -557,6 +650,16 @@ button:focus-visible,a:focus-visible{outline:2px solid #addcff;outline-offset:3p
     </div>
   </section>
 </main>
+
+<div class="guide-lightbox" id="guideLightbox" role="dialog" aria-modal="true" aria-label="시설 안내도 확대 보기" hidden>
+  <div class="guide-lightbox-header">
+    <div class="left"><small>NEXUS / FACILITY DOCUMENT</small><strong id="guideLightboxTitle">CAMPUS OVERVIEW</strong></div>
+    <button type="button" id="guideLightboxClose" aria-label="안내도 닫기">✕ CLOSE</button>
+  </div>
+  <div class="guide-lightbox-toolbar"><button type="button" id="guideZoom" aria-pressed="false">ZOOM IN +</button><span>확대 후 스크롤하여 세부 내용을 확인할 수 있다.</span></div>
+  <div class="guide-lightbox-scroller" id="guideLightboxScroller"><img id="guideLightboxImg" alt="확대된 시설 안내도" draggable="false"></div>
+</div>
+
 <div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="시설 사진 갤러리">
   <div class="viewer-inner">
     <div class="viewer-top"><div><small class="kicker" id="viewerCode"></small><h2 id="viewerTitle"></h2></div><button class="viewer-close" id="close" type="button" aria-label="갤러리 닫기" title="닫기">×</button></div>
@@ -642,5 +745,57 @@ document.addEventListener('keydown',e=>{
 if(location.hash && data[location.hash.slice(1)]) openGallery(location.hash.slice(1));
 </script>
 <script src="image-protection.js" defer></script>
+
+<script>
+/* v4.47 | Public guide lightbox, independent from the existing facility gallery. */
+(()=>{
+ const lightbox=document.getElementById('guideLightbox');
+ const image=document.getElementById('guideLightboxImg');
+ const title=document.getElementById('guideLightboxTitle');
+ const close=document.getElementById('guideLightboxClose');
+ const zoom=document.getElementById('guideZoom');
+ const scroller=document.getElementById('guideLightboxScroller');
+ const guides={
+  campus:{src:'images/guides/nexus-campus-overview.png',title:'CAMPUS OVERVIEW',alt:'NEXUS 캠퍼스 전체 배치 안내도'},
+  floor:{src:'images/guides/nexus-floor-guide.png',title:'FACILITY FLOOR GUIDE',alt:'NEXUS 시설 층별 구조도'}
+ };
+ let previousFocus=null;
+ const setZoom=(on)=>{
+  scroller.classList.toggle('zoomed',on);
+  zoom.setAttribute('aria-pressed',String(on));
+  zoom.textContent=on?'FIT TO SCREEN −':'ZOOM IN +';
+  scroller.scrollTop=0;
+  scroller.scrollLeft=0;
+ };
+ const show=(key)=>{
+  const guide=guides[key]; if(!guide)return;
+  previousFocus=document.activeElement;
+  image.src=guide.src;image.alt=guide.alt;title.textContent=guide.title;
+  setZoom(false);
+  lightbox.hidden=false;
+  document.body.classList.add('guide-lightbox-open');
+  close.focus();
+ };
+ const hide=()=>{
+  lightbox.hidden=true;
+  document.body.classList.remove('guide-lightbox-open');
+  image.removeAttribute('src');
+  if(previousFocus?.focus)previousFocus.focus();
+ };
+ document.querySelectorAll('[data-guide-open]').forEach(el=>el.addEventListener('click',()=>show(el.dataset.guideOpen)));
+ close.addEventListener('click',hide);
+ zoom.addEventListener('click',()=>setZoom(!scroller.classList.contains('zoomed')));
+ lightbox.addEventListener('click',e=>{if(e.target===lightbox)hide()});
+ document.addEventListener('keydown',e=>{
+  if(lightbox.hidden)return;
+  if(e.key==='Escape'){e.stopPropagation();hide();}
+  if(e.key==='Tab'){
+   const focusable=[close,zoom];const current=focusable.indexOf(document.activeElement);
+   if(e.shiftKey&&current===0){e.preventDefault();zoom.focus();}
+   if(!e.shiftKey&&current===1){e.preventDefault();close.focus();}
+  }
+ });
+})();
+</script>
 </body>
 </html>
