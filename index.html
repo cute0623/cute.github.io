@@ -799,6 +799,19 @@ body.nx-gate-active{overflow:hidden}
  .nx-gate-success,.nx-gate-face,.nx-gate-finger{transition:none!important}
 }
 
+
+/* v4.38: simulated fingerprint analyzer / compact green HUD */
+.nx-gate-analyzer{visibility:hidden;flex:none;display:flex;align-items:center;justify-content:center;gap:9px;max-width:94vw;white-space:nowrap;overflow:hidden;min-height:22px;margin:8px auto 0;color:#6bdcab;font:9px/1.25 ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.09em;text-shadow:0 0 12px #43ffaa30;font-variant-numeric:tabular-nums}
+.nx-gate[data-phase="finger"] .nx-gate-analyzer,.nx-gate[data-phase="grant"] .nx-gate-analyzer{visibility:visible}
+.nx-gate-analyzer-mark{color:#7cbd9f;border-right:1px solid #44a97b55;padding-right:9px}
+.nx-gate-analyzer-data{color:#b1ffda;min-width:235px;text-align:center}
+.nx-gate-analyzer-percent{color:#d0ffe9;min-width:48px;text-align:right}
+.nx-gate.nx-gate-holding .nx-gate-analyzer-data{animation:nx-code-blink .14s steps(2,end) infinite}
+@keyframes nx-code-blink{50%{opacity:.78}}
+@media(max-width:700px){.nx-gate-analyzer{font-size:7px;min-height:15px;margin-top:5px;gap:5px;letter-spacing:.02em}.nx-gate-analyzer-mark{padding-right:5px}.nx-gate-analyzer-data{min-width:0;width:auto}.nx-gate-analyzer-percent{min-width:39px}}
+@media(max-width:370px){.nx-gate-analyzer-mark{display:none}}
+@media(prefers-reduced-motion:reduce){.nx-gate.nx-gate-holding .nx-gate-analyzer-data{animation:none}}
+
 </style><link rel="stylesheet" href="image-protection.css">
 </head><body><div class="nx-gate" id="nxBiometricGate" data-phase="face" role="dialog" aria-modal="true" aria-label="NEXUS 모의 생체 인증" hidden>
  <div class="nx-gate-shell">
@@ -818,6 +831,7 @@ body.nx-gate-active{overflow:hidden}
     <button type="button" id="nxGateTouch" class="nx-gate-touch" aria-label="오른손 검지로 센서 중앙을 길게 누르세요. 모의 인증입니다." disabled><span class="nx-gate-touch-progress" aria-hidden="true"></span></button>
    </div>
    <div class="nx-gate-track-label" id="nxGateScanLabel">FACIAL SCAN // ACTIVE</div>
+   <div class="nx-gate-analyzer" id="nxGateAnalyzer" aria-hidden="true"><span class="nx-gate-analyzer-mark">NX / DERMAL HASH</span><span id="nxGateAnalyzerText" class="nx-gate-analyzer-data">AWAITING CONTACT // ---- ---- ----</span><span id="nxGateAnalyzerPercent" class="nx-gate-analyzer-percent">000.0%</span></div>
   </div>
   <div class="nx-gate-panel">
    <div class="nx-gate-status-box" role="status" aria-live="polite" aria-atomic="true">
@@ -866,10 +880,10 @@ body.nx-gate-active{overflow:hidden}
   <div class="nx-div-foot"><span>ACADEMIC SPECIALIZATION</span><span class="nx-div-glint" aria-hidden="true"></span></div>
 </article></div></div></main><footer class="footer"><strong>◢　NEXUS / SPECIAL OPERATIONS ACADEMY</strong><div class="foot-dots"><span>FACILITY DATA</span><span>INTERNAL NETWORK</span><span>ACADEMY RECORDS</span></div><span>FICTIONAL ROLEPLAY WEBSITE · 실제 기관 아님</span></footer><script src="image-protection.js" defer></script>
 <script>
-/* NEXUS v4.37 simulated biometric entry. No real sensors or personal data. */
+/* NEXUS v4.38 simulated biometric entry. No real sensors or personal data. */
 (function(){
   'use strict';
-  const KEY='nexusBiometricIntroSeen_v437';
+  const KEY='nexusBiometricIntroSeen_v438';
   try{if(sessionStorage.getItem(KEY)==='yes')return;}catch(_){}
   const gate=document.getElementById('nxBiometricGate');
   if(!gate)return;
@@ -878,10 +892,13 @@ body.nx-gate-active{overflow:hidden}
   const sub=document.getElementById('nxGateStatusSub');
   const meter=document.getElementById('nxGateMeter');
   const label=document.getElementById('nxGateScanLabel');
+  const analyzer=document.getElementById('nxGateAnalyzerText');
+  const analyzerPercent=document.getElementById('nxGateAnalyzerPercent');
   const reduced=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  const HOLD_MS=1250;
+  const HOLD_MS=3500;
   let phase='face', closed=false, holding=false, pointerId=null, keyboardHold=false, holdStart=0, frame=0;
   let timers=[];
+  let lastAnalyzerStep=-1;
   function later(fn,ms){timers.push(setTimeout(fn,ms));}
   function setPhase(next,heading,detail,caption,pct){
     if(closed)return;
@@ -898,7 +915,10 @@ body.nx-gate-active{overflow:hidden}
     gate.classList.remove('nx-gate-holding');
     touch.style.setProperty('--hold-percent','0%');
     pointerId=null;
+    lastAnalyzerStep=-1;
     if(phase==='finger'&&!closed){
+      analyzer.textContent='AWAITING CONTACT // ---- ---- ----';
+      analyzerPercent.textContent='000.0%';
       meter.style.width='58%';status.textContent='FINGERPRINT REQUIRED';
       sub.textContent='오른손 검지로 중앙을 길게 누르세요';
     }
@@ -919,6 +939,8 @@ body.nx-gate-active{overflow:hidden}
     endHold();
     successVibration();
     setPhase('grant','ACCESS GRANTED','접속 승인 완료','IDENTITY VERIFIED // 100%',100);
+    analyzer.textContent='PATTERN MATCH // IDENTITY VERIFIED';
+    analyzerPercent.textContent='100.0%';
     later(closeGate,reduced?650:1700);
   }
   function tick(now){
@@ -926,14 +948,23 @@ body.nx-gate-active{overflow:hidden}
     const frac=Math.min(1,Math.max(0,(now-holdStart)/HOLD_MS));
     touch.style.setProperty('--hold-percent',(frac*100).toFixed(1)+'%');
     meter.style.width=(58+42*frac).toFixed(1)+'%';
+    const step=Math.floor((now-holdStart)/75);
+    if(step!==lastAnalyzerStep){
+      lastAnalyzerStep=step;
+      const a=(Math.imul(step+731, 2654435761)>>>0).toString(16).toUpperCase().padStart(8,'0');
+      const b=(Math.imul(step+1931, 2246822519)>>>0).toString(16).toUpperCase().padStart(8,'0');
+      const stage=frac<.30?'RIDGE MAP':frac<.65?'MINUTIAE':frac<.93?'HASH MATCH':'FINAL CHECK';
+      analyzer.textContent=stage+' // '+a.slice(0,4)+'-'+b.slice(0,4);
+      analyzerPercent.textContent=(frac*100).toFixed(1).padStart(5,'0')+'%';
+    }
     if(frac>=1){success();return;}
     frame=requestAnimationFrame(tick);
   }
   function beginHold(){
     if(closed||holding||phase!=='finger')return;
-    holding=true;
+    holding=true;lastAnalyzerStep=-1;
     gate.classList.add('nx-gate-holding');
-    status.textContent='VERIFYING...';sub.textContent='손가락을 유지하세요';
+    status.textContent='ANALYZING FINGERPRINT';sub.textContent='검지손가락을 계속 누르세요 · 3.5 SEC';
     holdStart=performance.now();frame=requestAnimationFrame(tick);
   }
   touch.addEventListener('pointerdown',e=>{
