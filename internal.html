@@ -206,7 +206,7 @@ body:before{opacity:.10;background-size:68px 68px}
     <section class="section-view" id="view-archives"><div class="dashboard-header"><div><div class="eyebrow">CLASSIFIED ARCHIVES</div><h1>기밀 기록 보관소</h1><div class="view-note">실제 기밀 파일이나 개인정보를 이 HTML 파일에 직접 넣지 마세요. GitHub Pages에서는 HTML과 JavaScript 원본을 누구나 볼 수 있습니다.</div></div></div><div class="panel"><div class="panel-title">◇ RECORD ACCESS</div><p class="sub" style="margin:18px 0 0">서버 기반 회원 인증 및 접근 권한 검증이 구성되면 이곳에 승인된 회원만 조회할 수 있는 문서를 연동할 수 있습니다.</p><div class="notice">현재 버전: 데모 화면만 제공 · 비공개 데이터 조회 기능 없음</div></div></section>
   </main>
 </div>
-<div class="screen-notice">NEXUS DEMO · NOT AN AUTHENTICATION SYSTEM</div>
+
 <script>
 (()=>{
 'use strict';
@@ -299,5 +299,5 @@ document.getElementById('currentDate').textContent='· '+new Intl.DateTimeFormat
 </script>
 <div id="nxLightbox" class="nx-lightbox" aria-hidden="true" role="dialog" aria-label="확대된 시설 사진"><button type="button" id="nxLightboxClose">✕ 닫기 / ESC</button><img alt=""><span></span></div>
 <script>document.getElementById('nxLightboxClose').addEventListener('click',()=>{const el=document.getElementById('nxLightbox');el.classList.remove('open');el.setAttribute('aria-hidden','true')});document.getElementById('nxLightbox').addEventListener('click',e=>{if(e.target.id==='nxLightbox')document.getElementById('nxLightboxClose').click()});document.addEventListener('keydown',e=>{if(e.key==='Escape')document.getElementById('nxLightboxClose').click()});</script>
-<a href="index.html" style="position:fixed;left:14px;bottom:14px;z-index:999;background:#132338;color:#cfdae4;padding:10px 14px;border:1px solid #456077;text-decoration:none;font:12px sans-serif">← 공식 홈페이지</a></body>
+</body>
 </html>
