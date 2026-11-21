@@ -162,10 +162,64 @@ body:before{opacity:.10;background-size:68px 68px}
 @media(max-width:850px){.app{grid-template-columns:1fr}.sidebar{width:min(280px,85vw)}.dashboard-brand img:nth-child(2){width:135px}.main{padding:20px}.status{display:none}.dashboard-header{padding:28px 0 19px}}
 @media(max-width:500px){.main{padding:15px}.dashboard-header h1{font-size:29px}.stat{padding:17px 13px;min-height:140px}.stat-value{font-size:32px}.top-right{gap:6px}.agent-tag{max-width:42vw;padding:8px 9px;font-size:10px}.logout{font-size:9px;padding:8px 10px}.online{display:none}.stat-label{font-size:8px}.stat-desc{font-size:10px}.panel{padding:18px}.sys-row{grid-template-columns:93px 1fr 39px;gap:8px}}
 
+
+/* v4.39 — agent login second-stage simulated thumb authorization */
+.nx-thumb-gate{position:fixed;inset:0;z-index:3000;display:grid;place-items:center;overflow:hidden;padding:24px;background:radial-gradient(ellipse at 50% 42%,#172738 0%,#070e18 44%,#02060c 100%);isolation:isolate;color:#eef5fc}
+.nx-thumb-gate[hidden]{display:none!important}
+.nx-thumb-gate:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(#a3cfe409 1px,transparent 1px),linear-gradient(90deg,#a3cfe409 1px,transparent 1px);background-size:58px 58px;mask-image:radial-gradient(ellipse at 50% 50%,#000 10%,transparent 70%)}
+.nx-thumb-gate:after{content:"";position:absolute;inset:-40%;pointer-events:none;background:conic-gradient(from 0deg,transparent 0 80deg,#a1d9f00b 96deg,transparent 118deg 360deg);animation:nx-thumb-orbit 9s linear infinite}
+@keyframes nx-thumb-orbit{to{transform:rotate(360deg)}}
+.nx-thumb-core{width:min(580px,100%);display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1}
+.nx-thumb-kicker{font-size:10px;letter-spacing:.32em;color:#a2b9cd;margin-bottom:22px}
+.nx-thumb-mark{font:400 clamp(22px,4vw,32px) Georgia,serif;letter-spacing:.31em;color:#e2eaf3;margin-bottom:9px}
+.nx-thumb-strap{font-size:9px;letter-spacing:.23em;color:#90a8ba;margin-bottom:28px}
+.nx-thumb-sensor{position:relative;width:clamp(208px,36vmin,308px);aspect-ratio:1;border:0;padding:0;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle,#243c4a3d 0%,#0a172419 68%,transparent 80%);cursor:pointer;touch-action:none;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;outline-offset:8px;color:#e2ecf6;box-shadow:0 0 0 1px #93bfd52b,0 0 0 16px #98bbcf0b,0 0 0 39px #83b6d207}
+.nx-thumb-sensor:focus-visible{outline:2px solid #c5efff}
+.nx-thumb-sensor:before,.nx-thumb-sensor:after{content:"";position:absolute;inset:14px;border:1px dashed #a4cee75c;border-radius:50%;pointer-events:none}
+.nx-thumb-sensor:after{inset:31px;border-style:solid;opacity:.31}
+.nx-thumb-ring{position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(from 0deg,#b0ecff var(--thumb-progress,0%),transparent 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));filter:drop-shadow(0 0 8px #7edaff77);opacity:.76;pointer-events:none}
+.nx-thumb-seal{display:block;width:72%;height:72%;object-fit:contain;filter:drop-shadow(0 0 15px #b4d9ee2b);pointer-events:none;transition:transform .45s,filter .45s,opacity .3s}
+.nx-thumb-sensor:hover .nx-thumb-seal{filter:drop-shadow(0 0 20px #a6d9f34c)}
+.nx-thumb-status{margin:38px 0 7px;font-size:14px;font-weight:500;letter-spacing:.25em;color:#ecf7fe;min-height:21px}
+.nx-thumb-instruction{font-size:12px;line-height:1.6;color:#a9bfcd;min-height:20px;margin:0}
+.nx-thumb-progress-label{font:11px ui-monospace,SFMono-Regular,Consolas,monospace;color:#99bbd0;letter-spacing:.12em;margin-top:18px;min-height:16px}
+.nx-thumb-success-icon{position:absolute;inset:20%;display:grid;place-items:center;border:2px solid #a3ffdf;border-radius:50%;background:#0c2825ee;color:#ddfff1;font-size:clamp(60px,9vmin,100px);line-height:1;opacity:0;transform:scale(.62);box-shadow:0 0 60px #5bffc24d;pointer-events:none}
+.nx-thumb-gate[data-state="holding"] .nx-thumb-sensor{box-shadow:0 0 0 1px #aeebff77,0 0 0 16px #98bbcf15,0 0 40px #a3ddf52b}
+.nx-thumb-gate[data-state="success"] .nx-thumb-sensor{box-shadow:0 0 0 1px #a6ffdc,0 0 0 20px #94ffd21d,0 0 0 52px #83ffd20d,0 0 90px #5bffbd4d;animation:nx-thumb-bloom .8s ease-out both}
+.nx-thumb-gate[data-state="success"] .nx-thumb-seal{opacity:.12;transform:scale(.9)}
+.nx-thumb-gate[data-state="success"] .nx-thumb-success-icon{opacity:1;transform:scale(1);transition:opacity .25s,transform .5s cubic-bezier(.18,1.5,.38,1)}
+.nx-thumb-gate[data-state="success"] .nx-thumb-status{color:#bdffdd}
+.nx-thumb-gate[data-state="success"] .nx-thumb-ring{background:conic-gradient(#9effd5 100%,transparent 0)}
+@keyframes nx-thumb-bloom{45%{transform:scale(1.06)}100%{transform:scale(1)}}
+.nx-thumb-gate.nx-thumb-exit{animation:nx-thumb-out .5s ease forwards;pointer-events:none}
+@keyframes nx-thumb-out{to{opacity:0;visibility:hidden}}
+body.nx-thumb-locked{overflow:hidden}
+@media(max-width:600px){.nx-thumb-gate{padding:16px}.nx-thumb-kicker{font-size:8px;letter-spacing:.22em;margin-bottom:17px}.nx-thumb-mark{font-size:24px}.nx-thumb-strap{font-size:8px;margin-bottom:24px}.nx-thumb-sensor{width:min(62vw,260px)}.nx-thumb-status{margin-top:32px;font-size:12px}.nx-thumb-instruction{font-size:11px}}
+@media(max-height:640px){.nx-thumb-kicker{margin-bottom:8px}.nx-thumb-strap{margin-bottom:12px}.nx-thumb-sensor{width:min(38vh,220px)}.nx-thumb-status{margin-top:20px}.nx-thumb-progress-label{margin-top:8px}}
+@media(prefers-reduced-motion:reduce){.nx-thumb-gate:after{animation:none}.nx-thumb-gate[data-state="success"] .nx-thumb-sensor{animation:none}.nx-thumb-gate.nx-thumb-exit{animation:none}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
 <body>
+
+<!-- NEXUS v4.39: fictional second-stage thumb verification, no biometric capture -->
+<div class="nx-thumb-gate" id="nxThumbGate" data-state="idle" role="dialog" aria-modal="true" aria-label="NEXUS 모의 엄지 인증" hidden>
+  <div class="nx-thumb-core">
+    <div class="nx-thumb-kicker">NEXUS / INTERNAL AUTHORIZATION</div>
+    <div class="nx-thumb-mark">NEXUS</div>
+    <div class="nx-thumb-strap">AGENT ACCESS · VERIFICATION 02</div>
+    <button class="nx-thumb-sensor" type="button" id="nxThumbSensor" aria-label="엄지손가락으로 원형 NEXUS 엠블럼을 길게 눌러 모의 인증 완료">
+      <span class="nx-thumb-ring" aria-hidden="true"></span>
+      <img class="nx-thumb-seal" src="images/branding/seal-complete.png" draggable="false" alt="NEXUS 원형 엠블럼">
+      <span class="nx-thumb-success-icon" aria-hidden="true">✓</span>
+    </button>
+    <div class="nx-thumb-status" id="nxThumbStatus" role="status" aria-live="polite">THUMB VERIFICATION</div>
+    <p class="nx-thumb-instruction" id="nxThumbInstruction">엄지손가락으로 엠블럼을 길게 누르세요</p>
+    <div class="nx-thumb-progress-label" id="nxThumbPct">AWAITING INPUT</div>
+  </div>
+</div>
+
 <section class="login-page" id="loginPage">
   <div class="login-stage">
     <div class="login-topbar">
@@ -272,8 +326,75 @@ const rows=personnel.filter(r=>r.some(v=>v.toLowerCase().includes(q.toLowerCase(
 tbody.replaceChildren();rows.forEach(r=>{const tr=document.createElement('tr');r.forEach((v,i)=>{const td=document.createElement('td');if(i===0)td.className='mono';if(i===3){const span=document.createElement('span');span.className='pill';span.textContent=v;td.append(span)}else td.textContent=v;tr.append(td)});tbody.append(tr)});
 document.getElementById('personEmpty').classList.toggle('hidden',rows.length>0)}
 function showView(name){if(!views[name])return;document.querySelectorAll('.section-view').forEach(e=>e.classList.toggle('active',e.id==='view-'+name));document.querySelectorAll('.nav-item').forEach(e=>e.classList.toggle('active',e.dataset.view===name));document.getElementById('breadView').textContent=views[name];document.getElementById('sidebar').classList.remove('open')}
-function enter(){let name=document.getElementById('agentId').value.trim();let code=document.getElementById('accessCode').value;if(!name||!code){document.getElementById('loginMsg').textContent='호출명과 임의의 데모 문구를 입력해 주세요.';return}loginPage.classList.add('hidden');app.classList.remove('hidden');document.getElementById('welcomeAgent').textContent=name;document.getElementById('avatar').textContent=name;document.getElementById('accessCode').value='';window.scrollTo(0,0);showView('overview')}
-document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();enter()});
+
+// The second verification stage is a visual interaction only; no biometric data is collected.
+const thumbGate=document.getElementById('nxThumbGate');
+const thumbSensor=document.getElementById('nxThumbSensor');
+const thumbStatus=document.getElementById('nxThumbStatus');
+const thumbInstruction=document.getElementById('nxThumbInstruction');
+const thumbPct=document.getElementById('nxThumbPct');
+let thumbState='idle',thumbHolding=false,thumbPointer=null,thumbKeyboard=false,thumbRaf=0,thumbStart=0,thumbTimer=0;
+const thumbReduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const THUMB_HOLD_MS=2200;
+let thumbPendingName='';
+function thumbVibrate(pattern){if(!navigator.vibrate)return;try{navigator.vibrate(pattern)}catch(_){}}
+function thumbReset(){
+  if(thumbRaf)cancelAnimationFrame(thumbRaf);
+  thumbRaf=0;thumbHolding=false;thumbPointer=null;thumbKeyboard=false;
+  if(thumbState==='success')return;
+  thumbState='idle';thumbGate.dataset.state='idle';thumbSensor.style.setProperty('--thumb-progress','0%');
+  thumbStatus.textContent='THUMB VERIFICATION';
+  thumbInstruction.textContent='엄지손가락으로 엠블럼을 길게 누르세요';
+  thumbPct.textContent='AWAITING INPUT';
+}
+function thumbOpen(name){
+  thumbPendingName=name;
+  clearTimeout(thumbTimer);
+  thumbState='idle';thumbGate.hidden=false;thumbGate.classList.remove('nx-thumb-exit');
+  document.body.classList.add('nx-thumb-locked');thumbReset();
+  // Keep focus in the overlay so holding Enter/Space works on desktop.
+  thumbSensor.focus({preventScroll:true});
+}
+function thumbComplete(){
+  if(thumbState==='success')return;
+  thumbHolding=false;if(thumbRaf)cancelAnimationFrame(thumbRaf);thumbRaf=0;
+  thumbState='success';thumbGate.dataset.state='success';thumbSensor.style.setProperty('--thumb-progress','100%');
+  thumbStatus.textContent='ACCESS GRANTED';
+  thumbInstruction.textContent='AGENT IDENTITY VERIFIED';
+  thumbPct.textContent='AUTHORIZATION // 100%';
+  thumbVibrate([65,55,110]);
+  thumbTimer=setTimeout(()=>{
+    enter(thumbPendingName);
+    thumbGate.classList.add('nx-thumb-exit');
+    thumbTimer=setTimeout(()=>{thumbGate.hidden=true;thumbGate.classList.remove('nx-thumb-exit');document.body.classList.remove('nx-thumb-locked');thumbReset();},thumbReduce?0:480);
+  },thumbReduce?460:960);
+}
+function thumbFrame(t){
+  if(!thumbHolding||thumbState!=='holding')return;
+  const percent=Math.min(100,Math.max(0,(t-thumbStart)/THUMB_HOLD_MS*100));
+  thumbSensor.style.setProperty('--thumb-progress',percent.toFixed(1)+'%');
+  thumbPct.textContent='VERIFYING // '+String(Math.floor(percent)).padStart(3,'0')+'%';
+  if(percent>=100){thumbComplete();return;}
+  thumbRaf=requestAnimationFrame(thumbFrame);
+}
+function thumbBegin(){
+  if(thumbState!=='idle'||thumbHolding)return;
+  thumbHolding=true;thumbState='holding';thumbGate.dataset.state='holding';
+  thumbStatus.textContent='SCANNING THUMBPRINT';
+  thumbInstruction.textContent='인증이 완료될 때까지 계속 누르세요';
+  thumbStart=performance.now();thumbRaf=requestAnimationFrame(thumbFrame);
+}
+thumbSensor.addEventListener('pointerdown',e=>{if(e.button!==0||!e.isPrimary||thumbState!=='idle')return;e.preventDefault();thumbPointer=e.pointerId;try{thumbSensor.setPointerCapture(e.pointerId)}catch(_){}thumbBegin()});
+for(const event of ['pointerup','pointercancel','lostpointercapture']){
+  thumbSensor.addEventListener(event,e=>{if(thumbPointer===e.pointerId&&thumbState!=='success')thumbReset()});
+}
+thumbSensor.addEventListener('keydown',e=>{if(e.code!=='Space'&&e.code!=='Enter')return;e.preventDefault();if(e.repeat||thumbKeyboard)return;thumbKeyboard=true;thumbBegin()});
+thumbSensor.addEventListener('keyup',e=>{if(e.code!=='Space'&&e.code!=='Enter')return;e.preventDefault();if(thumbKeyboard&&thumbState!=='success')thumbReset()});
+thumbSensor.addEventListener('blur',()=>{if(thumbState==='holding'&&thumbPointer===null)thumbReset()});
+thumbSensor.addEventListener('contextmenu',e=>e.preventDefault());
+
+function enter(name){loginPage.classList.add('hidden');app.classList.remove('hidden');document.getElementById('welcomeAgent').textContent=name;document.getElementById('avatar').textContent=name;document.getElementById('accessCode').value='';window.scrollTo(0,0);showView('overview')}
+document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();const name=document.getElementById('agentId').value.trim();const code=document.getElementById('accessCode').value;if(!name||!code){document.getElementById('loginMsg').textContent='호출명과 임의의 데모 문구를 입력해 주세요.';return;}document.getElementById('loginMsg').textContent='';thumbOpen(name)});
 document.getElementById('logout').addEventListener('click',()=>{app.classList.add('hidden');loginPage.classList.remove('hidden');document.getElementById('agentId').value='';document.getElementById('accessCode').value='';document.getElementById('loginMsg').textContent='';window.scrollTo(0,0)});
 document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
 document.getElementById('personSearch').addEventListener('input',e=>renderPersonnel(e.target.value));
