@@ -466,6 +466,27 @@ button:focus-visible,a:focus-visible{outline:2px solid #addcff;outline-offset:3p
   .thumbs img{height:55px}
 }
 
+
+/* v4.46 — identical official AGENT LOGIN control on every public page */
+.header a.access{
+ position:relative!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;flex:0 0 auto!important;
+ box-sizing:border-box!important;min-width:158px!important;min-height:40px!important;padding:9px 17px!important;
+ border:1px solid #95a7b8!important;border-radius:0!important;
+ color:#f4f8fc!important;font-size:10px!important;font-weight:400!important;line-height:1.4!important;letter-spacing:.19em!important;
+ text-decoration:none!important;text-transform:uppercase!important;white-space:nowrap!important;
+ background:linear-gradient(180deg,rgba(53,69,87,.95) 0%,rgba(21,31,47,.94) 45%,rgba(9,16,28,.98) 100%)!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(146,165,181,.12),0 10px 24px rgba(0,0,0,.25),0 0 0 1px rgba(255,255,255,.03)!important;
+ transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease,background .24s ease!important;
+}
+.header a.access::before{content:'';position:absolute;inset:5px;border:1px solid rgba(201,222,239,.16);pointer-events:none}
+.header a.access:hover,.header a.access:focus-visible{
+ transform:translateY(-1px);border-color:#c1d5e6!important;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.24),inset 0 -1px 0 rgba(146,165,181,.14),0 14px 28px rgba(0,0,0,.3),0 0 18px rgba(158,206,241,.15)!important;
+ background:linear-gradient(180deg,rgba(62,82,102,.98) 0%,rgba(28,41,59,.96) 48%,rgba(10,18,31,.99) 100%)!important;
+}
+@media(max-width:970px){.header a.access{min-width:136px!important}}
+@media(max-width:650px){.header a.access{min-width:0!important;min-height:37px!important;padding:8px 12px!important;font-size:9px!important;letter-spacing:.15em!important}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
