@@ -110,6 +110,58 @@ body:before{opacity:.10;background-size:68px 68px}
 @media(max-width:720px){.login-page{padding:16px}.login-topbar{margin-bottom:15px}.login-topbrand img:first-child{width:40px;height:40px}.login-topbrand img:nth-child(2){width:160px}.login-back{font-size:9px}.login-layout{grid-template-columns:1fr;min-height:0}.login-art{min-height:240px;padding:24px 25px;background-position:center 44%;border-right:0;border-bottom:1px solid #405567}.login-art:before{background:linear-gradient(90deg,rgba(6,12,22,.92),rgba(6,12,22,.32)),linear-gradient(0deg,rgba(5,10,18,.88),transparent)}.login-art .art-content{margin-top:28px}.login-art-title{font-size:clamp(47px,10vw,67px);margin:11px 0}.login-art .hero-copy{font-size:10px;line-height:1.7;margin-top:12px}.art-bottom{display:none}.art-header{font-size:9px}.art-status{font-size:8px}.login-form-wrap{padding:32px 27px}.login-form-head{margin-bottom:13px}.login-form-head img{width:63px;height:63px}.login-form-wrap h2{font-size:36px;margin-top:13px}.login-foot{font-size:8px}}
 @media(max-width:420px){.login-topbrand img:nth-child(2){width:125px}.login-topbrand img:first-child{width:33px;height:33px}.login-back{font-size:8px;letter-spacing:.07em}.login-art{min-height:225px;padding:21px}.art-status{width:100%;margin:2px 0 0 40px}.login-art-title{font-size:46px}.login-form-wrap{padding:27px 20px}.login-form-wrap .sub{font-size:11px}.login-bottomline{font-size:8px;letter-spacing:.07em}}
 @media(prefers-reduced-motion:reduce){.login-form-wrap .cta,.login-back{transition:none}}
+
+/* v4.32 internal command center — metallic visual system */
+.app{grid-template-columns:258px minmax(0,1fr);background:radial-gradient(circle at 90% -10%,#1d2c40 0%,transparent 33%),#070d17}
+.sidebar{background:linear-gradient(180deg,#111c2b 0%,#09111d 60%,#070d17 100%);border-right:1px solid #4b5b6c;padding:25px 17px 20px;gap:17px}
+.dashboard-brand{display:flex!important;align-items:center;gap:8px!important;padding:4px 4px 17px!important;border-bottom:1px solid #34475c;white-space:normal;min-width:0}
+.dashboard-brand img:first-child{width:60px;height:60px;object-fit:contain;flex:none}
+.dashboard-brand img:nth-child(2){width:142px;height:auto;max-height:53px;object-fit:contain;object-position:left center;min-width:0}
+.side-caption{letter-spacing:.20em;color:#9db4c6;font-size:10px;margin:10px 6px 5px;line-height:1.8}
+.side-nav{gap:7px}
+.nav-item{position:relative;border:1px solid transparent;border-radius:0;min-height:53px;padding:13px 12px;color:#aabbc9;font-size:10px;letter-spacing:.10em;font-weight:500;transition:background .2s,color .2s,border-color .2s;line-height:1.4}
+.nav-item:hover{background:linear-gradient(90deg,#1e3044,#101a28);color:#f3f7fa;border-color:#425a70}
+.nav-item.active{background:linear-gradient(180deg,#3b4d60 0%,#1b2b3f 24%,#0e1929 100%)!important;color:#eff7ff!important;border-color:#8da9be!important;box-shadow:inset 0 1px 0 #daeaff31,0 0 15px #9dcced11}
+.nav-item.active:before{content:'';position:absolute;left:0;top:20%;height:60%;width:2px;background:#bedbf1;box-shadow:0 0 10px #9cc7e9}
+.nav-icon{width:23px;font-size:16px;color:#b5cde1}
+.side-bottom{border-top:1px solid #384a5c;color:#9fb1c1;line-height:2.1;font-size:10px;letter-spacing:.08em;padding:18px 6px 0}
+.main{padding:28px clamp(18px,3vw,56px) 55px;max-width:100%;background:transparent}
+.main .topbar{position:relative;min-height:59px;padding:0 0 19px;background:transparent;border-bottom:1px solid #455569}
+.breadcrumb{font-size:10px;letter-spacing:.22em;color:#9db4c9}
+.top-right{flex-wrap:wrap;justify-content:flex-end;gap:9px}
+.online{font-size:9px;color:#a7d3c5}
+.agent-tag{display:inline-flex;align-items:center;justify-content:center;max-width:min(42vw,360px);min-height:38px;min-width:65px;padding:8px 12px;color:#edf6fe;font-size:11px;font-weight:500;letter-spacing:.05em;overflow-wrap:anywhere;white-space:normal;text-align:center;border:1px solid #8199ad;background:linear-gradient(180deg,#35495c,#142335 48%,#0d1928);box-shadow:inset 0 1px 0 #ffffff33}
+.logout{border:1px solid #8398ac;color:#f0f5fb;padding:10px 15px;min-height:38px;font-size:10px;letter-spacing:.13em;background:linear-gradient(180deg,#34475b 0%,#152438 45%,#0b1626 100%);box-shadow:inset 0 1px 0 #ffffff2e;transition:.2s}
+.logout:hover{background:linear-gradient(180deg,#4d647c,#1c3046);color:white;border-color:#c7d8e7}
+.dashboard-header{padding:37px 0 26px;gap:16px}
+.dashboard-header h1{font:400 clamp(30px,3.2vw,47px)/1.13 Georgia,'Times New Roman',serif;letter-spacing:.075em;color:#edf3f9;margin:13px 0 9px}
+.dashboard-header .eyebrow{font-size:10px;letter-spacing:.23em;color:#a9d2ee;font-weight:500}
+.overview-korean{font-size:12px;color:#afc4d6;letter-spacing:.05em;margin:0 0 11px}
+.date{line-height:1.7;color:#98b1c5;font-size:11px}
+.status{background:linear-gradient(180deg,#152d36,#0d1e29);border:1px solid #557b83;color:#b7ded6;font-size:10px;white-space:nowrap;letter-spacing:.14em}
+.stats{gap:14px}
+.stat,.panel{background:linear-gradient(150deg,#182435 0%,#111b2a 49%,#0b1421 100%);border:1px solid #45576c;box-shadow:inset 0 1px 0 #e7f4ff12,0 16px 27px #00000020}
+.stat{padding:21px 19px;min-height:147px;position:relative;overflow:hidden}
+.stat:after{content:'';position:absolute;width:48px;height:1px;top:0;left:18px;background:#bacbd9}
+.stat-label{font-size:9px;letter-spacing:.17em;color:#a7c6df}
+.stat-value{font:400 39px Georgia,serif;letter-spacing:.06em;color:#edf2f8;margin:18px 0 8px}
+.stat-desc{font-size:11px;color:#9daebf;line-height:1.5}
+.content-grid{gap:16px;margin-top:16px}
+.panel{padding:25px 24px}
+.panel-title{font-size:12px;font-weight:500;letter-spacing:.15em;color:#eaf2f9}
+.panel-tag{font-size:9px;letter-spacing:.1em;color:#a8cbe3}
+.sys-row{grid-template-columns:130px minmax(0,1fr) 48px}
+.sys-row strong{font-size:9px;color:#9fc9e4;letter-spacing:.08em}
+.bar{height:4px;background:#27394a}
+.bar>i{background:linear-gradient(90deg,#5a7c99,#aecfe8)}
+.act-dot{background:#a5c8e5}.act-dot.warn{background:#c4bb9f}
+.announcement{background:linear-gradient(110deg,#1e2d3e,#121f2d);border:1px solid #5a6a7b}
+.announce-icon{color:#bad3e5}
+.screen-notice{display:none!important}
+@media(max-width:980px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:850px){.app{grid-template-columns:1fr}.sidebar{width:min(280px,85vw)}.dashboard-brand img:nth-child(2){width:135px}.main{padding:20px}.status{display:none}.dashboard-header{padding:28px 0 19px}}
+@media(max-width:500px){.main{padding:15px}.dashboard-header h1{font-size:29px}.stat{padding:17px 13px;min-height:140px}.stat-value{font-size:32px}.top-right{gap:6px}.agent-tag{max-width:42vw;padding:8px 9px;font-size:10px}.logout{font-size:9px;padding:8px 10px}.online{display:none}.stat-label{font-size:8px}.stat-desc{font-size:10px}.panel{padding:18px}.sys-row{grid-template-columns:93px 1fr 39px;gap:8px}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
@@ -151,46 +203,46 @@ body:before{opacity:.10;background-size:68px 68px}
 </section>
 <div class="app hidden" id="app">
   <aside class="sidebar" id="sidebar">
-    <div class="brand brand-image"><img src="images/branding/wordmark.webp" alt="NEXUS Special Operations Academy"></div>
-    <div class="side-caption">AUTHORIZED NETWORK / OPERATIONS MENU</div>
+    <a class="brand brand-image dashboard-brand" href="index.html" aria-label="NEXUS 홈페이지"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><img src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></a>
+    <div class="side-caption">NEXUS / INTERNAL SYSTEM</div>
     <nav class="side-nav" aria-label="내부 메뉴">
-      <button class="nav-item active" data-view="overview"><span class="nav-icon">◫</span>종합 대시보드</button>
-      <button class="nav-item" data-view="personnel"><span class="nav-icon">♙</span>요원 명부</button>
-      <button class="nav-item" data-view="operations"><span class="nav-icon">⌖</span>작전 현황</button>
-      <button class="nav-item" data-view="facilities"><span class="nav-icon">▦</span>시설 안내</button>
-      <button class="nav-item" data-view="archives"><span class="nav-icon">▤</span>기밀 기록 보관소</button>
+      <button class="nav-item active" data-view="overview"><span class="nav-icon">▦</span>COMMAND CENTER</button>
+      <button class="nav-item" data-view="personnel"><span class="nav-icon">♙</span>PERSONNEL DATABASE</button>
+      <button class="nav-item" data-view="operations"><span class="nav-icon">⌖</span>OPERATIONS</button>
+      <button class="nav-item" data-view="facilities"><span class="nav-icon">▤</span>FACILITY DATABASE</button>
+      <button class="nav-item" data-view="archives"><span class="nav-icon">◇</span>CLASSIFIED ARCHIVE</button>
     </nav>
     <div class="side-bottom">NETWORK STATUS: <span style="color:var(--green)">ONLINE</span><br>SECURITY LEVEL: <span style="color:var(--gold)">DEMO</span><br>© NEXUS SYSTEM</div>
   </aside>
   <main class="main">
     <header class="topbar">
       <div style="display:flex;align-items:center;gap:12px"><button class="mobile-menu" id="menuToggle" aria-label="메뉴 열기">☰</button><div class="breadcrumb">NEXUS / <span id="breadView">OVERVIEW</span></div></div>
-      <div class="top-right"><span class="online">● SYSTEM ONLINE</span><div class="avatar" id="avatar">NX</div><button class="logout" id="logout">LOG OUT</button></div>
+      <div class="top-right"><span class="online">● SYSTEM ONLINE</span><div class="agent-tag" id="avatar" aria-label="접속 요원 호출명">AGENT</div><button class="logout" id="logout">LOG OUT</button></div>
     </header>
     <section class="section-view active" id="view-overview">
-      <div class="dashboard-header"><div><div class="eyebrow">NEXUS CONTROL CENTER / NX-01</div><h1>통합 운영 대시보드</h1><div class="date"><span id="welcomeAgent">요원</span> 님, 넥서스 네트워크에 접속했습니다. <span id="currentDate"></span></div></div><div class="status">● NETWORK STABLE</div></div>
+      <div class="dashboard-header"><div><div class="eyebrow">NEXUS // INTERNAL COMMAND SYSTEM</div><h1>COMMAND OVERVIEW</h1><div class="overview-korean">넥서스 통합 운영 시스템 · 승인된 요원 전용</div><div class="date"><span id="welcomeAgent">요원</span> 님, 넥서스 네트워크에 접속했습니다. <span id="currentDate"></span></div></div><div class="status">● NETWORK ACTIVE</div></div>
       <div class="stats">
-        <div class="stat"><div class="stat-label">ACTIVE PERSONNEL</div><div class="stat-value">128</div><div class="stat-desc">등록 요원 수 · 데모 데이터</div></div>
-        <div class="stat"><div class="stat-label">OPERATIONS</div><div class="stat-value">07</div><div class="stat-desc">진행 중인 작전 · 데모 데이터</div></div>
-        <div class="stat"><div class="stat-label">SYSTEM INTEGRITY</div><div class="stat-value">99.8<span style="font-size:14px">%</span></div><div class="stat-desc">시스템 무결성 · 데모 데이터</div></div>
-        <div class="stat"><div class="stat-label">SECURITY ALERTS</div><div class="stat-value" style="color:var(--gold)">02</div><div class="stat-desc">검토 요청 · 데모 데이터</div></div>
+        <div class="stat"><div class="stat-label">ACADEMIC PROGRAM</div><div class="stat-value">05</div><div class="stat-desc">5년제 특수작전 교육과정</div></div>
+        <div class="stat"><div class="stat-label">SPECIALIZED DIVISIONS</div><div class="stat-value">06</div><div class="stat-desc">전투 · 정보 · 기술 · 심리 · 전략 · 지원</div></div>
+        <div class="stat"><div class="stat-label">FACILITY ZONES</div><div class="stat-value">07</div><div class="stat-desc">기관 시설 및 보호 관찰 구역</div></div>
+        <div class="stat"><div class="stat-label">ACCESS CLEARANCE</div><div class="stat-value" style="font-size:24px">LV.03</div><div class="stat-desc">세계관 연출용 가상 접근 등급</div></div>
       </div>
       <div class="content-grid">
-        <section class="panel"><div class="panel-header"><div class="panel-title">◈ 주요 시스템 상태</div><div class="panel-tag">ALL SYSTEMS</div></div><div class="system-list">
-          <div class="sys-row"><span>중앙 데이터 코어</span><span class="bar"><i style="width:96%"></i></span><strong>96%</strong></div>
-          <div class="sys-row"><span>전술 통신망</span><span class="bar"><i style="width:89%"></i></span><strong>89%</strong></div>
-          <div class="sys-row"><span>내부 보안망</span><span class="bar"><i style="width:99%"></i></span><strong>99%</strong></div>
-          <div class="sys-row"><span>작전 정보 시스템</span><span class="bar"><i style="width:78%"></i></span><strong>78%</strong></div>
-          <div class="sys-row"><span>연구 시설 네트워크</span><span class="bar"><i style="width:92%"></i></span><strong>92%</strong></div>
+        <section class="panel"><div class="panel-header"><div class="panel-title">ACADEMY SYSTEMS</div><div class="panel-tag">SIMULATED STATUS</div></div><div class="system-list">
+          <div class="sys-row"><span>교육 운영 시스템</span><span class="bar"><i style="width:96%"></i></span><strong>SYNC</strong></div>
+          <div class="sys-row"><span>전술 훈련 기록</span><span class="bar"><i style="width:89%"></i></span><strong>SYNC</strong></div>
+          <div class="sys-row"><span>평가 기록 관리</span><span class="bar"><i style="width:99%"></i></span><strong>SYNC</strong></div>
+          <div class="sys-row"><span>정보 연구 시스템</span><span class="bar"><i style="width:78%"></i></span><strong>SYNC</strong></div>
+          <div class="sys-row"><span>시설 관제 네트워크</span><span class="bar"><i style="width:92%"></i></span><strong>SYNC</strong></div>
         </div></section>
-        <section class="panel"><div class="panel-header"><div class="panel-title">◈ 최신 활동 기록</div><div class="panel-tag">LIVE FEED / MOCK</div></div><div class="activity">
-          <div class="activity-item"><span class="act-dot"></span><div><strong>중앙 통신망 동기화 완료</strong><p>NETWORK / 자동 점검</p></div><span class="small-time">09:42</span></div>
-          <div class="activity-item"><span class="act-dot warn"></span><div><strong>보안 로그 추가 검토 요청</strong><p>SECURITY / 내부 경보</p></div><span class="small-time">08:15</span></div>
-          <div class="activity-item"><span class="act-dot"></span><div><strong>작전 보고서 갱신</strong><p>OPERATIONS / 기록 업데이트</p></div><span class="small-time">07:36</span></div>
+        <section class="panel"><div class="panel-header"><div class="panel-title">NETWORK ACTIVITY</div><div class="panel-tag">DEMO LOG</div></div><div class="activity">
+          <div class="activity-item"><span class="act-dot"></span><div><strong>교육 기록 동기화 완료</strong><p>NETWORK / 자동 점검</p></div><span class="small-time">09:42</span></div>
+          <div class="activity-item"><span class="act-dot warn"></span><div><strong>접근 로그 검토 요청</strong><p>SECURITY / 내부 경보</p></div><span class="small-time">08:15</span></div>
+          <div class="activity-item"><span class="act-dot"></span><div><strong>훈련 시뮬레이션 기록 갱신</strong><p>OPERATIONS / 기록 업데이트</p></div><span class="small-time">07:36</span></div>
           <div class="activity-item"><span class="act-dot"></span><div><strong>연구 부서 점검 완료</strong><p>RESEARCH / 정기 점검</p></div><span class="small-time">06:50</span></div>
         </div></section>
       </div>
-      <div class="announcement"><span class="announce-icon">◇</span><div><h3>내부 공지 // 작전 보안 규정 안내</h3><p>본 화면은 넥서스 세계관을 위한 프론트엔드 시연입니다. 표시된 수치와 기록은 모두 예시이며 실제 내부 정보가 아닙니다.</p></div></div>
+      <div class="announcement"><span class="announce-icon">◇</span><div><h3>ACADEMY NOTICE // 내부 기록 이용 안내</h3><p>NEXUS는 5년 과정의 비공개 특수작전 교육기관으로, 전투·정보·기술·심리·전략·지원의 여섯 전문 분야를 운영한다. 이 네트워크의 운영 로그와 보안 등급은 세계관 시연용 가상 정보다.</p></div></div>
     </section>
     <section class="section-view" id="view-personnel"><div class="dashboard-header"><div><div class="eyebrow">PERSONNEL DIRECTORY</div><h1>요원 명부</h1><div class="view-note">넥서스 소속 요원 목록의 디자인 예시입니다. 실데이터가 아닙니다.</div></div></div><div class="panel"><input class="search" id="personSearch" placeholder="호출명 또는 부서 검색" aria-label="요원 검색"><table class="data-table"><thead><tr><th>호출명</th><th>부서</th><th>등급</th><th>상태</th></tr></thead><tbody id="personBody"></tbody></table><div class="empty hidden" id="personEmpty">검색 결과가 없습니다.</div></div></section>
     <section class="section-view" id="view-operations"><div class="dashboard-header"><div><div class="eyebrow">FIELD OPERATIONS</div><h1>작전 현황</h1><div class="view-note">진행 중인 작전 보드의 레이아웃 예시입니다.</div></div></div><div class="panel"><table class="data-table"><thead><tr><th>작전 코드</th><th>담당 부서</th><th>우선순위</th><th>상태</th></tr></thead><tbody><tr><td class="mono">NX-OP-042</td><td>전술 작전부</td><td>높음</td><td><span class="pill">진행 중</span></td></tr><tr><td class="mono">NX-OP-037</td><td>정보 분석부</td><td>보통</td><td><span class="pill">진행 중</span></td></tr><tr><td class="mono">NX-OP-029</td><td>연구 지원부</td><td>낮음</td><td><span class="pill">검토 중</span></td></tr></tbody></table></div></section>
@@ -220,7 +272,7 @@ const rows=personnel.filter(r=>r.some(v=>v.toLowerCase().includes(q.toLowerCase(
 tbody.replaceChildren();rows.forEach(r=>{const tr=document.createElement('tr');r.forEach((v,i)=>{const td=document.createElement('td');if(i===0)td.className='mono';if(i===3){const span=document.createElement('span');span.className='pill';span.textContent=v;td.append(span)}else td.textContent=v;tr.append(td)});tbody.append(tr)});
 document.getElementById('personEmpty').classList.toggle('hidden',rows.length>0)}
 function showView(name){if(!views[name])return;document.querySelectorAll('.section-view').forEach(e=>e.classList.toggle('active',e.id==='view-'+name));document.querySelectorAll('.nav-item').forEach(e=>e.classList.toggle('active',e.dataset.view===name));document.getElementById('breadView').textContent=views[name];document.getElementById('sidebar').classList.remove('open')}
-function enter(){let name=document.getElementById('agentId').value.trim();let code=document.getElementById('accessCode').value;if(!name||!code){document.getElementById('loginMsg').textContent='호출명과 임의의 데모 문구를 입력해 주세요.';return}loginPage.classList.add('hidden');app.classList.remove('hidden');document.getElementById('welcomeAgent').textContent=name;document.getElementById('avatar').textContent=name.slice(0,2).toUpperCase();document.getElementById('accessCode').value='';window.scrollTo(0,0);showView('overview')}
+function enter(){let name=document.getElementById('agentId').value.trim();let code=document.getElementById('accessCode').value;if(!name||!code){document.getElementById('loginMsg').textContent='호출명과 임의의 데모 문구를 입력해 주세요.';return}loginPage.classList.add('hidden');app.classList.remove('hidden');document.getElementById('welcomeAgent').textContent=name;document.getElementById('avatar').textContent=name;document.getElementById('accessCode').value='';window.scrollTo(0,0);showView('overview')}
 document.getElementById('loginForm').addEventListener('submit',e=>{e.preventDefault();enter()});
 document.getElementById('logout').addEventListener('click',()=>{app.classList.add('hidden');loginPage.classList.remove('hidden');document.getElementById('agentId').value='';document.getElementById('accessCode').value='';document.getElementById('loginMsg').textContent='';window.scrollTo(0,0)});
 document.querySelectorAll('.nav-item').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));
