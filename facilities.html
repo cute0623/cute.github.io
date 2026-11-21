@@ -331,6 +331,89 @@ button:focus-visible,a:focus-visible{outline:2px solid #addcff;outline-offset:3p
   .filters button::before{height:11px;margin-right:7px;}
 }
 
+
+/* v4.26 — simplified archive controls and metallic archive buttons */
+.archive-shell{padding-top:20px;padding-bottom:60px}
+.cards-heading{padding-top:22px}
+.facility-grid{margin-top:22px}
+.facility-code{display:none !important}
+.facility button{
+  position:relative;
+  overflow:hidden;
+  color:#eef5fb;
+  border:1px solid rgba(146,170,191,.72);
+  background:linear-gradient(180deg,rgba(76,92,112,.92) 0%,rgba(27,40,56,.98) 24%,rgba(10,18,30,.99) 100%);
+  padding:13px 16px 13px 18px;
+  width:100%;
+  text-align:left;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:16px;
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.20), inset 0 -1px 0 rgba(130,150,170,.12), 0 12px 24px rgba(0,0,0,.18);
+  transition:transform .24s,border-color .24s,box-shadow .24s,filter .24s,background .24s;
+}
+.facility button::before{
+  content:'';
+  position:absolute;
+  inset:4px;
+  border:1px solid rgba(217,232,244,.12);
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  pointer-events:none;
+}
+.facility button::after{
+  content:'';
+  position:absolute;
+  left:18px;
+  right:18px;
+  bottom:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(188,223,246,.9),transparent);
+  opacity:.34;
+  pointer-events:none;
+}
+.facility button:hover{
+  transform:translateY(-2px);
+  border-color:#c7d8e6;
+  color:#ffffff;
+  filter:drop-shadow(0 0 10px rgba(151,196,229,.12));
+  background:linear-gradient(180deg,rgba(96,115,137,.95) 0%,rgba(39,55,74,.98) 26%,rgba(12,21,34,.99) 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.24), 0 18px 28px rgba(0,0,0,.24), 0 0 18px rgba(145,198,231,.10);
+}
+.facility button .label{display:flex;flex-direction:column;gap:5px}
+.facility button .label strong{
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+}
+.facility button .label small{
+  font-size:9px;
+  letter-spacing:.24em;
+  color:#adc2d4;
+  text-transform:uppercase;
+}
+.facility button .btn-arrow{
+  position:relative;
+  flex:none;
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(170,199,220,.45);
+  background:linear-gradient(180deg,rgba(25,38,53,.85),rgba(11,19,31,.95));
+  font-size:15px;
+  line-height:1;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10);
+}
+@media(max-width:650px){
+  .archive-shell{padding-top:12px}
+  .cards-heading{padding-top:16px}
+  .facility button .label strong{font-size:10px;letter-spacing:.18em}
+  .facility button .label small{letter-spacing:.18em}
+}
+
 </style>
 </head>
 <body>
@@ -359,56 +442,42 @@ button:focus-visible,a:focus-visible{outline:2px solid #addcff;outline-offset:3p
     </div>
   </section>
   <section class="archive-shell" id="archive">
-    <div class="filters-wrap">
-      <div class="wrap">
-        <div class="filters" aria-label="시설 필터">
-          <button class="active" data-filter="ALL">전체 시설</button>
-          <button data-filter="NX-01">본관</button>
-          <button data-filter="NX-02">기숙사</button>
-          <button data-filter="NX-03">의료센터</button>
-          <button data-filter="NX-04">종합 훈련관</button>
-          <button data-filter="NX-05">정보 연구동</button>
-          <button data-filter="NX-06">평가 구역</button>
-          <button data-filter="NX-07">격리 관찰 구역</button>
-        </div>
-      </div>
-    </div>
     <div class="wrap">
       <div class="cards-heading section-heading">
         <div>
           <div class="kicker">EXPLORE THE COMPLEX</div>
           <h2>ARCHIVE DIRECTORY</h2>
         </div>
-        <p>각 카드에서 대표 시설 이미지를 확인하고, 하단 버튼을 눌러 구역별 공간 사진 아카이브를 열람할 수 있다.</p>
+        <p>각 카드에서 대표 시설 이미지를 확인하고, 메탈릭 아카이브 버튼으로 구역별 공간 사진을 열람할 수 있다.</p>
       </div>
       <div class="facility-grid">
         <article class="facility" data-code="NX-01">
-          <div class="visual"><img loading="lazy" src="images/headquarters/lobby.webp" alt="본관"><span class="facility-code">NX-01</span><span class="facility-count">10 PHOTOS</span></div>
-          <div class="body"><div class="eyebrow"><span>HEADQUARTERS</span><span>CORE ZONE</span></div><h3>본관</h3><div class="en">Main Headquarters</div><p>기관 운영과 교육, 중앙 통제를 담당하는 핵심 시설이다.</p><div class="meta"><span>행정 · 교육 · 통제</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-01"><span class="label"><strong>사진 아카이브 열기</strong><small>OPEN GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
+          <div class="visual"><img loading="lazy" src="images/headquarters/lobby.webp" alt="본관"><span class="facility-count">10 PHOTOS</span></div>
+          <div class="body"><div class="eyebrow"><span>HEADQUARTERS</span><span>CORE ZONE</span></div><h3>본관</h3><div class="en">Main Headquarters</div><p>기관 운영과 교육, 중앙 통제를 담당하는 핵심 시설이다.</p><div class="meta"><span>행정 · 교육 · 통제</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-01"><span class="label"><strong>OPEN ARCHIVE</strong><small>FACILITY GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
         </article>
         <article class="facility" data-code="NX-02">
-          <div class="visual"><img loading="lazy" src="images/dormitory/double.webp" alt="기숙사"><span class="facility-code">NX-02</span><span class="facility-count">5 PHOTOS</span></div>
-          <div class="body"><div class="eyebrow"><span>DORMITORY</span><span>LIVING ZONE</span></div><h3>기숙사</h3><div class="en">Cadet Dormitory</div><p>교육생이 생활하고 교류하는 주거 시설이다.</p><div class="meta"><span>숙소 · 주방 · 라운지</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-02"><span class="label"><strong>사진 아카이브 열기</strong><small>OPEN GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
+          <div class="visual"><img loading="lazy" src="images/dormitory/double.webp" alt="기숙사"><span class="facility-count">5 PHOTOS</span></div>
+          <div class="body"><div class="eyebrow"><span>DORMITORY</span><span>LIVING ZONE</span></div><h3>기숙사</h3><div class="en">Cadet Dormitory</div><p>교육생이 생활하고 교류하는 주거 시설이다.</p><div class="meta"><span>숙소 · 주방 · 라운지</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-02"><span class="label"><strong>OPEN ARCHIVE</strong><small>FACILITY GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
         </article>
         <article class="facility" data-code="NX-03">
-          <div class="visual"><img loading="lazy" src="images/medical/lobby.webp" alt="의료센터"><span class="facility-code">NX-03</span><span class="facility-count">6 PHOTOS</span></div>
-          <div class="body"><div class="eyebrow"><span>MEDICAL CENTER</span><span>CARE ZONE</span></div><h3>의료센터</h3><div class="en">Medical Support Center</div><p>의료 지원과 재활 및 심리 상담을 수행한다.</p><div class="meta"><span>진료 · 회복 · 재활</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-03"><span class="label"><strong>사진 아카이브 열기</strong><small>OPEN GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
+          <div class="visual"><img loading="lazy" src="images/medical/lobby.webp" alt="의료센터"><span class="facility-count">6 PHOTOS</span></div>
+          <div class="body"><div class="eyebrow"><span>MEDICAL CENTER</span><span>CARE ZONE</span></div><h3>의료센터</h3><div class="en">Medical Support Center</div><p>의료 지원과 재활 및 심리 상담을 수행한다.</p><div class="meta"><span>진료 · 회복 · 재활</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-03"><span class="label"><strong>OPEN ARCHIVE</strong><small>FACILITY GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
         </article>
         <article class="facility" data-code="NX-04">
-          <div class="visual"><img loading="lazy" src="images/training/lobby.webp" alt="종합 훈련관"><span class="facility-code">NX-04</span><span class="facility-count">5 PHOTOS</span></div>
-          <div class="body"><div class="eyebrow"><span>TRAINING CENTER</span><span>TACTICAL ZONE</span></div><h3>종합 훈련관</h3><div class="en">Tactical Training Center</div><p>체력·전투·상황 대응 능력을 훈련하는 공간이다.</p><div class="meta"><span>피트니스 · 전투 · 사격</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-04"><span class="label"><strong>사진 아카이브 열기</strong><small>OPEN GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
+          <div class="visual"><img loading="lazy" src="images/training/lobby.webp" alt="종합 훈련관"><span class="facility-count">5 PHOTOS</span></div>
+          <div class="body"><div class="eyebrow"><span>TRAINING CENTER</span><span>TACTICAL ZONE</span></div><h3>종합 훈련관</h3><div class="en">Tactical Training Center</div><p>체력·전투·상황 대응 능력을 훈련하는 공간이다.</p><div class="meta"><span>피트니스 · 전투 · 사격</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-04"><span class="label"><strong>OPEN ARCHIVE</strong><small>FACILITY GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
         </article>
         <article class="facility" data-code="NX-05">
-          <div class="visual"><img loading="lazy" src="images/research/central.webp" alt="정보 연구동"><span class="facility-code">NX-05</span><span class="facility-count">6 PHOTOS</span></div>
-          <div class="body"><div class="eyebrow"><span>INTELLIGENCE &amp; RESEARCH</span><span>ANALYSIS ZONE</span></div><h3>정보 연구동</h3><div class="en">Intelligence &amp; Research Wing</div><p>정보 분석, 기술 개발 및 언어 교육을 진행한다.</p><div class="meta"><span>분석 · 기술 · 언어</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-05"><span class="label"><strong>사진 아카이브 열기</strong><small>OPEN GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
+          <div class="visual"><img loading="lazy" src="images/research/central.webp" alt="정보 연구동"><span class="facility-count">6 PHOTOS</span></div>
+          <div class="body"><div class="eyebrow"><span>INTELLIGENCE &amp; RESEARCH</span><span>ANALYSIS ZONE</span></div><h3>정보 연구동</h3><div class="en">Intelligence &amp; Research Wing</div><p>정보 분석, 기술 개발 및 언어 교육을 진행한다.</p><div class="meta"><span>분석 · 기술 · 언어</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-05"><span class="label"><strong>OPEN ARCHIVE</strong><small>FACILITY GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
         </article>
         <article class="facility" data-code="NX-06">
-          <div class="visual"><img loading="lazy" src="images/evaluation/lobby.webp" alt="평가 구역"><span class="facility-code">NX-06</span><span class="facility-count">5 PHOTOS</span></div>
-          <div class="body"><div class="eyebrow"><span>EVALUATION CENTER</span><span>ASSESSMENT ZONE</span></div><h3>평가 구역</h3><div class="en">Evaluation Center</div><p>종합 평가와 실전 모의 상황 시험을 진행한다.</p><div class="meta"><span>면담 · 시나리오 · 실전</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-06"><span class="label"><strong>사진 아카이브 열기</strong><small>OPEN GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
+          <div class="visual"><img loading="lazy" src="images/evaluation/lobby.webp" alt="평가 구역"><span class="facility-count">5 PHOTOS</span></div>
+          <div class="body"><div class="eyebrow"><span>EVALUATION CENTER</span><span>ASSESSMENT ZONE</span></div><h3>평가 구역</h3><div class="en">Evaluation Center</div><p>종합 평가와 실전 모의 상황 시험을 진행한다.</p><div class="meta"><span>면담 · 시나리오 · 실전</span><span>PUBLIC ARCHIVE</span></div><button data-code="NX-06"><span class="label"><strong>OPEN ARCHIVE</strong><small>FACILITY GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
         </article>
         <article class="facility" data-code="NX-07">
-          <div class="visual"><img loading="lazy" src="images/observation/unit.webp" alt="격리 관찰 구역"><span class="facility-code">NX-07</span><span class="facility-count">1 PHOTO</span></div>
-          <div class="body"><div class="eyebrow"><span>OBSERVATION UNIT</span><span>RESTRICTED ZONE</span></div><h3>격리 관찰 구역</h3><div class="en">Isolation &amp; Observation Unit</div><p>보호와 상태 관찰, 심리 평가를 위한 별도 공간이다.</p><div class="meta"><span>보호 · 관찰 · 안정</span><span>LIMITED ARCHIVE</span></div><button data-code="NX-07"><span class="label"><strong>사진 아카이브 열기</strong><small>OPEN GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
+          <div class="visual"><img loading="lazy" src="images/observation/unit.webp" alt="격리 관찰 구역"><span class="facility-count">1 PHOTO</span></div>
+          <div class="body"><div class="eyebrow"><span>OBSERVATION UNIT</span><span>RESTRICTED ZONE</span></div><h3>격리 관찰 구역</h3><div class="en">Isolation &amp; Observation Unit</div><p>보호와 상태 관찰, 심리 평가를 위한 별도 공간이다.</p><div class="meta"><span>보호 · 관찰 · 안정</span><span>LIMITED ARCHIVE</span></div><button data-code="NX-07"><span class="label"><strong>OPEN ARCHIVE</strong><small>FACILITY GALLERY</small></span><span class="btn-arrow">↗</span></button></div>
         </article>
       </div>
     </div>
@@ -464,11 +533,7 @@ document.addEventListener('keydown',e=>{
   if(e.key==='ArrowRight'){idx++;render();}
   if(e.key==='ArrowLeft'){idx--;render();}
 });
-document.querySelectorAll('[data-filter]').forEach(b=>b.onclick=()=>{
-  const c=b.dataset.filter;
-  document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x===b));
-  document.querySelectorAll('.facility').forEach(x=>x.style.display=(c==='ALL'||x.dataset.code===c)?'':'none');
-});
+
 if(location.hash && data[location.hash.slice(1)]) openGallery(location.hash.slice(1));
 </script>
 </body>
