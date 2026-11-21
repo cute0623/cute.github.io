@@ -254,12 +254,42 @@ body.nx-thumb-locked{overflow:hidden}
   .nx-thumb-progress-label{margin-top:7px}
 }
 
+
+/* v4.41 — Optical alignment of the circular seal and halo. */
+.nx-thumb-emblem{
+  position:relative;
+  border-radius:0;
+  background:none;
+  box-shadow:none;
+  isolation:isolate;
+}
+.nx-thumb-emblem::before{
+  content:"";
+  position:absolute;
+  width:74%;height:74%;
+  left:51%;top:51%;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(148,195,221,.25);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(113,167,199,.065) 0%,rgba(82,135,173,.015) 70%,transparent 80%);
+  box-shadow:0 0 0 13px rgba(132,178,207,.022),0 0 38px rgba(112,177,212,.055);
+  pointer-events:none;
+}
+.nx-thumb-emblem .nx-thumb-seal{
+  position:relative;
+  z-index:1;
+  width:100%;height:100%;
+  transform:translate(0,0);
+  object-fit:contain;
+}
+.nx-thumb-gate[data-state="success"] .nx-thumb-emblem .nx-thumb-seal{transform:translate(0,0)}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
 <body>
 
-<!-- NEXUS v4.40: separate logo and thumb-size verification sensor, no biometric capture -->
+<!-- NEXUS v4.41: optically aligned emblem halo and separate thumb sensor -->
 <div class="nx-thumb-gate" id="nxThumbGate" data-state="idle" role="dialog" aria-modal="true" aria-label="NEXUS 모의 엄지 인증" hidden>
   <div class="nx-thumb-core">
     <div class="nx-thumb-kicker">NEXUS / INTERNAL AUTHORIZATION</div>
