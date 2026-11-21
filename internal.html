@@ -53,30 +53,99 @@ body:before{opacity:.12;background-size:64px 64px}
 .nx-gallery-caption strong{color:#e6f0f7}
 .nx-thumb.active{border-color:#7bb9e0}
 @media(max-width:850px){.crest-backdrop{width:68%;right:0;top:-28%;opacity:.3}.login-seal{width:82px;height:82px}}
+
+/* NEXUS v4.29 / internal access gate design */
+body{background:#080d16}
+body:before{opacity:.10;background-size:68px 68px}
+.login-page{padding:20px clamp(12px,2.5vw,36px);min-height:100svh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 48% -20%,rgba(78,104,135,.24),transparent 52%),#080d16}
+.login-stage{width:min(1370px,100%);position:relative}
+.login-topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-bottom:22px}
+.login-topbrand{display:flex;align-items:center;gap:12px;min-width:0;text-decoration:none}
+.login-topbrand img:first-child{width:49px;height:49px;object-fit:contain;flex:none}
+.login-topbrand img:nth-child(2){width:205px;max-width:49vw;max-height:53px;object-fit:contain;object-position:left}
+.login-back{text-decoration:none;color:#b3c7d6;font-size:10px;letter-spacing:.2em;white-space:nowrap;border-bottom:1px solid #5f7689;padding:10px 0;transition:color .2s,border-color .2s}
+.login-back:hover{color:#f1f8ff;border-color:#d5e6f2}
+.login-back span{font-size:15px;margin-right:9px}
+.login-layout{width:100%;min-height:min(660px,calc(100svh - 130px));display:grid;grid-template-columns:minmax(0,1.14fr) minmax(385px,.86fr);border:1px solid #53677a;background:#0b1420;box-shadow:0 34px 95px rgba(0,0,0,.55),inset 0 1px 0 rgba(237,248,255,.12)}
+.login-art{position:relative;overflow:hidden;min-height:590px;padding:34px clamp(26px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;border-right:1px solid #3f5368;background:#090f18 url('images/site/academy-entrance-hq.png') center center / cover no-repeat;isolation:isolate}
+.login-art:before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,12,22,.93) 0%,rgba(8,15,26,.62) 49%,rgba(8,15,25,.18) 100%),linear-gradient(0deg,rgba(5,10,19,.88),transparent 42%,rgba(5,10,19,.25));z-index:-1}
+.login-art:after{content:'';position:absolute;inset:11px;border:1px solid rgba(207,231,248,.13);pointer-events:none}
+.art-header{position:relative;display:flex;align-items:center;gap:12px;z-index:1;color:#b2c5d4;font-size:10px;letter-spacing:.20em;flex-wrap:wrap}
+.art-line{width:28px;height:1px;background:#b3cadc;box-shadow:0 0 8px #a6d9ff}
+.art-status{margin-left:auto;font-size:9px;letter-spacing:.12em;color:#d3e8f6}
+.art-status i{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:6px;background:#b4dffa;box-shadow:0 0 11px #98cbe8}
+.login-art .art-content{position:relative;z-index:1;max-width:490px}
+.login-art .eyebrow{color:#b9d0e2;font-size:10px;font-weight:450;letter-spacing:.23em}
+.login-art-title{font:normal clamp(54px,6.3vw,105px)/.94 Georgia,'Times New Roman',serif;letter-spacing:.06em;color:#eff4f9;text-shadow:0 4px 35px rgba(0,0,0,.7);margin:25px 0 22px}
+.login-art-title em{font-style:normal;color:#c8d4df;background:linear-gradient(165deg,#fff 3%,#b3c2cf 36%,#748699 65%,#eaf2f6 90%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.art-rule{width:min(330px,80%);height:1px;background:linear-gradient(90deg,transparent,#cfdeed 24%,#6c829b 75%,transparent);box-shadow:0 0 12px #bbd7f666}
+.login-art .hero-copy{margin:23px 0 0;color:#c0d0de;font-size:12px;line-height:2;max-width:450px}
+.art-bottom{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;position:relative;z-index:1;color:#a2b8ca;font-size:9px;letter-spacing:.13em}
+.login-form-wrap{position:relative;display:flex;flex-direction:column;justify-content:center;padding:clamp(30px,4.2vw,62px);background:linear-gradient(140deg,#192537 0%,#0f1928 40%,#090f1a 100%)}
+.login-form-wrap:before{content:'';position:absolute;top:10px;right:10px;bottom:10px;left:10px;border:1px solid rgba(163,191,212,.12);pointer-events:none}
+.login-form-head{position:relative;display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:33px}
+.login-form-head img{width:82px;height:82px;object-fit:contain;filter:drop-shadow(0 5px 18px #0009)}
+.login-sequence{font-size:10px;color:#a3bacf;letter-spacing:.2em}
+.login-sequence b{font-weight:400;color:#dbe9f6}
+.login-form-wrap .tag{color:#b3d0e5;font-size:9px;letter-spacing:.13em}
+.login-form-wrap .dot{background:#a6d7f8;box-shadow:0 0 10px #9bd1ed}
+.login-form-wrap h2{font:normal clamp(32px,3.6vw,48px) Georgia,'Times New Roman',serif;letter-spacing:.075em;margin:15px 0 14px;color:#f0f4f8}
+.login-form-wrap .sub{font-size:12px;line-height:1.9;color:#aabccc;margin:0 0 16px}
+.login-form-wrap .field{margin-top:19px}
+.login-form-wrap .field label{font-size:10px;font-weight:500;letter-spacing:.17em;color:#b9cddd;margin-bottom:10px}
+.login-form-wrap .field label span{color:#6d8ba4;margin-right:10px}
+.login-form-wrap .field input{border:1px solid #4f657c;border-radius:0;background:linear-gradient(180deg,#080f1a,#0b1522);font-size:12px;color:#f1f7fb;letter-spacing:.04em;min-height:49px;box-shadow:inset 0 1px 8px #0005;padding:14px 15px}
+.login-form-wrap .field input::placeholder{color:#7e92a5}
+.login-form-wrap .field input:focus{border-color:#c0d8e9;box-shadow:0 0 0 1px rgba(147,200,239,.22),0 0 20px rgba(98,162,205,.10)}
+.login-form-wrap .cta{position:relative;min-height:51px;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 19px;margin-top:25px;background:linear-gradient(180deg,#52647b 0%,#23354b 30%,#101d2d 100%)!important;color:#f0f6fc!important;border:1px solid #a0b7ca!important;border-radius:0;font-weight:500;letter-spacing:.21em;font-size:11px;box-shadow:inset 0 1px 0 rgba(255,255,255,.26),0 13px 28px #0005;transition:filter .2s,transform .2s,box-shadow .2s}
+.login-form-wrap .cta:before{content:'';position:absolute;inset:5px;border:1px solid rgba(211,230,244,.12);pointer-events:none}
+.login-form-wrap .cta:hover{filter:brightness(1.14);transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.32),0 15px 28px #0006,0 0 17px #89b9dd2e}
+.cta-arrow{font-size:16px;line-height:1;font-weight:400}
+.login-form-wrap .msg{min-height:18px;margin-top:10px;font-size:11px}
+.login-form-wrap .notice{margin-top:8px;padding:13px 15px 13px 16px;border:1px solid #3c5167;border-left:2px solid #8aa9bf;background:rgba(16,28,43,.68);display:flex;flex-direction:column;gap:6px;color:#a9bbca;font-size:10px;line-height:1.75}
+.login-form-wrap .notice strong{color:#dae4ec;letter-spacing:.16em;font-size:9px;font-weight:500}
+.login-bottomline{display:flex;justify-content:space-between;gap:10px;padding-top:15px;margin-top:20px;border-top:1px solid #37485b;color:#809bb1;font-size:9px;letter-spacing:.14em}
+.login-foot{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-top:18px;color:#7890a4;font-size:9px;letter-spacing:.14em}
+@media(max-width:900px){.login-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.login-art{min-height:575px;padding:30px}.login-form-wrap{padding:30px}.login-art-title{font-size:clamp(48px,7vw,76px)}}
+@media(max-width:720px){.login-page{padding:16px}.login-topbar{margin-bottom:15px}.login-topbrand img:first-child{width:40px;height:40px}.login-topbrand img:nth-child(2){width:160px}.login-back{font-size:9px}.login-layout{grid-template-columns:1fr;min-height:0}.login-art{min-height:240px;padding:24px 25px;background-position:center 44%;border-right:0;border-bottom:1px solid #405567}.login-art:before{background:linear-gradient(90deg,rgba(6,12,22,.92),rgba(6,12,22,.32)),linear-gradient(0deg,rgba(5,10,18,.88),transparent)}.login-art .art-content{margin-top:28px}.login-art-title{font-size:clamp(47px,10vw,67px);margin:11px 0}.login-art .hero-copy{font-size:10px;line-height:1.7;margin-top:12px}.art-bottom{display:none}.art-header{font-size:9px}.art-status{font-size:8px}.login-form-wrap{padding:32px 27px}.login-form-head{margin-bottom:13px}.login-form-head img{width:63px;height:63px}.login-form-wrap h2{font-size:36px;margin-top:13px}.login-foot{font-size:8px}}
+@media(max-width:420px){.login-topbrand img:nth-child(2){width:125px}.login-topbrand img:first-child{width:33px;height:33px}.login-back{font-size:8px;letter-spacing:.07em}.login-art{min-height:225px;padding:21px}.art-status{width:100%;margin:2px 0 0 40px}.login-art-title{font-size:46px}.login-form-wrap{padding:27px 20px}.login-form-wrap .sub{font-size:11px}.login-bottomline{font-size:8px;letter-spacing:.07em}}
+@media(prefers-reduced-motion:reduce){.login-form-wrap .cta,.login-back{transition:none}}
 </style>
 </head>
 <body>
 <section class="login-page" id="loginPage">
-  <div class="login-layout">
-    <div class="login-art">
-      <div class="brand brand-image"><img src="images/branding/wordmark.webp" alt="NEXUS Special Operations Academy"></div>
-      <div class="rings"></div><div class="orb"></div><img class="crest-backdrop" src="images/branding/crest.webp" alt="" aria-hidden="true">
-      <div class="art-content"><div class="eyebrow">SECURE OPERATIONS NETWORK</div><div class="hero-title">BEYOND<br>THE VISIBLE.</div><p class="hero-copy">넥서스 통합 운영 네트워크.<br>모든 시스템은 하나의 연결로부터 시작됩니다.</p></div>
-      <div class="footerline">NEXUS INTERNAL SYSTEM // NX-01</div>
+  <div class="login-stage">
+    <div class="login-topbar">
+      <a class="login-topbrand" href="index.html" aria-label="넥서스 공식 홈페이지로 이동"><img src="images/branding/seal-complete.png" alt=""><img src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></a>
+      <a href="index.html" class="login-back"><span aria-hidden="true">←</span> RETURN TO ACADEMY</a>
     </div>
-    <div class="login-form-wrap">
-      <div class="tag"><span class="dot"></span> NX-01 / RESTRICTED ACCESS · FICTIONAL DEMO</div><img class="login-seal" src="images/branding/seal.webp" alt="NEXUS 공식 엠블럼">
-      <h2>내부 네트워크 접속</h2>
-      <p class="sub">승인된 요원 전용 포털 콘셉트 화면입니다.<br>현재 버전은 실제 인증이 아닌 디자인 데모입니다.</p>
-      <form id="loginForm">
-        <div class="field"><label for="agentId">AGENT IDENTIFIER</label><input id="agentId" maxlength="28" autocomplete="off" placeholder="요원 호출명 입력" required></div>
-        <div class="field"><label for="accessCode">ACCESS CODE</label><input id="accessCode" type="password" autocomplete="off" placeholder="데모: 아무 문구나 입력" required></div>
-        <button type="submit" class="cta">ENTER NEXUS NETWORK →</button>
-        <div class="msg" id="loginMsg" role="status" aria-live="polite"></div>
-      </form>
-      <div class="notice">⚠ 실제 비밀번호를 입력하지 마세요. 이 페이지에는 회원 인증 서버가 연결되어 있지 않습니다. 데모를 체험하려면 임의의 호출명과 임의의 문구를 입력하세요.</div>
-      <p class="hint">NEXUS INFORMATION SECURITY DIVISION<br>UNAUTHORIZED ACCESS IS PROHIBITED — FICTIONAL INTERFACE</p>
+    <div class="login-layout">
+      <div class="login-art">
+        <div class="art-header"><span class="art-line"></span><span>NX / INTERNAL SYSTEM</span><span class="art-status"><i></i> NETWORK ACTIVE</span></div>
+        <div class="art-content">
+          <div class="eyebrow">NEXUS SPECIAL OPERATIONS ACADEMY</div>
+          <h1 class="login-art-title">SECURE<br><em>ACCESS</em></h1>
+          <div class="art-rule"></div>
+          <p class="hero-copy">공식 홈페이지 너머의 내부 기록.<br>등록된 요원의 작전 기록과 아카이브를 열람하는 공간.</p>
+        </div>
+        <div class="art-bottom"><span>NX–SECURITY DIVISION / ACCESS GATE 01</span><span>AUTHORIZATION PORTAL</span></div>
+      </div>
+      <div class="login-form-wrap">
+        <div class="login-form-head"><span class="login-sequence">SECURE PORTAL <b>— 01</b></span><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"></div>
+        <div class="tag"><span class="dot"></span> INTERNAL NETWORK / FICTIONAL DEMO</div>
+        <h2>AGENT LOGIN</h2>
+        <p class="sub">NEXUS 보안 네트워크에 접속합니다.<br>요원 호출명과 데모 접속 코드를 입력하세요.</p>
+        <form id="loginForm">
+          <div class="field"><label for="agentId"><span>01</span> AGENT IDENTIFIER</label><input id="agentId" maxlength="28" autocomplete="off" placeholder="CALLSIGN / 호출명" required></div>
+          <div class="field"><label for="accessCode"><span>02</span> ACCESS CODE</label><input id="accessCode" type="password" autocomplete="off" placeholder="DEMO ACCESS CODE / 임의 문구" required></div>
+          <button type="submit" class="cta"><span>ENTER NETWORK</span><span class="cta-arrow" aria-hidden="true">↗</span></button>
+          <div class="msg" id="loginMsg" role="status" aria-live="polite"></div>
+        </form>
+        <div class="notice"><strong>DEMO ACCESS ONLY</strong><span>실제 인증 기능이 없는 세계관 체험 화면입니다. 실제 비밀번호 대신 임의의 문구를 입력해 주세요.</span></div>
+        <div class="login-bottomline"><span>SECURITY CLEARANCE / SIMULATED</span><span>NX—01</span></div>
+      </div>
     </div>
+    <div class="login-foot"><span>NEXUS INTERNAL NETWORK</span><span>FICTIONAL INTERFACE · NOT A REAL AUTHENTICATION SERVICE</span></div>
   </div>
 </section>
 <div class="app hidden" id="app">
