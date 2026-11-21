@@ -167,6 +167,51 @@ button.read-link:hover{background:linear-gradient(180deg,#647a91,#374f68 20%,#24
   .header .menu{flex-basis:33px!important;width:33px!important;min-width:33px!important;}
 }
 
+
+/* v4.53 — align official-notices banner design and geometry with PERSONNEL COMMONS; retain all original words */
+.hero{
+  position:relative;
+  isolation:isolate;
+  overflow:hidden;
+  min-height:270px;
+  display:flex;
+  align-items:center;
+  border-bottom:1px solid #486078;
+  background:linear-gradient(90deg,#09111def 0%,#0a1320e0 40%,#08142266 100%),url('images/site/academy-entrance-hq.png') center 47%/cover no-repeat;
+}
+.hero::before{display:none!important;content:none!important}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#08101bde 0%,transparent 70%);pointer-events:none;z-index:0}
+.hero .hero-inner{
+  position:relative;
+  z-index:1;
+  width:100%;
+  max-width:1300px;
+  padding-left:clamp(18px,4vw,62px);
+  padding-right:clamp(18px,4vw,62px);
+  padding-top:54px;
+  padding-bottom:50px;
+}
+.hero .eyebrow{font-size:10px;letter-spacing:.27em;color:#a6c1d6}
+.hero h1{
+  font:400 clamp(36px,5vw,64px) Georgia,serif;
+  letter-spacing:.07em;
+  line-height:normal;
+  margin:14px 0 11px;
+  background:none;
+  -webkit-background-clip:initial;
+  background-clip:initial;
+  -webkit-text-fill-color:#f0f5fc;
+  color:#f0f5fc;
+}
+.hero p{font-size:12px;line-height:1.9;color:#c4d3e0;margin:0;max-width:none}
+.hero .hero-rail{margin-top:25px;display:flex;align-items:center;gap:0;color:#96aec4;font-size:9px;letter-spacing:.17em}
+.hero .hero-rail::before{display:none;content:none}
+@media(max-width:650px){
+  .hero{min-height:235px}
+  .hero .hero-inner{padding-top:43px;padding-bottom:40px}
+  .hero h1{font-size:37px;letter-spacing:.07em}
+  .hero p{font-size:11px}
+}
 </style><link rel="stylesheet" href="image-protection.css"></head><body>
 <header class="header"><a class="identity" href="index.html"><img class="seal" src="images/branding/seal-complete.png" alt="NEXUS 원형 엠블럼"><img class="wordmark" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></a><nav class="navigation" id="navigation" aria-label="주 메뉴"><a href="index.html">홈</a><a href="index.html#about">아카데미</a><a href="facilities.html">시설 안내</a><a href="notices.html" aria-current="page">공지사항</a><a href="community.html">커뮤니티</a></nav><a class="access" href="internal.html">AGENT LOGIN</a><button class="menu" id="mobileMenu" aria-label="메뉴 펼치기" aria-expanded="false" aria-controls="navigation">☰</button></header>
 <main><section class="hero" aria-labelledby="hero-title"><div class="wrap hero-inner"><div class="eyebrow">NEXUS / OFFICIAL COMMUNICATION CHANNEL</div><h1 id="hero-title">OFFICIAL NOTICES</h1><p>Official communications, academic bulletins, and public institutional records. (공식 공문, 학사 공지 및 기관 공개 기록을 열람할 수 있습니다.)</p><div class="hero-rail">PUBLIC INFORMATION · NX-HQ</div></div></section>
