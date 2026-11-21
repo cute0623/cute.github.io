@@ -555,7 +555,130 @@ body{background:radial-gradient(ellipse 90% 20% at 70% 70%,#13223577,transparent
   .nx-divisions .nx-division .nx-div-icon { width: 50px; height: 50px; flex-basis: 50px; }
   .nx-divisions .nx-division .nx-div-icon svg { width: 24px; height: 24px; }
 }
-</style></head><body><header class="header"><a class="identity" href="index.html"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><img class="metal-wordmark-header" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></a><nav class="navigation" id="navigation" aria-label="주 메뉴"><a href="index.html" aria-current="page">홈</a><a href="index.html#about">아카데미</a><a href="facilities.html">시설 안내</a></nav><a class="access" href="internal.html">♙ 내부 네트워크 ↗</a><button class="menu" aria-label="메뉴 펼치기" onclick="document.getElementById('navigation').classList.toggle('open')">☰</button></header><main><section class="hero"><div class="hero-img" role="img" aria-label="NEXUS 아카데미 야간 외관"></div><div class="hero-content"><div class="hero-overline">NX-01 / SPECIAL OPERATIONS ACADEMY</div><div class="brand-large"><img src="images/branding/seal-complete.png" alt="NEXUS 공식 엠블럼"><img class="metal-wordmark-hero" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></div><p class="hero-copy">보이는 것 너머에서, 미래의 작전을 준비한다.<br>전략·정보·기술·전투·심리·지원 분야의 전문 교육기관.</p><div class="hero-actions"><a class="primary" href="#about">NEXUS 소개　↗</a><a class="outline-button" href="facilities.html">시설 둘러보기　↗</a></div><div class="hero-caption">NEXUS HEADQUARTERS &nbsp; / &nbsp; OFFICIAL ARCHIVE</div></div></section><div class="wrap"><div class="section-heading"><div><div class="kicker">EXPLORE THE ACADEMY</div><h2>ACADEMY DIRECTORY</h2></div><p>넥서스의 주요 시설 및 시스템을 탐색한다.</p></div><div class="tiles">
+
+/* v4.21 — unified top menu + metallic login/button system */
+.header{gap:20px}
+.navigation a{font-size:12px;letter-spacing:.04em}
+.navigation a[aria-current=page]{color:#f5fbff}
+
+.access{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:184px;
+  min-height:48px;
+  padding:12px 22px;
+  border:1px solid #95a7b8 !important;
+  color:#f4f8fc !important;
+  font-size:11px !important;
+  letter-spacing:.22em;
+  text-transform:uppercase;
+  background:
+    linear-gradient(180deg,rgba(53,69,87,.95) 0%,rgba(21,31,47,.94) 45%,rgba(9,16,28,.98) 100%) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -1px 0 rgba(146,165,181,.12),
+    0 10px 24px rgba(0,0,0,.25),
+    0 0 0 1px rgba(255,255,255,.03);
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease,background .24s ease;
+}
+.access::before{
+  content:'';
+  position:absolute;
+  inset:5px;
+  border:1px solid rgba(201,222,239,.16);
+  pointer-events:none;
+}
+.access:hover,
+.access:focus-visible{
+  transform:translateY(-1px);
+  border-color:#c1d5e6 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.24),
+    inset 0 -1px 0 rgba(146,165,181,.14),
+    0 14px 28px rgba(0,0,0,.3),
+    0 0 18px rgba(158,206,241,.15);
+  background:linear-gradient(180deg,rgba(62,82,102,.98) 0%,rgba(28,41,59,.96) 48%,rgba(10,18,31,.99) 100%) !important;
+}
+
+.hero-actions{gap:15px !important;margin-top:18px !important}
+.hero-actions .hero-btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  min-width:205px;
+  padding:13px 18px 13px 22px;
+  border:1px solid #8fa5b8;
+  color:#f4f8fd;
+  text-decoration:none;
+  background:
+    linear-gradient(180deg,rgba(54,71,88,.95) 0%,rgba(19,29,44,.96) 48%,rgba(8,14,24,.99) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.20),
+    inset 0 -1px 0 rgba(121,146,166,.12),
+    0 14px 26px rgba(0,0,0,.24);
+  clip-path:polygon(10px 0,100% 0,calc(100% - 10px) 100%,0 100%);
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease,background .24s ease;
+}
+.hero-actions .hero-btn::before{
+  content:'';
+  position:absolute;
+  inset:5px;
+  border:1px solid rgba(208,226,242,.15);
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  pointer-events:none;
+}
+.hero-actions .hero-btn:hover,
+.hero-actions .hero-btn:focus-visible{
+  transform:translateY(-2px);
+  border-color:#c2d6e5;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.24),
+    0 18px 28px rgba(0,0,0,.28),
+    0 0 20px rgba(148,201,238,.16);
+}
+.hero-actions .hero-btn-primary{
+  background:linear-gradient(180deg,rgba(67,87,108,.98) 0%,rgba(34,51,71,.97) 50%,rgba(10,17,28,.99) 100%);
+}
+.hero-actions .hero-btn-secondary{
+  background:linear-gradient(180deg,rgba(41,55,72,.98) 0%,rgba(17,27,42,.97) 52%,rgba(8,14,24,.99) 100%);
+}
+.hero-btn-copy strong{
+  display:block;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.04em;
+}
+.hero-btn-copy small{
+  display:block;
+  margin-top:4px;
+  font-size:9px;
+  color:#aabfd2;
+  letter-spacing:.22em;
+}
+.hero-btn-arrow{
+  font-size:18px;
+  line-height:1;
+  color:#d7e4f1;
+  flex:0 0 auto;
+}
+
+@media(max-width:970px){
+  .access{min-width:0;width:100%;justify-content:center}
+  .hero-actions .hero-btn{min-width:0;flex:1 1 220px}
+}
+@media(max-width:650px){
+  .access{font-size:10px !important;letter-spacing:.17em;min-height:44px;padding:10px 16px}
+  .hero-actions{gap:10px !important}
+  .hero-actions .hero-btn{width:100%;padding:12px 16px 12px 18px}
+  .hero-btn-copy strong{font-size:12px}
+  .hero-btn-copy small{font-size:8px;letter-spacing:.18em}
+}
+
+</style></head><body><header class="header"><a class="identity" href="index.html"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><img class="metal-wordmark-header" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></a><nav class="navigation" id="navigation" aria-label="주 메뉴"><a href="index.html" aria-current="page">홈</a><a href="index.html#about">아카데미</a><a href="facilities.html">시설 안내</a></nav><a class="access" href="internal.html">AGENT LOGIN</a><button class="menu" aria-label="메뉴 펼치기" onclick="document.getElementById('navigation').classList.toggle('open')">☰</button></header><main><section class="hero"><div class="hero-img" role="img" aria-label="NEXUS 아카데미 야간 외관"></div><div class="hero-content"><div class="hero-overline">NX-01 / SPECIAL OPERATIONS ACADEMY</div><div class="brand-large"><img src="images/branding/seal-complete.png" alt="NEXUS 공식 엠블럼"><img class="metal-wordmark-hero" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></div><p class="hero-copy">보이는 것 너머에서, 미래의 작전을 준비한다.<br>전략·정보·기술·전투·심리·지원 분야의 전문 교육기관.</p><div class="hero-actions"><a class="hero-btn hero-btn-primary" href="#about"><span class="hero-btn-copy"><strong>NEXUS 소개</strong><small>ACADEMY PROFILE</small></span><span class="hero-btn-arrow" aria-hidden="true">↗</span></a><a class="hero-btn hero-btn-secondary" href="facilities.html"><span class="hero-btn-copy"><strong>시설 둘러보기</strong><small>FACILITY ARCHIVE</small></span><span class="hero-btn-arrow" aria-hidden="true">↗</span></a></div><div class="hero-caption">NEXUS HEADQUARTERS &nbsp; / &nbsp; OFFICIAL ARCHIVE</div></div></section><div class="wrap"><div class="section-heading"><div><div class="kicker">EXPLORE THE ACADEMY</div><h2>ACADEMY DIRECTORY</h2></div><p>넥서스의 주요 시설 및 시스템을 탐색한다.</p></div><div class="tiles">
 <a class="tile" href="facilities.html" aria-label="시설 안내 보기"><div class="tile-image"><img src="images/headquarters/lobby.webp" alt="넥서스 본관 로비" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21h16"></path><path d="M6 21V9l6-4 6 4v12"></path><path d="M9 21v-7h6v7"></path></svg></span><span class="tile-label"><strong>시설 안내</strong><small>FACILITY DIRECTORY</small></span></span></div></a>
 <a class="tile" href="facilities.html#NX-04" aria-label="종합 훈련관 보기"><div class="tile-image"><img src="images/training/lobby.webp" alt="넥서스 종합 훈련관" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4"></path><path d="M6 8v8"></path><path d="M9 10v4"></path><path d="M15 10v4"></path><path d="M18 8v8"></path><path d="M21 10v4"></path><path d="M6 12h12"></path></svg></span><span class="tile-label"><strong>종합 훈련관</strong><small>TACTICAL TRAINING COMPLEX</small></span></span></div></a>
 <a class="tile" href="facilities.html#NX-05" aria-label="정보 연구동 보기"><div class="tile-image"><img src="images/research/central.webp" alt="넥서스 정보 연구동" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4l8 4-8 4-8-4 8-4z"></path><path d="M4 12l8 4 8-4"></path><path d="M4 16l8 4 8-4"></path></svg></span><span class="tile-label"><strong>정보 연구동</strong><small>INTELLIGENCE DIVISION</small></span></span></div></a>
