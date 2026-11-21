@@ -284,19 +284,62 @@ body.nx-thumb-locked{overflow:hidden}
 }
 .nx-thumb-gate[data-state="success"] .nx-thumb-emblem .nx-thumb-seal{transform:translate(0,0)}
 
+
+/* v4.42 — orbital beam is local to emblem, not clipped by viewport */
+.nx-thumb-gate::after{display:none!important}
+.nx-thumb-emblem{position:relative;isolation:isolate;overflow:visible!important}
+.nx-thumb-emblem::before{
+  width:84%;height:84%;left:50%;top:50%;transform:translate(-50%,-50%);
+  border:1px solid rgba(147,202,230,.23);
+  box-shadow:0 0 0 14px rgba(132,178,207,.014),0 0 30px rgba(112,177,212,.07);
+}
+.nx-thumb-emblem::after{
+  content:"";position:absolute;z-index:2;
+  width:92%;height:92%;left:50%;top:50%;border-radius:50%;
+  pointer-events:none;
+  background:conic-gradient(from 0deg,
+    transparent 0deg 220deg,
+    rgba(132,207,247,.03) 236deg,
+    rgba(160,219,247,.20) 273deg,
+    rgba(220,244,255,.79) 308deg,
+    rgba(183,234,255,.96) 326deg,
+    rgba(143,215,251,.50) 342deg,
+    transparent 359deg 360deg);
+  -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 2.2px),transparent 100%);
+  mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 2.2px),transparent 100%);
+  filter:drop-shadow(0 0 5px rgba(159,218,255,.45));
+  animation:nx-thumb-emblem-orbit 8s linear infinite;
+}
+@keyframes nx-thumb-emblem-orbit{
+  from{transform:translate(-50%,-50%) rotate(0deg)}
+  to{transform:translate(-50%,-50%) rotate(360deg)}
+}
+.nx-thumb-emblem .nx-thumb-seal{
+  position:relative;z-index:1;display:block;
+  width:100%;height:100%;max-width:none;
+  transform:none!important;object-fit:contain;object-position:center center;
+  image-rendering:auto;
+  filter:drop-shadow(0 0 13px rgba(173,212,235,.16));
+}
+.nx-thumb-gate[data-state="success"] .nx-thumb-emblem .nx-thumb-seal{
+  filter:drop-shadow(0 0 25px rgba(148,255,210,.30));
+}
+.nx-thumb-gate[data-state="success"] .nx-thumb-emblem::after{animation-duration:2.5s;opacity:.85}
+@media(prefers-reduced-motion:reduce){.nx-thumb-emblem::after{animation:none}}
+
 </style>
 <link rel="stylesheet" href="image-protection.css">
 </head>
 <body>
 
-<!-- NEXUS v4.41: optically aligned emblem halo and separate thumb sensor -->
+<!-- NEXUS v4.42: centered HD emblem and complete orbit beam -->
 <div class="nx-thumb-gate" id="nxThumbGate" data-state="idle" role="dialog" aria-modal="true" aria-label="NEXUS 모의 엄지 인증" hidden>
   <div class="nx-thumb-core">
     <div class="nx-thumb-kicker">NEXUS / INTERNAL AUTHORIZATION</div>
     <div class="nx-thumb-mark">NEXUS</div>
     <div class="nx-thumb-strap">AGENT ACCESS · VERIFICATION 02</div>
     <div class="nx-thumb-emblem" aria-label="NEXUS 원형 엠블럼">
-      <img class="nx-thumb-seal" src="images/branding/seal-complete.png" draggable="false" alt="NEXUS 원형 엠블럼">
+      <img class="nx-thumb-seal" src="images/branding/nexus-agent-seal-hd.png" draggable="false" alt="NEXUS 원형 엠블럼">
     </div>
     <button class="nx-thumb-sensor" type="button" id="nxThumbSensor" aria-label="엄지손가락으로 아래 지문 센서를 약 2.2초 동안 길게 눌러 모의 인증 완료">
       <span class="nx-thumb-ring" aria-hidden="true"></span>
