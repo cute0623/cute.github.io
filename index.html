@@ -705,8 +705,89 @@ body{background:radial-gradient(ellipse 90% 20% at 70% 70%,#13223577,transparent
   .hero-actions a.hero-btn{min-width:0 !important;padding:9px 12px 9px 15px !important}
 }
 
+
+/* v4.33 / simulated biometric gateway: first homepage entry per tab */
+.nx-gate{position:fixed;inset:0;z-index:9999;display:flex;justify-content:center;align-items:center;overflow:auto;padding:clamp(12px,3vw,36px);background:radial-gradient(ellipse at 48% 43%,#152b3f 0%,#0b1727 47%,#030811 100%);color:#e7f1fa;font-family:system-ui,'Pretendard','Noto Sans KR',sans-serif;isolation:isolate}
+.nx-gate[hidden]{display:none!important}
+.nx-gate:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,transparent 49.9%,#9bc7e00a 50%,transparent 50.1%),linear-gradient(#c4d7e508 1px,transparent 1px);background-size:80px 80px;opacity:.4;pointer-events:none}
+.nx-gate-shell{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(310px,.9fr);width:min(1080px,100%);min-height:min(700px,calc(100dvh - 48px));border:1px solid #6d8397;background:linear-gradient(140deg,#101b2b,#080e18 75%);box-shadow:0 30px 110px #0009, inset 0 1px #d7e8f523;overflow:hidden}
+.nx-gate-shell:after{content:"";position:absolute;inset:7px;border:1px solid #aec6dd14;pointer-events:none}
+.nx-gate-display{position:relative;min-height:530px;border-right:1px solid #42566c;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:45px 28px;background:radial-gradient(ellipse at 49% 43%,#1b3449 0%,#0b1725 53%,#080d16 85%)}
+.nx-gate-logo{width:77px;height:77px;object-fit:contain;margin-bottom:20px;opacity:.92;filter:drop-shadow(0 0 14px #b0d5ec25)}
+.nx-gate-brand{font:29px Georgia,serif;letter-spacing:.28em;margin:0 0 7px;color:#e9eef6;text-align:center}
+.nx-gate-tag{font-size:9px;letter-spacing:.32em;color:#9ab8cd;text-align:center}
+.nx-gate-scanner{width:min(280px,75vw);height:min(280px,75vw);position:relative;display:grid;place-items:center;margin:28px 0 14px;border:1px solid #9ad4fa36;border-radius:50%;background:radial-gradient(circle,#1d405655,#0b172000 70%);box-shadow:0 0 0 17px #7dbce608,0 0 0 36px #86c2e708}
+.nx-gate-scanner:before,.nx-gate-scanner:after{content:"";position:absolute;inset:14px;border:1px dashed #9bcce64c;border-radius:50%}
+.nx-gate-scanner:after{inset:40px;border-style:solid;opacity:.25}
+.nx-gate-face,.nx-gate-finger{position:absolute;width:60%;height:70%;color:#91bbd5;opacity:0;transform:scale(.94);transition:opacity .35s,transform .35s;z-index:1}
+.nx-gate[data-phase="face"] .nx-gate-face,.nx-gate[data-phase="finger"] .nx-gate-finger{opacity:1;transform:scale(1)}
+.nx-gate[data-phase="grant"] .nx-gate-face{opacity:.25;transform:scale(.96)}
+.nx-gate-line{position:absolute;left:18%;right:18%;top:21%;height:2px;background:#bfeaff;box-shadow:0 0 16px 3px #a4d9ff95;opacity:0;z-index:2;pointer-events:none}
+.nx-gate[data-phase="face"] .nx-gate-line,.nx-gate[data-phase="finger"] .nx-gate-line{opacity:1;animation:nx-gate-scan 1.45s ease-in-out infinite alternate}
+@keyframes nx-gate-scan{from{top:23%}to{top:76%}}
+.nx-gate-corner{position:absolute;width:26px;height:26px;border-color:#a9d6f3;opacity:.75;z-index:2}
+.nx-gate-corner.tl{top:9px;left:9px;border-top:2px solid;border-left:2px solid}.nx-gate-corner.tr{top:9px;right:9px;border-top:2px solid;border-right:2px solid}.nx-gate-corner.bl{bottom:9px;left:9px;border-bottom:2px solid;border-left:2px solid}.nx-gate-corner.br{bottom:9px;right:9px;border-bottom:2px solid;border-right:2px solid}
+.nx-gate-track-label{font-size:10px;letter-spacing:.2em;color:#8eb4d0;margin-top:8px}
+.nx-gate-panel{position:relative;display:flex;flex-direction:column;justify-content:center;padding:clamp(30px,5.4vw,62px);gap:18px}
+.nx-gate-kicker{color:#a8cce4;font-size:10px;letter-spacing:.25em;display:flex;align-items:center;gap:12px}
+.nx-gate-kicker:before{content:"";width:6px;height:6px;border-radius:50%;background:#a9ddff;box-shadow:0 0 12px #90cffe}
+.nx-gate-title{font:clamp(37px,4.2vw,57px) Georgia,serif;letter-spacing:.035em;line-height:1.1;margin:0;font-weight:400}
+.nx-gate-copy{font-size:13px;line-height:1.85;color:#b0c4d4;max-width:340px;margin:0}
+.nx-gate-status-box{border:1px solid #4f6579;background:linear-gradient(145deg,#14283b,#0d1725);padding:20px 21px;box-shadow:inset 0 1px #cfe7f019;min-height:145px}
+.nx-gate-status-kicker{font-size:9px;color:#9bb8cd;letter-spacing:.22em;display:block;margin-bottom:13px}
+.nx-gate-status{font-size:18px;font-weight:500;letter-spacing:.08em;color:#ecf7ff;display:block;min-height:26px}
+.nx-gate-status-sub{font-size:12px;color:#9fb9ca;line-height:1.7;display:block;margin-top:11px}
+.nx-gate-meter{height:4px;overflow:hidden;background:#273b4d;margin-top:14px}
+.nx-gate-meter-fill{height:100%;width:0;background:linear-gradient(90deg,#5b88a9,#c7ebff);box-shadow:0 0 12px #98cdea;transition:width .6s ease}
+.nx-gate-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #3b5265;padding-top:18px}
+.nx-gate-bottom span{font-size:9px;color:#91aabd;letter-spacing:.1em;line-height:1.6}
+.nx-gate-skip{border:1px solid #71879b;color:#d8e8f4;background:linear-gradient(#25374b,#101b2a);padding:11px 14px;font-size:10px;letter-spacing:.12em;white-space:nowrap}
+.nx-gate-skip:hover{border-color:#d9edf9;background:#304b64}
+.nx-gate[data-phase="grant"] .nx-gate-status{color:#b7f5d9}
+.nx-gate[data-phase="grant"] .nx-gate-scanner{box-shadow:0 0 0 17px #b5e7ca12,0 0 40px #5ddbb026}
+.nx-gate.nx-gate-exit{animation:nx-gate-fade .65s ease both;pointer-events:none}
+@keyframes nx-gate-fade{to{opacity:0;visibility:hidden}}
+body.nx-gate-active{overflow:hidden}
+@media(max-width:700px){.nx-gate{padding:0}.nx-gate-shell{width:100%;min-height:100dvh;grid-template-columns:1fr;border:0}.nx-gate-display{min-height:auto;padding:30px 18px 12px;border-right:0;border-bottom:1px solid #3e5268}.nx-gate-logo{width:45px;height:45px;margin-bottom:9px}.nx-gate-brand{font-size:20px}.nx-gate-tag{font-size:7px}.nx-gate-scanner{width:170px;height:170px;margin:18px auto 8px}.nx-gate-track-label{font-size:9px;margin-bottom:5px}.nx-gate-panel{padding:24px 24px 32px;gap:13px}.nx-gate-title{font-size:36px}.nx-gate-copy{font-size:12px}.nx-gate-status-box{padding:15px;min-height:125px}.nx-gate-bottom{padding-top:12px}}
+@media(max-height:720px) and (min-width:701px){.nx-gate-shell{min-height:610px}.nx-gate-display{min-height:610px}.nx-gate-scanner{width:215px;height:215px;margin:18px 0}}
+@media(prefers-reduced-motion:reduce){.nx-gate-line{animation:none!important;top:50%!important}.nx-gate-meter-fill{transition:none}.nx-gate.nx-gate-exit{animation:none}}
+
 </style><link rel="stylesheet" href="image-protection.css">
-</head><body><header class="header"><a class="identity" href="index.html"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><img class="metal-wordmark-header" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></a><nav class="navigation" id="navigation" aria-label="주 메뉴"><a href="index.html" aria-current="page">홈</a><a href="index.html#about">아카데미</a><a href="facilities.html">시설 안내</a></nav><a class="access" href="internal.html">AGENT LOGIN</a><button class="menu" aria-label="메뉴 펼치기" onclick="document.getElementById('navigation').classList.toggle('open')">☰</button></header><main><section class="hero"><div class="hero-img" role="img" aria-label="NEXUS 아카데미 야간 외관"></div><div class="hero-content"><div class="hero-overline">NX-01 / SPECIAL OPERATIONS ACADEMY</div><div class="brand-large"><img src="images/branding/seal-complete.png" alt="NEXUS 공식 엠블럼"><img class="metal-wordmark-hero" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></div><p class="hero-copy">보이는 것 너머에서, 미래의 작전을 준비한다.<br>전략·정보·기술·전투·심리·지원 분야의 전문 교육기관.</p><div class="hero-actions"><a class="hero-btn hero-btn-primary" href="#about"><span class="hero-btn-copy"><strong>NEXUS 소개</strong><small>ACADEMY PROFILE</small></span><span class="hero-btn-arrow" aria-hidden="true">↗</span></a><a class="hero-btn hero-btn-secondary" href="facilities.html"><span class="hero-btn-copy"><strong>시설 둘러보기</strong><small>FACILITY ARCHIVE</small></span><span class="hero-btn-arrow" aria-hidden="true">↗</span></a></div><div class="hero-caption">NEXUS HEADQUARTERS &nbsp; / &nbsp; OFFICIAL ARCHIVE</div></div></section><div class="wrap"><div class="section-heading"><div><div class="kicker">EXPLORE THE ACADEMY</div><h2>ACADEMY DIRECTORY</h2></div><p>넥서스의 주요 시설 및 시스템을 탐색한다.</p></div><div class="tiles">
+</head><body><div class="nx-gate" id="nxBiometricGate" data-phase="face" role="dialog" aria-modal="true" aria-label="NEXUS 모의 생체 인증" hidden>
+  <div class="nx-gate-shell">
+    <div class="nx-gate-display" aria-hidden="true">
+      <img class="nx-gate-logo" src="images/branding/seal-complete.png" alt="">
+      <div class="nx-gate-brand">NEXUS</div>
+      <div class="nx-gate-tag">SPECIAL OPERATIONS ACADEMY</div>
+      <div class="nx-gate-scanner">
+        <span class="nx-gate-corner tl"></span><span class="nx-gate-corner tr"></span><span class="nx-gate-corner bl"></span><span class="nx-gate-corner br"></span>
+        <svg class="nx-gate-face" viewBox="0 0 160 190" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+          <path d="M39 44 56 26h48l17 18v21M121 126v22l-17 16H56l-17-16v-22M39 65V44" stroke-dasharray="5 5"/>
+          <path d="M80 39c-26 0-38 20-38 48 0 30 17 53 38 53s38-23 38-53c0-28-12-48-38-48Z"/>
+          <path d="M60 82q9-5 16 0m8 0q7-5 16 0m-20 2-5 20h10m-18 11q13 8 26 0"/>
+          <path d="M53 123c0 16-15 17-22 23-10 7-15 16-16 27m92-50c0 16 15 17 22 23 10 7 15 16 16 27"/>
+        </svg>
+        <svg class="nx-gate-finger" viewBox="0 0 170 190" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+          <path d="M38 100V78c0-28 18-49 47-49s47 21 47 49v23M48 124c-6-16-4-41-2-52 4-25 23-35 39-35 22 0 39 14 39 42v26m-67 34c-10-24-13-53-7-69 5-19 19-26 35-26 18 0 31 13 31 33v42m-51 31c-8-18-14-44-12-65 1-22 10-37 32-37 18 0 25 13 25 31v57m-37 13c-6-17-10-43-10-62 0-18 4-34 22-34 12 0 17 10 17 24v52m-25 14c-4-15-4-39-4-57 0-12 3-19 10-19 5 0 7 5 7 14v56"/>
+        </svg>
+        <span class="nx-gate-line"></span>
+      </div>
+      <div class="nx-gate-track-label" id="nxGateScanLabel">FACIAL RECOGNITION // SCANNING</div>
+    </div>
+    <div class="nx-gate-panel">
+      <div class="nx-gate-kicker">NX / PUBLIC ACCESS GATEWAY</div>
+      <h2 class="nx-gate-title">IDENTITY<br>VERIFICATION</h2>
+      <p class="nx-gate-copy">넥서스 공식 홈페이지 접속 전 보안 검색을 진행한다.<br>이 과정은 세계관 연출용 시뮬레이션이다.</p>
+      <div class="nx-gate-status-box" role="status" aria-live="polite" aria-atomic="true">
+        <span class="nx-gate-status-kicker">BIOMETRIC AUTHORIZATION / SIMULATED</span>
+        <span class="nx-gate-status" id="nxGateStatus">FACIAL SCAN IN PROGRESS</span>
+        <span class="nx-gate-status-sub" id="nxGateStatusSub">얼굴 윤곽 분석 시뮬레이션 진행 중</span>
+        <div class="nx-gate-meter"><div class="nx-gate-meter-fill" id="nxGateMeter"></div></div>
+      </div>
+      <div class="nx-gate-bottom"><span>NO CAMERA · NO FINGERPRINT DATA<br>시뮬레이션 · 실제 인증 아님</span><button type="button" class="nx-gate-skip" id="nxGateSkip">SKIP INTRO ↗</button></div>
+    </div>
+  </div>
+</div><header class="header"><a class="identity" href="index.html"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><img class="metal-wordmark-header" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></a><nav class="navigation" id="navigation" aria-label="주 메뉴"><a href="index.html" aria-current="page">홈</a><a href="index.html#about">아카데미</a><a href="facilities.html">시설 안내</a></nav><a class="access" href="internal.html">AGENT LOGIN</a><button class="menu" aria-label="메뉴 펼치기" onclick="document.getElementById('navigation').classList.toggle('open')">☰</button></header><main><section class="hero"><div class="hero-img" role="img" aria-label="NEXUS 아카데미 야간 외관"></div><div class="hero-content"><div class="hero-overline">NX-01 / SPECIAL OPERATIONS ACADEMY</div><div class="brand-large"><img src="images/branding/seal-complete.png" alt="NEXUS 공식 엠블럼"><img class="metal-wordmark-hero" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></div><p class="hero-copy">보이는 것 너머에서, 미래의 작전을 준비한다.<br>전략·정보·기술·전투·심리·지원 분야의 전문 교육기관.</p><div class="hero-actions"><a class="hero-btn hero-btn-primary" href="#about"><span class="hero-btn-copy"><strong>NEXUS 소개</strong><small>ACADEMY PROFILE</small></span><span class="hero-btn-arrow" aria-hidden="true">↗</span></a><a class="hero-btn hero-btn-secondary" href="facilities.html"><span class="hero-btn-copy"><strong>시설 둘러보기</strong><small>FACILITY ARCHIVE</small></span><span class="hero-btn-arrow" aria-hidden="true">↗</span></a></div><div class="hero-caption">NEXUS HEADQUARTERS &nbsp; / &nbsp; OFFICIAL ARCHIVE</div></div></section><div class="wrap"><div class="section-heading"><div><div class="kicker">EXPLORE THE ACADEMY</div><h2>ACADEMY DIRECTORY</h2></div><p>넥서스의 주요 시설 및 시스템을 탐색한다.</p></div><div class="tiles">
 <a class="tile" href="facilities.html" aria-label="시설 안내 보기"><div class="tile-image"><img src="images/headquarters/lobby.webp" alt="넥서스 본관 로비" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21h16"></path><path d="M6 21V9l6-4 6 4v12"></path><path d="M9 21v-7h6v7"></path></svg></span><span class="tile-label"><strong>시설 안내</strong><small>FACILITY DIRECTORY</small></span></span></div></a>
 <a class="tile" href="facilities.html#NX-04" aria-label="종합 훈련관 보기"><div class="tile-image"><img src="images/training/lobby.webp" alt="넥서스 종합 훈련관" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4"></path><path d="M6 8v8"></path><path d="M9 10v4"></path><path d="M15 10v4"></path><path d="M18 8v8"></path><path d="M21 10v4"></path><path d="M6 12h12"></path></svg></span><span class="tile-label"><strong>종합 훈련관</strong><small>TACTICAL TRAINING COMPLEX</small></span></span></div></a>
 <a class="tile" href="facilities.html#NX-05" aria-label="정보 연구동 보기"><div class="tile-image"><img src="images/research/central.webp" alt="넥서스 정보 연구동" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4l8 4-8 4-8-4 8-4z"></path><path d="M4 12l8 4 8-4"></path><path d="M4 16l8 4 8-4"></path></svg></span><span class="tile-label"><strong>정보 연구동</strong><small>INTELLIGENCE DIVISION</small></span></span></div></a>
@@ -743,4 +824,57 @@ body{background:radial-gradient(ellipse 90% 20% at 70% 70%,#13223577,transparent
   <p>의료 · 구조 · 군수 · 현장 지원</p>
   <div class="nx-div-foot"><span>ACADEMIC SPECIALIZATION</span><span class="nx-div-glint" aria-hidden="true"></span></div>
 </article></div></div></main><footer class="footer"><strong>◢　NEXUS / SPECIAL OPERATIONS ACADEMY</strong><div class="foot-dots"><span>FACILITY DATA</span><span>INTERNAL NETWORK</span><span>ACADEMY RECORDS</span></div><span>FICTIONAL ROLEPLAY WEBSITE · 실제 기관 아님</span></footer><script src="image-protection.js" defer></script>
+<script>
+/* NX simulated biometric intro; only homepage, once per tab. No camera/sensor API. */
+(function(){
+  'use strict';
+  const KEY='nexusBiometricIntroSeen_v433';
+  let seen=false;
+  try { seen=sessionStorage.getItem(KEY)==='yes'; } catch (_) {}
+  if(seen) return;
+  const gate=document.getElementById('nxBiometricGate');
+  if(!gate) return;
+  const label=document.getElementById('nxGateScanLabel');
+  const status=document.getElementById('nxGateStatus');
+  const sub=document.getElementById('nxGateStatusSub');
+  const meter=document.getElementById('nxGateMeter');
+  const skip=document.getElementById('nxGateSkip');
+  const reduced=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timers=[];let closed=false;
+  function schedule(fn,ms){timers.push(setTimeout(fn,ms));}
+  function setPhase(phase,title,description,caption,pct){
+    if(closed)return;
+    gate.dataset.phase=phase;
+    status.textContent=title;
+    sub.textContent=description;
+    label.textContent=caption;
+    meter.style.width=pct+'%';
+  }
+  function finish(){
+    if(closed)return;
+    closed=true;
+    timers.forEach(clearTimeout);
+    try{sessionStorage.setItem(KEY,'yes')}catch(_){}
+    gate.classList.add('nx-gate-exit');
+    document.body.classList.remove('nx-gate-active');
+    schedule(()=>{gate.hidden=true;gate.remove()},reduced?0:660);
+  }
+  skip.addEventListener('click',finish);
+  document.body.classList.add('nx-gate-active');
+  gate.hidden=false;
+  setPhase('face','FACIAL SCAN IN PROGRESS','얼굴 윤곽 분석 시뮬레이션 진행 중','FACIAL RECOGNITION // SCANNING',10);
+  if(reduced){
+    schedule(()=>setPhase('finger','FINGERPRINT SCAN','지문 패턴 분석 시뮬레이션','FINGERPRINT // SCANNING',72),450);
+    schedule(()=>setPhase('grant','ACCESS GRANTED','NEXUS 공식 홈페이지 접속 승인','IDENTITY VERIFIED // SIMULATED',100),900);
+    schedule(finish,1550);
+  }else{
+    schedule(()=>meter.style.width='42%',800);
+    schedule(()=>setPhase('finger','FINGERPRINT SCAN','지문 패턴 분석 시뮬레이션','FINGERPRINT // SCANNING',58),2400);
+    schedule(()=>meter.style.width='86%',3700);
+    schedule(()=>setPhase('grant','ACCESS GRANTED','NEXUS 공식 홈페이지 접속 승인','IDENTITY VERIFIED // SIMULATED',100),4800);
+    schedule(finish,6100);
+  }
+  document.addEventListener('keydown',e=>{if(!closed && e.key==='Escape')finish()});
+})();
+</script>
 </body></html>
