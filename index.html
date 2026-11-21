@@ -706,336 +706,128 @@ body{background:radial-gradient(ellipse 90% 20% at 70% 70%,#13223577,transparent
 }
 
 
-/* v4.36 / holographic biometric gateway */
-.nx-gate{position:fixed;inset:0;z-index:9999;display:flex;justify-content:center;align-items:center;overflow:auto;padding:clamp(12px,3vw,36px);background:radial-gradient(ellipse at 48% 43%,#152b3f 0%,#0b1727 47%,#030811 100%);color:#e7f1fa;font-family:system-ui,'Pretendard','Noto Sans KR',sans-serif;isolation:isolate}
+
+/* v4.37 / full-viewport holographic biometric gateway */
+.nx-gate{--holo:#82ffd0;--holo-strong:#b8ffe7;position:fixed;inset:0;z-index:9999;overflow:hidden;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse 56% 49% at 50% 43%,#0a352c 0%,#061b1c 45%,#02090e 100%);color:#e9fff6;font-family:system-ui,-apple-system,'Pretendard','Noto Sans KR',sans-serif;isolation:isolate}
 .nx-gate[hidden]{display:none!important}
-.nx-gate:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,transparent 49.9%,#9bc7e00a 50%,transparent 50.1%),linear-gradient(#c4d7e508 1px,transparent 1px);background-size:80px 80px;opacity:.4;pointer-events:none}
-.nx-gate-shell{position:relative;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(310px,.9fr);width:min(1080px,100%);min-height:min(700px,calc(100dvh - 48px));border:1px solid #6d8397;background:linear-gradient(140deg,#101b2b,#080e18 75%);box-shadow:0 30px 110px #0009, inset 0 1px #d7e8f523;overflow:hidden}
-.nx-gate-shell:after{content:"";position:absolute;inset:7px;border:1px solid #aec6dd14;pointer-events:none}
-.nx-gate-display{position:relative;min-height:530px;border-right:1px solid #42566c;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:45px 28px;background:radial-gradient(ellipse at 49% 43%,#1b3449 0%,#0b1725 53%,#080d16 85%)}
-.nx-gate-logo{width:77px;height:77px;object-fit:contain;margin-bottom:20px;opacity:.92;filter:drop-shadow(0 0 14px #b0d5ec25)}
-.nx-gate-brand{font:29px Georgia,serif;letter-spacing:.28em;margin:0 0 7px;color:#e9eef6;text-align:center}
-.nx-gate-tag{font-size:9px;letter-spacing:.32em;color:#9ab8cd;text-align:center}
-.nx-gate-scanner{width:min(280px,75vw);height:min(280px,75vw);position:relative;display:grid;place-items:center;margin:28px 0 14px;border:1px solid #9ad4fa36;border-radius:50%;background:radial-gradient(circle,#1d405655,#0b172000 70%);box-shadow:0 0 0 17px #7dbce608,0 0 0 36px #86c2e708}
-.nx-gate-scanner:before,.nx-gate-scanner:after{content:"";position:absolute;inset:14px;border:1px dashed #9bcce64c;border-radius:50%}
-.nx-gate-scanner:after{inset:40px;border-style:solid;opacity:.25}
-.nx-gate-face,.nx-gate-finger{position:absolute;width:60%;height:70%;color:#91bbd5;opacity:0;transform:scale(.94);transition:opacity .35s,transform .35s;z-index:1}
+.nx-gate:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(rgba(111,255,196,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(111,255,196,.045) 1px,transparent 1px);background-size:46px 46px;mask-image:linear-gradient(0deg,transparent,black 25%,black 78%,transparent);opacity:.58}
+.nx-gate:after{content:"";position:absolute;inset:-50%;pointer-events:none;background:conic-gradient(from 0deg at 50% 50%,transparent 0deg,rgba(98,255,191,.11) 25deg,transparent 56deg,transparent 360deg);animation:nx-orbit 18s linear infinite;opacity:.55}
+.nx-gate-shell{position:relative;z-index:1;width:min(100%,1440px);height:100%;min-height:0;max-height:100%;padding:clamp(18px,3vh,32px) clamp(16px,3vw,46px);display:flex;flex-direction:column;justify-content:space-between;align-items:center;border:0;background:transparent;box-shadow:none;overflow:hidden;gap:0}
+.nx-gate-shell:before,.nx-gate-shell:after{content:none}
+.nx-gate-top{flex:none;width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.nx-gate-branding{display:flex;align-items:center;gap:12px;min-width:0}
+.nx-gate-logo{width:44px;height:44px;object-fit:contain;margin:0;filter:drop-shadow(0 0 11px #85ffd12c)}
+.nx-gate-brand{font:23px Georgia,serif;letter-spacing:.28em;line-height:1;margin:0;color:#e4fff5}
+.nx-gate-tag{font-size:8px;letter-spacing:.22em;color:#8bdbc3;margin-top:6px}
+.nx-gate-top-code{font:10px ui-monospace,Consolas,monospace;letter-spacing:.19em;color:#8df5ce;text-align:right}
+.nx-gate-display{position:relative;flex:1 1 auto;min-height:0;width:100%;padding:0;display:flex;flex-direction:column;justify-content:center;align-items:center;border:0;background:none}
+.nx-gate-display:before{content:none}
+.nx-gate-headline{text-align:center;flex:none;margin:0 0 clamp(6px,2vh,18px)}
+.nx-gate-overline{font-size:10px;letter-spacing:.33em;color:#8bd9bd;margin:0 0 8px}
+.nx-gate-title{font:400 clamp(25px,3.2vw,46px)/1.12 Georgia,'Times New Roman',serif;letter-spacing:.12em;margin:0;color:#effff8;text-shadow:0 0 24px #60ffc122}
+.nx-gate-scanner{position:relative;flex:none;width:min(42vh,360px,78vw);height:min(42vh,360px,78vw);margin:0;display:grid;place-items:center;border-radius:50%;border:1px solid #79ffd249;background:radial-gradient(circle,#41ff9f1d 0%,#0d342a6a 44%,#061a1c21 68%,transparent 72%);box-shadow:0 0 0 15px #68ffb909,0 0 0 38px #68ffb905,inset 0 0 50px #3dff9810,0 0 56px #40fca51a}
+.nx-gate-scanner:before{content:"";position:absolute;inset:9px;border-radius:50%;border:1px dashed #a0ffd05a;animation:nx-orbit 26s linear infinite}
+.nx-gate-scanner:after{content:"";position:absolute;inset:31px;border:1px solid #8fffbd30;border-radius:50%;box-shadow:inset 0 0 16px #58ffa014}
+.nx-gate-hud-ring{position:absolute;inset:-20px;border-radius:50%;border:1px solid transparent;border-top-color:#b4ffe992;border-bottom-color:#5dfcaa6c;animation:nx-orbit 11s linear infinite;pointer-events:none}
+.nx-gate-hud-ring:after{content:"";position:absolute;left:50%;top:-3px;width:6px;height:6px;border-radius:50%;background:#bbffe5;box-shadow:0 0 14px 4px #5effb196}
+.nx-gate-corner{position:absolute;width:24px;height:24px;border-color:#96ffce;opacity:.85;z-index:2}
+.nx-gate-corner.tl{top:15px;left:15px;border-top:2px solid;border-left:2px solid}.nx-gate-corner.tr{top:15px;right:15px;border-top:2px solid;border-right:2px solid}.nx-gate-corner.bl{bottom:15px;left:15px;border-bottom:2px solid;border-left:2px solid}.nx-gate-corner.br{bottom:15px;right:15px;border-bottom:2px solid;border-right:2px solid}
+.nx-gate-face,.nx-gate-finger{position:absolute;z-index:1;width:57%;height:65%;color:#a3ffce;opacity:0;transform:scale(.91);transition:opacity .28s,transform .35s;filter:drop-shadow(0 0 14px #48ffa43a);pointer-events:none}
 .nx-gate[data-phase="face"] .nx-gate-face,.nx-gate[data-phase="finger"] .nx-gate-finger{opacity:1;transform:scale(1)}
-.nx-gate[data-phase="grant"] .nx-gate-face{opacity:.25;transform:scale(.96)}
-.nx-gate-line{position:absolute;left:18%;right:18%;top:21%;height:2px;background:#bfeaff;box-shadow:0 0 16px 3px #a4d9ff95;opacity:0;z-index:2;pointer-events:none}
-.nx-gate[data-phase="face"] .nx-gate-line,.nx-gate[data-phase="finger"] .nx-gate-line{opacity:1;animation:nx-gate-scan 1.45s ease-in-out infinite alternate}
-@keyframes nx-gate-scan{from{top:23%}to{top:76%}}
-.nx-gate-corner{position:absolute;width:26px;height:26px;border-color:#a9d6f3;opacity:.75;z-index:2}
-.nx-gate-corner.tl{top:9px;left:9px;border-top:2px solid;border-left:2px solid}.nx-gate-corner.tr{top:9px;right:9px;border-top:2px solid;border-right:2px solid}.nx-gate-corner.bl{bottom:9px;left:9px;border-bottom:2px solid;border-left:2px solid}.nx-gate-corner.br{bottom:9px;right:9px;border-bottom:2px solid;border-right:2px solid}
-.nx-gate-track-label{font-size:10px;letter-spacing:.2em;color:#8eb4d0;margin-top:8px}
-.nx-gate-panel{position:relative;display:flex;flex-direction:column;justify-content:center;padding:clamp(30px,5.4vw,62px);gap:18px}
-.nx-gate-kicker{color:#a8cce4;font-size:10px;letter-spacing:.25em;display:flex;align-items:center;gap:12px}
-.nx-gate-kicker:before{content:"";width:6px;height:6px;border-radius:50%;background:#a9ddff;box-shadow:0 0 12px #90cffe}
-.nx-gate-title{font:clamp(37px,4.2vw,57px) Georgia,serif;letter-spacing:.035em;line-height:1.1;margin:0;font-weight:400}
-.nx-gate-copy{font-size:13px;line-height:1.85;color:#b0c4d4;max-width:340px;margin:0}
-.nx-gate-status-box{border:1px solid #4f6579;background:linear-gradient(145deg,#14283b,#0d1725);padding:20px 21px;box-shadow:inset 0 1px #cfe7f019;min-height:145px}
-.nx-gate-status-kicker{font-size:9px;color:#9bb8cd;letter-spacing:.22em;display:block;margin-bottom:13px}
-.nx-gate-status{font-size:18px;font-weight:500;letter-spacing:.08em;color:#ecf7ff;display:block;min-height:26px}
-.nx-gate-status-sub{font-size:12px;color:#9fb9ca;line-height:1.7;display:block;margin-top:11px}
-.nx-gate-meter{height:4px;overflow:hidden;background:#273b4d;margin-top:14px}
-.nx-gate-meter-fill{height:100%;width:0;background:linear-gradient(90deg,#5b88a9,#c7ebff);box-shadow:0 0 12px #98cdea;transition:width .6s ease}
-.nx-gate-bottom{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #3b5265;padding-top:18px}
-.nx-gate-bottom span{font-size:9px;color:#91aabd;letter-spacing:.1em;line-height:1.6}
-.nx-gate-skip{border:1px solid #71879b;color:#d8e8f4;background:linear-gradient(#25374b,#101b2a);padding:11px 14px;font-size:10px;letter-spacing:.12em;white-space:nowrap}
-.nx-gate-skip:hover{border-color:#d9edf9;background:#304b64}
-.nx-gate[data-phase="grant"] .nx-gate-status{color:#b7f5d9}
-.nx-gate[data-phase="grant"] .nx-gate-scanner{box-shadow:0 0 0 17px #b5e7ca12,0 0 40px #5ddbb026}
-.nx-gate.nx-gate-exit{animation:nx-gate-fade .65s ease both;pointer-events:none}
-@keyframes nx-gate-fade{to{opacity:0;visibility:hidden}}
-body.nx-gate-active{overflow:hidden}
-@media(max-width:700px){.nx-gate{padding:0}.nx-gate-shell{width:100%;min-height:100dvh;grid-template-columns:1fr;border:0}.nx-gate-display{min-height:auto;padding:30px 18px 12px;border-right:0;border-bottom:1px solid #3e5268}.nx-gate-logo{width:45px;height:45px;margin-bottom:9px}.nx-gate-brand{font-size:20px}.nx-gate-tag{font-size:7px}.nx-gate-scanner{width:170px;height:170px;margin:18px auto 8px}.nx-gate-track-label{font-size:9px;margin-bottom:5px}.nx-gate-panel{padding:24px 24px 32px;gap:13px}.nx-gate-title{font-size:36px}.nx-gate-copy{font-size:12px}.nx-gate-status-box{padding:15px;min-height:125px}.nx-gate-bottom{padding-top:12px}}
-@media(max-height:720px) and (min-width:701px){.nx-gate-shell{min-height:610px}.nx-gate-display{min-height:610px}.nx-gate-scanner{width:215px;height:215px;margin:18px 0}}
-@media(prefers-reduced-motion:reduce){.nx-gate-line{animation:none!important;top:50%!important}.nx-gate-meter-fill{transition:none}.nx-gate.nx-gate-exit{animation:none}}
-
-
-/* v4.36 — holographic hold-to-verify fingerprint gate */
-.nx-gate-scanner{touch-action:pan-y}
-.nx-gate-touch{position:absolute;inset:0;z-index:5;display:none;align-items:flex-end;justify-content:center;padding:0 10px 18px;border:0;border-radius:50%;background:transparent;color:#d8efff;cursor:pointer;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;outline-offset:5px}
+.nx-gate-line{position:absolute;z-index:3;left:16%;right:16%;top:20%;height:2px;opacity:0;pointer-events:none;background:linear-gradient(90deg,transparent,#d8fff0 17%,#fff 50%,#d8fff0 83%,transparent);box-shadow:0 0 22px 5px #68ffc4a8}
+.nx-gate[data-phase="face"] .nx-gate-line,.nx-gate[data-phase="finger"].nx-gate-holding .nx-gate-line{opacity:1;animation:nx-scan 1.35s ease-in-out infinite alternate}
+.nx-gate-touch{position:absolute;inset:0;z-index:5;display:none;align-items:center;justify-content:center;border:0;border-radius:50%;padding:0;background:transparent;cursor:pointer;touch-action:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .nx-gate[data-phase="finger"] .nx-gate-touch{display:flex}
-.nx-gate-touch .nx-gate-touch-label{font-size:10px;letter-spacing:.14em;text-align:center;text-shadow:0 1px 8px #000,0 0 10px #74c3ef}
-.nx-gate-touch:focus-visible{outline:2px solid #c6eaff}
-.nx-gate[data-phase="finger"] .nx-gate-line{opacity:0;animation:none}
-.nx-gate[data-phase="finger"].nx-gate-holding .nx-gate-line{opacity:1;animation:nx-gate-scan 1.1s ease-in-out infinite alternate}
-.nx-gate-touch-progress{position:absolute;inset:-7px;pointer-events:none;border-radius:50%;background:conic-gradient(#a6e0ff var(--hold-percent,0%),transparent 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));opacity:0;transition:opacity .15s}
+.nx-gate-touch:focus-visible{outline:2px solid #baffdb;outline-offset:8px}
+.nx-gate-touch-progress{position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(#abffe0 var(--hold-percent,0%),transparent 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 3px));opacity:0;pointer-events:none}
 .nx-gate.nx-gate-holding .nx-gate-touch-progress{opacity:1}
-.nx-gate[data-phase="grant"] .nx-gate-finger{opacity:1;transform:scale(1);color:#b7f5d9}
-.nx-gate[data-phase="grant"] .nx-gate-face{opacity:0}
-@media(max-width:700px){.nx-gate-touch{padding-bottom:8px}.nx-gate-touch .nx-gate-touch-label{font-size:8px;letter-spacing:.1em}}
-
-
-/* v4.35 — metallic / futuristic biometric refinement */
-.nx-gate{
-  background:
-    radial-gradient(circle at 50% 22%, rgba(170,213,240,.10), transparent 28%),
-    linear-gradient(135deg,#02060c 0%,#07111c 35%,#0a1420 62%,#04070c 100%);
-}
-.nx-gate:before{
-  background:
-    linear-gradient(90deg,transparent 49.85%,rgba(177,212,235,.06) 50%,transparent 50.15%),
-    linear-gradient(rgba(198,221,239,.05) 1px,transparent 1px),
-    linear-gradient(transparent 49.85%,rgba(198,221,239,.03) 50%,transparent 50.15%);
-  background-size:84px 84px,84px 84px,28px 28px;
-  opacity:.55;
-}
-.nx-gate-shell{
-  border:1px solid rgba(133,155,176,.85);
-  background:linear-gradient(145deg,rgba(20,31,46,.98),rgba(8,12,19,.98) 42%,rgba(8,13,21,.98) 100%);
-  box-shadow:0 36px 120px rgba(0,0,0,.72), inset 0 1px 0 rgba(241,248,255,.18), inset 0 -1px 0 rgba(94,113,132,.18);
-}
-.nx-gate-shell::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(125deg,transparent 0,transparent 44%,rgba(224,238,250,.06) 49%,transparent 56%,transparent 100%)}
-.nx-gate-shell:after{inset:9px;border-color:rgba(196,216,234,.10)}
-.nx-gate-display{
-  border-right:1px solid rgba(91,111,132,.9);
-  background:
-    radial-gradient(circle at 50% 38%, rgba(102,148,182,.20), transparent 36%),
-    linear-gradient(180deg,rgba(18,29,43,.98) 0%,rgba(9,17,28,.98) 58%,rgba(7,12,20,.99) 100%);
-}
-.nx-gate-display::before{content:"";position:absolute;inset:18px;border:1px solid rgba(173,199,219,.08);pointer-events:none}
-.nx-gate-logo{filter:drop-shadow(0 0 16px rgba(185,219,241,.18))}
-.nx-gate-brand{letter-spacing:.34em;text-shadow:0 0 24px rgba(197,218,236,.08)}
-.nx-gate-tag{color:#a8bfd1}
-.nx-gate-scanner{
-  width:min(292px,75vw);height:min(292px,75vw);
-  border-radius:28%;
-  border:1px solid rgba(148,184,210,.28);
-  background:
-    radial-gradient(circle at 50% 45%,rgba(73,114,145,.25),rgba(10,20,31,.16) 58%,transparent 68%),
-    linear-gradient(145deg,rgba(38,56,76,.28),rgba(8,16,27,.08));
-  box-shadow:inset 0 0 0 1px rgba(236,246,255,.08), 0 0 0 12px rgba(114,161,194,.05), 0 0 0 24px rgba(129,174,205,.04), 0 22px 40px rgba(0,0,0,.34);
-}
-.nx-gate-scanner:before,.nx-gate-scanner:after{border-radius:24%;border-color:rgba(160,198,222,.30)}
-.nx-gate-scanner:after{inset:42px;opacity:.18}
-.nx-gate-face,.nx-gate-finger{color:#a8d2ee}
-.nx-gate-line{left:14%;right:14%;height:2px;background:linear-gradient(90deg,transparent,#d9f3ff 14%,#ebfbff 50%,#d9f3ff 86%,transparent);box-shadow:0 0 16px 3px rgba(173,221,250,.82)}
-.nx-gate-corner{width:32px;height:32px;border-color:#c2e2f6;opacity:.88;filter:drop-shadow(0 0 8px rgba(135,193,232,.26))}
-.nx-gate-track-label{font-size:10px;letter-spacing:.26em;color:#bed3e4;background:linear-gradient(180deg,rgba(22,33,47,.85),rgba(9,16,26,.78));border:1px solid rgba(110,132,152,.52);padding:8px 12px;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
-.nx-gate-panel{
-  background:linear-gradient(180deg,rgba(17,24,36,.94),rgba(10,15,24,.96));
-}
-.nx-gate-kicker{color:#c2daeb;letter-spacing:.30em}
-.nx-gate-kicker:before{width:7px;height:7px;background:#d5ebfa;box-shadow:0 0 16px rgba(151,206,241,.75)}
-.nx-gate-title{letter-spacing:.06em;text-transform:uppercase}
-.nx-gate-copy{color:#c6d4df;max-width:380px}
-.nx-gate-status-box{
-  position:relative;
-  border:1px solid rgba(113,133,154,.84);
-  background:linear-gradient(160deg,rgba(22,34,49,.98),rgba(10,16,26,.98));
-  box-shadow:inset 0 1px 0 rgba(246,251,255,.12), 0 16px 30px rgba(0,0,0,.18);
-}
-.nx-gate-status-box::before{content:"";position:absolute;inset:10px;border:1px solid rgba(180,201,220,.08);pointer-events:none}
-.nx-gate-status-kicker{color:#abc1d3;letter-spacing:.25em}
-.nx-gate-status{letter-spacing:.13em}
-.nx-gate-status-sub{color:#c0d0dd;line-height:1.8}
-.nx-gate-meter{height:5px;background:rgba(48,66,82,.85);box-shadow:inset 0 1px 2px rgba(0,0,0,.35)}
-.nx-gate-meter-fill{background:linear-gradient(90deg,#6287a6 0%,#d8efff 50%,#7ab3d9 100%)}
-.nx-gate-auth-note{display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border:1px solid rgba(104,124,144,.62);background:linear-gradient(180deg,rgba(16,24,35,.96),rgba(8,13,22,.96));box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
-.nx-gate-auth-note strong{display:block;font-size:10px;letter-spacing:.26em;color:#e7f2fb;font-weight:500}
-.nx-gate-auth-note small{display:block;margin-top:5px;font-size:11px;line-height:1.6;color:#aabfce}
-.nx-gate-auth-dot{flex:none;width:8px;height:8px;border-radius:50%;margin-top:5px;background:#d8edf9;box-shadow:0 0 14px rgba(147,202,239,.82)}
-.nx-gate-bottom{border-top-color:rgba(73,91,109,.92)}
-.nx-gate-bottom span{color:#95aabd;letter-spacing:.14em}
-.nx-gate-skip{border-color:rgba(136,158,178,.8);background:linear-gradient(180deg,rgba(45,61,78,.92),rgba(15,25,38,.98));padding:11px 15px;letter-spacing:.18em;clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);box-shadow:inset 0 1px 0 rgba(255,255,255,.10)}
-.nx-gate-skip:hover{border-color:#deeffb;background:linear-gradient(180deg,rgba(64,84,106,.95),rgba(22,34,49,.98))}
-.nx-gate-touch{inset:12px;border-radius:24%;padding:0 16px 22px;background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(133,187,223,.04) 100%)}
-.nx-gate-touch .nx-gate-touch-label{display:inline-flex;align-items:center;justify-content:center;padding:10px 12px;border:1px solid rgba(139,174,197,.52);background:linear-gradient(180deg,rgba(17,28,40,.86),rgba(8,15,24,.95));font-size:10px;letter-spacing:.18em;line-height:1.45;text-transform:uppercase;box-shadow:inset 0 1px 0 rgba(255,255,255,.08), 0 10px 24px rgba(0,0,0,.24)}
-.nx-gate-touch-progress{inset:-8px;-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));background:conic-gradient(#d8efff var(--hold-percent,0%),transparent 0)}
-.nx-gate.nx-gate-holding .nx-gate-touch .nx-gate-touch-label{border-color:#dff2ff;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.11),0 0 22px rgba(138,197,235,.18)}
-.nx-gate[data-phase="grant"] .nx-gate-status{color:#d0ffe6}
-.nx-gate[data-phase="grant"] .nx-gate-track-label{border-color:rgba(111,173,138,.75);color:#d8ffea}
+.nx-gate-success{position:absolute;inset:0;z-index:8;display:grid;place-items:center;opacity:0;transform:scale(.72);pointer-events:none;transition:opacity .3s,transform .55s cubic-bezier(.13,1.2,.2,1)}
+.nx-gate-success svg{width:46%;height:46%;color:#ddfff0;filter:drop-shadow(0 0 22px #5affac)}
+.nx-gate[data-phase="grant"] .nx-gate-success{opacity:1;transform:scale(1)}
+.nx-gate[data-phase="grant"] .nx-gate-face,.nx-gate[data-phase="grant"] .nx-gate-finger{opacity:0}
+.nx-gate[data-phase="grant"] .nx-gate-scanner{animation:nx-verified-pulse 1.4s ease-out both}
+.nx-gate[data-phase="grant"] .nx-gate-hud-ring{border-color:#a5ffce;box-shadow:0 0 45px #5aff9e66}
+.nx-gate[data-phase="grant"]:after{animation:nx-success-flash 1.3s ease-out forwards;background:radial-gradient(circle,#79ffbf52 0%,#79ffbf10 38%,transparent 70%);inset:0;opacity:1}
+.nx-gate-track-label{font:10px ui-monospace,Consolas,monospace;letter-spacing:.25em;color:#91f7c6;text-align:center;margin:clamp(13px,2.1vh,24px) 0 0;padding:0;border:0;clip-path:none;background:none;box-shadow:none}
+.nx-gate-panel{flex:none;width:min(520px,100%);display:flex;flex-direction:column;align-items:center;gap:10px;padding:0 0 clamp(4px,2vh,18px);background:transparent}
+.nx-gate-status-box{width:100%;border:0;background:none;box-shadow:none;min-height:0;padding:0;text-align:center}
+.nx-gate-status-box:before{content:none}
+.nx-gate-status-kicker{display:none}
+.nx-gate-status{font:500 clamp(16px,2vw,24px)/1.2 system-ui,sans-serif;letter-spacing:.22em;color:#effff8;display:block;min-height:26px}
+.nx-gate-status-sub{display:block;font-size:12px;line-height:1.6;color:#9ce8c4;margin-top:6px}
+.nx-gate-meter{height:3px;width:min(340px,85%);margin:14px auto 0;background:#123c32;overflow:hidden;border:0}
+.nx-gate-meter-fill{height:100%;width:0;background:linear-gradient(90deg,#15b87e,#c3ffe2);box-shadow:0 0 14px #85ffd1;transition:width .2s linear}
+.nx-gate-bottom{width:100%;flex:none;display:flex;justify-content:space-between;align-items:center;padding:12px 0 0;border-top:1px solid #8affc026;gap:20px}
+.nx-gate-bottom span{color:#6dbda2;font:9px ui-monospace,Consolas,monospace;letter-spacing:.12em;line-height:1.6}
+.nx-gate-bottom-serial{font:9px ui-monospace,Consolas,monospace;letter-spacing:.15em;color:#6dbda2;text-align:right}
+body.nx-gate-active{overflow:hidden}
+.nx-gate.nx-gate-exit{animation:nx-exit .7s ease both;pointer-events:none}
+@keyframes nx-orbit{to{transform:rotate(360deg)}}
+@keyframes nx-scan{from{top:20%}to{top:80%}}
+@keyframes nx-verified-pulse{0%{box-shadow:0 0 25px #64ffa624}45%{box-shadow:0 0 0 30px #65ffaa1a,0 0 70px #61ffaf70}100%{box-shadow:0 0 0 66px #65ffaa00,0 0 45px #61ffaf18}}
+@keyframes nx-success-flash{0%{opacity:0;transform:scale(.7)}40%{opacity:1}100%{opacity:0;transform:scale(1.25)}}
+@keyframes nx-exit{to{opacity:0;visibility:hidden}}
 @media(max-width:700px){
-  .nx-gate-display{padding:28px 16px 10px}
-  .nx-gate-display::before{inset:12px}
-  .nx-gate-scanner{width:182px;height:182px}
-  .nx-gate-track-label{font-size:8px;padding:7px 9px}
-  .nx-gate-title{font-size:34px}
-  .nx-gate-copy{font-size:12px}
-  .nx-gate-auth-note strong{font-size:9px;letter-spacing:.20em}
-  .nx-gate-auth-note small{font-size:10px}
-  .nx-gate-touch{padding:0 6px 10px}
-  .nx-gate-touch .nx-gate-touch-label{font-size:8px;padding:8px 10px}
+ .nx-gate-shell{height:100dvh;min-height:100dvh;max-height:100dvh;padding:calc(12px + env(safe-area-inset-top,0px)) 17px calc(12px + env(safe-area-inset-bottom,0px));gap:0}
+ .nx-gate-logo{width:36px;height:36px}
+ .nx-gate-brand{font-size:19px}
+ .nx-gate-tag{font-size:6px}
+ .nx-gate-top-code{font-size:7px;letter-spacing:.1em}
+ .nx-gate-headline{margin-bottom:12px}
+ .nx-gate-overline{font-size:8px;margin-bottom:7px}
+ .nx-gate-title{font-size:clamp(24px,6vw,33px)}
+ .nx-gate-scanner{width:min(39dvh,72vw,290px);height:min(39dvh,72vw,290px)}
+ .nx-gate-track-label{font-size:8px;letter-spacing:.16em;margin-top:14px}
+ .nx-gate-status{font-size:16px;letter-spacing:.14em}
+ .nx-gate-status-sub{font-size:11px}
+ .nx-gate-meter{margin-top:10px}
+ .nx-gate-bottom span,.nx-gate-bottom-serial{font-size:7px}
 }
-
-
-/* v4.36 — holographic green biometric gateway refinement */
-.nx-gate{
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 50% 12%, rgba(69,255,182,.15), transparent 25%),
-    radial-gradient(circle at 84% 28%, rgba(72,180,255,.08), transparent 24%),
-    linear-gradient(145deg,#02070b 0%,#051015 38%,#02070b 100%);
+@media(max-width:700px) and (max-height:680px){
+ .nx-gate-logo{width:30px;height:30px}
+ .nx-gate-scanner{width:min(34dvh,59vw);height:min(34dvh,59vw)}
+ .nx-gate-title{font-size:23px}
+ .nx-gate-headline{margin-bottom:7px}
+ .nx-gate-track-label{margin-top:10px}
+ .nx-gate-panel{gap:6px}
+ .nx-gate-status-sub{font-size:10px}
+ .nx-gate-bottom{padding-top:7px}
 }
-.nx-gate:before{
-  background:
-    linear-gradient(90deg,transparent 49.85%,rgba(95,255,194,.08) 50%,transparent 50.15%),
-    linear-gradient(rgba(83,255,195,.06) 1px,transparent 1px),
-    linear-gradient(transparent 49.85%,rgba(104,255,202,.04) 50%,transparent 50.15%);
-  background-size:72px 72px,72px 72px,24px 24px;
-  opacity:.72;
-}
-.nx-gate-shell{
-  width:min(1060px,100%);
-  min-height:min(680px,calc(100dvh - 28px));
-  border:1px solid rgba(82,255,195,.34);
-  background:
-    linear-gradient(145deg,rgba(5,18,23,.97),rgba(4,13,19,.98) 58%,rgba(2,8,12,.99) 100%);
-  box-shadow:0 0 0 1px rgba(94,255,198,.06), 0 28px 100px rgba(0,0,0,.72), inset 0 1px 0 rgba(178,255,232,.10), inset 0 0 45px rgba(49,255,176,.04);
-}
-.nx-gate-shell::before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(125deg,transparent 0,transparent 44%,rgba(148,255,215,.06) 49%,transparent 56%,transparent 100%)}
-.nx-gate-shell:after{inset:10px;border-color:rgba(88,255,199,.10)}
-.nx-gate-display{
-  border-right:1px solid rgba(69,208,164,.22);
-  background:
-    radial-gradient(circle at 50% 40%, rgba(52,255,167,.16), transparent 38%),
-    linear-gradient(180deg,rgba(5,20,25,.98) 0%,rgba(4,14,20,.98) 54%,rgba(2,9,13,.99) 100%);
-}
-.nx-gate-display::before{content:"";position:absolute;inset:18px;border:1px solid rgba(78,255,191,.10);pointer-events:none}
-.nx-gate-logo{filter:drop-shadow(0 0 18px rgba(93,255,201,.18))}
-.nx-gate-brand{color:#dbfff1;text-shadow:0 0 18px rgba(83,255,186,.12)}
-.nx-gate-tag{color:#8be6c0}
-.nx-gate-scanner{
-  width:min(286px,72vw);height:min(286px,72vw);
-  border-radius:26%;
-  border:1px solid rgba(92,255,196,.28);
-  background:
-    radial-gradient(circle at 50% 46%, rgba(33,255,154,.18), rgba(11,32,24,.12) 58%, transparent 70%),
-    linear-gradient(145deg, rgba(26,61,54,.32), rgba(3,17,17,.14));
-  box-shadow:inset 0 0 0 1px rgba(137,255,219,.08), 0 0 0 12px rgba(59,255,173,.05), 0 0 0 24px rgba(59,255,173,.03), 0 20px 36px rgba(0,0,0,.35), 0 0 30px rgba(41,255,173,.07);
-}
-.nx-gate-scanner:before,.nx-gate-scanner:after{border-radius:24%;border-color:rgba(93,255,194,.32)}
-.nx-gate-scanner:after{opacity:.16}
-.nx-gate-face,.nx-gate-finger{color:#8effc8;filter:drop-shadow(0 0 10px rgba(80,255,183,.12))}
-.nx-gate-line{left:14%;right:14%;height:2px;background:linear-gradient(90deg,transparent,#b9ffe3 16%,#f0fff9 50%,#b9ffe3 84%,transparent);box-shadow:0 0 18px 3px rgba(111,255,204,.72)}
-.nx-gate-corner{border-color:#9affd8;filter:drop-shadow(0 0 10px rgba(65,255,172,.24))}
-.nx-gate-track-label{
-  margin-top:10px;
-  color:#b4ffe1;
-  border:1px solid rgba(74,255,191,.34);
-  background:linear-gradient(180deg,rgba(10,24,23,.92),rgba(4,16,15,.9));
-  box-shadow:inset 0 1px 0 rgba(181,255,231,.08), 0 0 16px rgba(41,255,169,.06);
-}
-.nx-gate-panel{background:linear-gradient(180deg,rgba(5,16,20,.96),rgba(2,9,13,.98))}
-.nx-gate-kicker{color:#9ef8d2}
-.nx-gate-kicker:before{background:#6cffbd;box-shadow:0 0 14px rgba(89,255,191,.74)}
-.nx-gate-title{color:#e9fff7;text-shadow:0 0 18px rgba(76,255,182,.08)}
-.nx-gate-copy{color:#bee8d8}
-.nx-gate-status-box{
-  border:1px solid rgba(78,255,191,.28);
-  background:linear-gradient(165deg,rgba(7,23,26,.98),rgba(4,13,16,.98));
-  box-shadow:inset 0 1px 0 rgba(184,255,233,.08), 0 14px 28px rgba(0,0,0,.20), 0 0 20px rgba(29,255,163,.04);
-}
-.nx-gate-status-box::before{content:"";position:absolute;inset:10px;border:1px solid rgba(98,255,200,.08);pointer-events:none}
-.nx-gate-status-kicker,.nx-gate-status-sub{color:#aee9d2}
-.nx-gate-status{color:#f1fff8}
-.nx-gate-meter{height:5px;background:rgba(14,51,47,.92)}
-.nx-gate-meter-fill{background:linear-gradient(90deg,#1fd68a 0%,#92ffd2 50%,#19b97d 100%);box-shadow:0 0 12px rgba(75,255,187,.52)}
-.nx-gate-auth-note{
-  display:flex;gap:12px;align-items:flex-start;padding:12px 14px;
-  border:1px solid rgba(76,255,191,.20);
-  background:linear-gradient(180deg,rgba(5,17,18,.95),rgba(3,11,13,.95));
-  box-shadow:inset 0 1px 0 rgba(168,255,229,.06);
-}
-.nx-gate-auth-dot{flex:none;width:8px;height:8px;border-radius:50%;margin-top:5px;background:#7affc8;box-shadow:0 0 14px rgba(75,255,189,.8)}
-.nx-gate-auth-note strong{display:block;font-size:10px;letter-spacing:.25em;color:#defff1;font-weight:500}
-.nx-gate-auth-note small{display:block;margin-top:5px;font-size:11px;line-height:1.55;color:#a8e4cd}
-.nx-gate-bottom{justify-content:flex-start;border-top-color:rgba(70,208,163,.18)}
-.nx-gate-bottom span{color:#8bc9b0;letter-spacing:.14em}
-.nx-gate-skip{display:none!important}
-.nx-gate-touch{
-  inset:10px;border-radius:24%;padding:0 14px 20px;
-  background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(38,255,171,.05) 100%);
-}
-.nx-gate-touch .nx-gate-touch-label{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:10px 12px;border:1px solid rgba(83,255,197,.34);
-  background:linear-gradient(180deg,rgba(7,23,25,.92),rgba(3,13,15,.96));
-  color:#dffff4;
-  font-size:10px;letter-spacing:.18em;line-height:1.42;text-transform:uppercase;
-  box-shadow:inset 0 1px 0 rgba(186,255,235,.07),0 10px 22px rgba(0,0,0,.24),0 0 14px rgba(51,255,176,.06);
-}
-.nx-gate-touch-progress{inset:-8px;background:conic-gradient(#9cffda var(--hold-percent,0%),transparent 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px))}
-.nx-gate.nx-gate-holding .nx-gate-touch .nx-gate-touch-label{border-color:#bfffe5;color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 0 26px rgba(77,255,189,.14)}
-.nx-gate[data-phase="grant"] .nx-gate-status{color:#cbffe6}
-.nx-gate[data-phase="grant"] .nx-gate-track-label{border-color:rgba(113,255,194,.60);color:#d6fff0}
-@media(max-width:700px){
-  .nx-gate{padding:0;align-items:stretch}
-  .nx-gate-shell{width:100%;height:100dvh;min-height:100dvh;max-height:100dvh;grid-template-columns:1fr;grid-template-rows:auto 1fr;border:0;overflow:hidden}
-  .nx-gate-display{min-height:0;padding:16px 14px 8px;border-right:0;border-bottom:1px solid rgba(75,233,182,.18)}
-  .nx-gate-display::before{inset:10px}
-  .nx-gate-logo{width:34px;height:34px;margin-bottom:4px}
-  .nx-gate-brand{font-size:18px;margin-bottom:4px}
-  .nx-gate-tag{font-size:6px;letter-spacing:.25em}
-  .nx-gate-scanner{width:126px;height:126px;margin:10px auto 6px}
-  .nx-gate-corner{width:18px;height:18px}
-  .nx-gate-track-label{font-size:7px;letter-spacing:.16em;padding:6px 8px;margin-top:6px}
-  .nx-gate-panel{padding:14px 16px 16px;gap:10px;justify-content:flex-start;overflow:hidden}
-  .nx-gate-kicker{font-size:8px;letter-spacing:.18em;gap:8px}
-  .nx-gate-kicker:before{width:5px;height:5px}
-  .nx-gate-title{font-size:25px;line-height:1.02}
-  .nx-gate-copy{font-size:10px;line-height:1.45;max-width:none}
-  .nx-gate-status-box{padding:12px 12px 11px;min-height:0}
-  .nx-gate-status-kicker{font-size:8px;margin-bottom:9px;letter-spacing:.16em}
-  .nx-gate-status{font-size:13px;min-height:20px}
-  .nx-gate-status-sub{font-size:10px;line-height:1.5;margin-top:8px}
-  .nx-gate-meter{margin-top:10px}
-  .nx-gate-auth-note{padding:10px 11px;gap:10px}
-  .nx-gate-auth-note strong{font-size:8px;letter-spacing:.16em}
-  .nx-gate-auth-note small{font-size:9.5px;line-height:1.45}
-  .nx-gate-bottom{padding-top:8px}
-  .nx-gate-bottom span{font-size:8px;line-height:1.45}
-  .nx-gate-touch{padding:0 5px 8px}
-  .nx-gate-touch .nx-gate-touch-label{font-size:7px;padding:7px 8px;letter-spacing:.12em;line-height:1.35;max-width:82px;text-align:center}
-}
-@media(max-width:700px) and (max-height:760px){
-  .nx-gate-copy{display:none}
-  .nx-gate-panel{gap:8px}
-  .nx-gate-scanner{width:116px;height:116px}
-  .nx-gate-title{font-size:22px}
-  .nx-gate-status-sub{font-size:9px}
-  .nx-gate-auth-note small{font-size:9px}
+@media(prefers-reduced-motion:reduce){
+ .nx-gate:after,.nx-gate-scanner:before,.nx-gate-hud-ring,.nx-gate-line,.nx-gate[data-phase="grant"] .nx-gate-scanner,.nx-gate[data-phase="grant"]:after{animation:none!important}
+ .nx-gate.nx-gate-exit{animation:none!important}
+ .nx-gate-success,.nx-gate-face,.nx-gate-finger{transition:none!important}
 }
 
 </style><link rel="stylesheet" href="image-protection.css">
 </head><body><div class="nx-gate" id="nxBiometricGate" data-phase="face" role="dialog" aria-modal="true" aria-label="NEXUS 모의 생체 인증" hidden>
-  <div class="nx-gate-shell">
-    <div class="nx-gate-display">
-      <img class="nx-gate-logo" src="images/branding/seal-complete.png" alt="" aria-hidden="true">
-      <div class="nx-gate-brand">NEXUS</div>
-      <div class="nx-gate-tag">SPECIAL OPERATIONS ACADEMY</div>
-      <div class="nx-gate-scanner">
-        <span class="nx-gate-corner tl"></span><span class="nx-gate-corner tr"></span><span class="nx-gate-corner bl"></span><span class="nx-gate-corner br"></span>
-        <svg class="nx-gate-face" viewBox="0 0 160 190" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-          <path d="M39 44 56 26h48l17 18v21M121 126v22l-17 16H56l-17-16v-22M39 65V44" stroke-dasharray="5 5"/>
-          <path d="M80 39c-26 0-38 20-38 48 0 30 17 53 38 53s38-23 38-53c0-28-12-48-38-48Z"/>
-          <path d="M60 82q9-5 16 0m8 0q7-5 16 0m-20 2-5 20h10m-18 11q13 8 26 0"/>
-          <path d="M53 123c0 16-15 17-22 23-10 7-15 16-16 27m92-50c0 16 15 17 22 23 10 7 15 16 16 27"/>
-        </svg>
-        <svg class="nx-gate-finger" viewBox="0 0 170 190" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
-          <path d="M38 100V78c0-28 18-49 47-49s47 21 47 49v23M48 124c-6-16-4-41-2-52 4-25 23-35 39-35 22 0 39 14 39 42v26m-67 34c-10-24-13-53-7-69 5-19 19-26 35-26 18 0 31 13 31 33v42m-51 31c-8-18-14-44-12-65 1-22 10-37 32-37 18 0 25 13 25 31v57m-37 13c-6-17-10-43-10-62 0-18 4-34 22-34 12 0 17 10 17 24v52m-25 14c-4-15-4-39-4-57 0-12 3-19 10-19 5 0 7 5 7 14v56"/>
-        </svg>
-        <span class="nx-gate-line"></span>
-        <button type="button" id="nxGateTouch" class="nx-gate-touch" aria-label="가상 지문 인증을 위해 오른손 검지손가락을 길게 누르기" disabled><span class="nx-gate-touch-progress" aria-hidden="true"></span><span class="nx-gate-touch-label" id="nxGateTouchLabel">PLACE RIGHT INDEX FINGER</span></button>
-      </div>
-      <div class="nx-gate-track-label" id="nxGateScanLabel">FACIAL RECOGNITION // SCANNING</div>
-    </div>
-    <div class="nx-gate-panel">
-      <div class="nx-gate-kicker">NX / BIOMETRIC ENTRY GATE</div>
-      <h2 class="nx-gate-title">BIOMETRIC<br>AUTHORIZATION</h2>
-      <p class="nx-gate-copy">넥서스 공식 홈페이지 진입 전 보안 인증 절차를 진행한다.<br>실제 카메라나 지문을 수집하지 않는 세계관 연출용 시뮬레이션이다.</p>
-      <div class="nx-gate-status-box" role="status" aria-live="polite" aria-atomic="true">
-        <span class="nx-gate-status-kicker">BIOMETRIC AUTHORIZATION / SIMULATED</span>
-        <span class="nx-gate-status" id="nxGateStatus">FACIAL SCAN IN PROGRESS</span>
-        <span class="nx-gate-status-sub" id="nxGateStatusSub">얼굴 윤곽 분석 시뮬레이션 진행 중</span>
-        <div class="nx-gate-meter"><div class="nx-gate-meter-fill" id="nxGateMeter"></div></div>
-      </div>
-      <div class="nx-gate-auth-note" id="nxGateAuthNote"><span class="nx-gate-auth-dot" aria-hidden="true"></span><div><strong>RIGHT INDEX FINGER REQUIRED</strong><small>지문 단계에서는 오른손 검지손가락을 센서 중앙에 올린 뒤 계속 누르고 있으세요.</small></div></div>
-      <div class="nx-gate-bottom"><span>NO CAMERA · NO FINGERPRINT DATA<br>SIMULATED ACCESS INTERFACE</span></div>
-    </div>
+ <div class="nx-gate-shell">
+  <div class="nx-gate-top">
+   <div class="nx-gate-branding"><img class="nx-gate-logo" src="images/branding/seal-complete.png" alt=""><div><div class="nx-gate-brand">NEXUS</div><div class="nx-gate-tag">SPECIAL OPERATIONS ACADEMY</div></div></div>
+   <span class="nx-gate-top-code">SECURE GATE // NX-01</span>
   </div>
+  <div class="nx-gate-display">
+   <div class="nx-gate-headline"><p class="nx-gate-overline">BIOMETRIC ENTRY SEQUENCE</p><h2 class="nx-gate-title">IDENTITY VERIFICATION</h2></div>
+   <div class="nx-gate-scanner">
+    <span class="nx-gate-hud-ring" aria-hidden="true"></span>
+    <span class="nx-gate-corner tl"></span><span class="nx-gate-corner tr"></span><span class="nx-gate-corner bl"></span><span class="nx-gate-corner br"></span>
+    <svg class="nx-gate-face" viewBox="0 0 160 190" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M39 44 56 26h48l17 18v21M121 126v22l-17 16H56l-17-16v-22M39 65V44" stroke-dasharray="5 5"/><path d="M80 39c-26 0-38 20-38 48 0 30 17 53 38 53s38-23 38-53c0-28-12-48-38-48Z"/><path d="M60 82q9-5 16 0m8 0q7-5 16 0m-20 2-5 20h10m-18 11q13 8 26 0"/><path d="M53 123c0 16-15 17-22 23-10 7-15 16-16 27m92-50c0 16 15 17 22 23 10 7 15 16 16 27"/></svg>
+    <svg class="nx-gate-finger" viewBox="0 0 170 190" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><path d="M38 100V78c0-28 18-49 47-49s47 21 47 49v23M48 124c-6-16-4-41-2-52 4-25 23-35 39-35 22 0 39 14 39 42v26m-67 34c-10-24-13-53-7-69 5-19 19-26 35-26 18 0 31 13 31 33v42m-51 31c-8-18-14-44-12-65 1-22 10-37 32-37 18 0 25 13 25 31v57m-37 13c-6-17-10-43-10-62 0-18 4-34 22-34 12 0 17 10 17 24v52m-25 14c-4-15-4-39-4-57 0-12 3-19 10-19 5 0 7 5 7 14v56"/></svg>
+    <span class="nx-gate-line"></span>
+    <span class="nx-gate-success" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 53 20 19 38-43"/></svg></span>
+    <button type="button" id="nxGateTouch" class="nx-gate-touch" aria-label="오른손 검지로 센서 중앙을 길게 누르세요. 모의 인증입니다." disabled><span class="nx-gate-touch-progress" aria-hidden="true"></span></button>
+   </div>
+   <div class="nx-gate-track-label" id="nxGateScanLabel">FACIAL SCAN // ACTIVE</div>
+  </div>
+  <div class="nx-gate-panel">
+   <div class="nx-gate-status-box" role="status" aria-live="polite" aria-atomic="true">
+    <span class="nx-gate-status" id="nxGateStatus">SCANNING FACE</span>
+    <span class="nx-gate-status-sub" id="nxGateStatusSub">안면 스캔 중</span>
+    <div class="nx-gate-meter"><div class="nx-gate-meter-fill" id="nxGateMeter"></div></div>
+   </div>
+  </div>
+  <div class="nx-gate-bottom"><span>SIMULATED BIOMETRIC GATE · NO DATA COLLECTED</span><span class="nx-gate-bottom-serial">NEXUS / ENTRY PROTOCOL 01</span></div>
+ </div>
 </div><header class="header"><a class="identity" href="index.html"><img src="images/branding/seal-complete.png" alt="NEXUS 엠블럼"><img class="metal-wordmark-header" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></a><nav class="navigation" id="navigation" aria-label="주 메뉴"><a href="index.html" aria-current="page">홈</a><a href="index.html#about">아카데미</a><a href="facilities.html">시설 안내</a></nav><a class="access" href="internal.html">AGENT LOGIN</a><button class="menu" aria-label="메뉴 펼치기" onclick="document.getElementById('navigation').classList.toggle('open')">☰</button></header><main><section class="hero"><div class="hero-img" role="img" aria-label="NEXUS 아카데미 야간 외관"></div><div class="hero-content"><div class="hero-overline">NX-01 / SPECIAL OPERATIONS ACADEMY</div><div class="brand-large"><img src="images/branding/seal-complete.png" alt="NEXUS 공식 엠블럼"><img class="metal-wordmark-hero" src="images/branding/nexus-metal-wordmark-cropped.png" alt="NEXUS Special Operations Academy"></div><p class="hero-copy">보이는 것 너머에서, 미래의 작전을 준비한다.<br>전략·정보·기술·전투·심리·지원 분야의 전문 교육기관.</p><div class="hero-actions"><a class="hero-btn hero-btn-primary" href="#about"><span class="hero-btn-copy"><strong>NEXUS 소개</strong><small>ACADEMY PROFILE</small></span><span class="hero-btn-arrow" aria-hidden="true">↗</span></a><a class="hero-btn hero-btn-secondary" href="facilities.html"><span class="hero-btn-copy"><strong>시설 둘러보기</strong><small>FACILITY ARCHIVE</small></span><span class="hero-btn-arrow" aria-hidden="true">↗</span></a></div><div class="hero-caption">NEXUS HEADQUARTERS &nbsp; / &nbsp; OFFICIAL ARCHIVE</div></div></section><div class="wrap"><div class="section-heading"><div><div class="kicker">EXPLORE THE ACADEMY</div><h2>ACADEMY DIRECTORY</h2></div><p>넥서스의 주요 시설 및 시스템을 탐색한다.</p></div><div class="tiles">
 <a class="tile" href="facilities.html" aria-label="시설 안내 보기"><div class="tile-image"><img src="images/headquarters/lobby.webp" alt="넥서스 본관 로비" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21h16"></path><path d="M6 21V9l6-4 6 4v12"></path><path d="M9 21v-7h6v7"></path></svg></span><span class="tile-label"><strong>시설 안내</strong><small>FACILITY DIRECTORY</small></span></span></div></a>
 <a class="tile" href="facilities.html#NX-04" aria-label="종합 훈련관 보기"><div class="tile-image"><img src="images/training/lobby.webp" alt="넥서스 종합 훈련관" loading="lazy"></div><div class="tile-text"><span class="tile-head"><span class="tile-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 10v4"></path><path d="M6 8v8"></path><path d="M9 10v4"></path><path d="M15 10v4"></path><path d="M18 8v8"></path><path d="M21 10v4"></path><path d="M6 12h12"></path></svg></span><span class="tile-label"><strong>종합 훈련관</strong><small>TACTICAL TRAINING COMPLEX</small></span></span></div></a>
@@ -1074,133 +866,104 @@ body.nx-gate-active{overflow:hidden}
   <div class="nx-div-foot"><span>ACADEMIC SPECIALIZATION</span><span class="nx-div-glint" aria-hidden="true"></span></div>
 </article></div></div></main><footer class="footer"><strong>◢　NEXUS / SPECIAL OPERATIONS ACADEMY</strong><div class="foot-dots"><span>FACILITY DATA</span><span>INTERNAL NETWORK</span><span>ACADEMY RECORDS</span></div><span>FICTIONAL ROLEPLAY WEBSITE · 실제 기관 아님</span></footer><script src="image-protection.js" defer></script>
 <script>
-/* NX simulated biometric intro v4.36. No camera, fingerprint sensor, or biometric data. */
+/* NEXUS v4.37 simulated biometric entry. No real sensors or personal data. */
 (function(){
   'use strict';
-  const KEY='nexusBiometricIntroSeen_v436';
-  let seen=false;
-  try { seen=sessionStorage.getItem(KEY)==='yes'; } catch (_) {}
-  if(seen) return;
+  const KEY='nexusBiometricIntroSeen_v437';
+  try{if(sessionStorage.getItem(KEY)==='yes')return;}catch(_){}
   const gate=document.getElementById('nxBiometricGate');
-  if(!gate) return;
-  const label=document.getElementById('nxGateScanLabel');
+  if(!gate)return;
+  const touch=document.getElementById('nxGateTouch');
   const status=document.getElementById('nxGateStatus');
   const sub=document.getElementById('nxGateStatusSub');
   const meter=document.getElementById('nxGateMeter');
-  const skip=document.getElementById('nxGateSkip');
-  const touch=document.getElementById('nxGateTouch');
-  const touchLabel=document.getElementById('nxGateTouchLabel');
-  const reduced=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const HOLD_MS=reduced?950:1250;
+  const label=document.getElementById('nxGateScanLabel');
+  const reduced=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const HOLD_MS=1250;
+  let phase='face', closed=false, holding=false, pointerId=null, keyboardHold=false, holdStart=0, frame=0;
   let timers=[];
-  let closed=false, phase='face', holding=false, holdStart=0, rafId=0, pointerId=null, keyboardHold=false;
-  function schedule(fn,ms){timers.push(setTimeout(fn,ms));}
-  function setPhase(next,title,description,caption,pct){
+  function later(fn,ms){timers.push(setTimeout(fn,ms));}
+  function setPhase(next,heading,detail,caption,pct){
     if(closed)return;
-    phase=next;
-    gate.dataset.phase=next;
-    status.textContent=title;
-    sub.textContent=description;
-    label.textContent=caption;
+    phase=next;gate.dataset.phase=next;
+    status.textContent=heading;sub.textContent=detail;label.textContent=caption;
     meter.style.width=pct+'%';
     touch.disabled=next!=='finger';
-    if(next==='finger')touch.focus({preventScroll:true});
   }
-  function clearHold(){
+  function endHold(){
     if(!holding)return;
-    holding=false;
-    keyboardHold=false;
-    if(rafId) cancelAnimationFrame(rafId);
-    rafId=0;
+    holding=false;keyboardHold=false;
+    if(frame)cancelAnimationFrame(frame);
+    frame=0;
     gate.classList.remove('nx-gate-holding');
     touch.style.setProperty('--hold-percent','0%');
-    if(phase==='finger'&&!closed){
-      meter.style.width='58%';
-      status.textContent='FINGERPRINT VERIFICATION';
-      sub.textContent='오른손 검지손가락을 센서 중앙에 올리고 길게 눌러 인증을 완료하세요.';
-      touchLabel.textContent='PLACE RIGHT INDEX FINGER';
-    }
     pointerId=null;
+    if(phase==='finger'&&!closed){
+      meter.style.width='58%';status.textContent='FINGERPRINT REQUIRED';
+      sub.textContent='오른손 검지로 중앙을 길게 누르세요';
+    }
   }
-  function finish(){
+  function closeGate(){
     if(closed)return;
-    clearHold();
-    closed=true;
+    endHold();closed=true;
     timers.forEach(clearTimeout);
     try{sessionStorage.setItem(KEY,'yes')}catch(_){}
-    gate.classList.add('nx-gate-exit');
-    document.body.classList.remove('nx-gate-active');
-    setTimeout(()=>{gate.hidden=true;gate.remove()},reduced?0:660);
+    gate.classList.add('nx-gate-exit');document.body.classList.remove('nx-gate-active');
+    setTimeout(()=>gate.remove(),reduced?0:700);
   }
-  function verified(){
-    if(phase!=='finger'||closed)return;
-    clearHold();
-    setPhase('grant','ACCESS GRANTED','신원 확인이 완료되었다. NEXUS 공식 홈페이지 진입을 승인한다.','IDENTITY VERIFIED // ACCESS GRANTED',100);
-    schedule(finish,reduced?400:1050);
+  function successVibration(){
+    try{if(typeof navigator.vibrate==='function')navigator.vibrate([55,65,100]);}catch(_){}
   }
-  function holdFrame(now){
-    if(!holding||closed||phase!=='finger')return;
-    const elapsed=Math.max(0,now-holdStart);
-    const ratio=Math.min(1,elapsed/HOLD_MS);
-    touch.style.setProperty('--hold-percent',(ratio*100).toFixed(1)+'%');
-    meter.style.width=(58+ratio*40)+'%';
-    if(ratio>=1){verified();return;}
-    rafId=requestAnimationFrame(holdFrame);
+  function success(){
+    if(closed||phase!=='finger')return;
+    endHold();
+    successVibration();
+    setPhase('grant','ACCESS GRANTED','접속 승인 완료','IDENTITY VERIFIED // 100%',100);
+    later(closeGate,reduced?650:1700);
+  }
+  function tick(now){
+    if(closed||phase!=='finger'||!holding)return;
+    const frac=Math.min(1,Math.max(0,(now-holdStart)/HOLD_MS));
+    touch.style.setProperty('--hold-percent',(frac*100).toFixed(1)+'%');
+    meter.style.width=(58+42*frac).toFixed(1)+'%';
+    if(frac>=1){success();return;}
+    frame=requestAnimationFrame(tick);
   }
   function beginHold(){
-    if(closed||phase!=='finger'||holding)return;
+    if(closed||holding||phase!=='finger')return;
     holding=true;
     gate.classList.add('nx-gate-holding');
-    status.textContent='FINGERPRINT MATCHING';
-    sub.textContent='오른손 검지손가락을 유지한 채 인증이 완료될 때까지 계속 누르고 있으세요.';
-    touchLabel.textContent='INDEX FINGER DETECTED';
-    holdStart=performance.now();
-    rafId=requestAnimationFrame(holdFrame);
+    status.textContent='VERIFYING...';sub.textContent='손가락을 유지하세요';
+    holdStart=performance.now();frame=requestAnimationFrame(tick);
   }
   touch.addEventListener('pointerdown',e=>{
-    if(phase!=='finger'||closed||!e.isPrimary||e.button!==0)return;
+    if(e.button!==0||!e.isPrimary||closed||phase!=='finger')return;
     pointerId=e.pointerId;
     try{touch.setPointerCapture(e.pointerId);}catch(_){}
     beginHold();
   });
-  touch.addEventListener('pointerup',e=>{
-    if(pointerId!==null&&e.pointerId===pointerId)clearHold();
-  });
-  touch.addEventListener('pointercancel',e=>{
-    if(pointerId!==null&&e.pointerId===pointerId)clearHold();
-  });
-  touch.addEventListener('lostpointercapture',e=>{
-    if(pointerId!==null&&e.pointerId===pointerId)clearHold();
-  });
-  touch.addEventListener('pointerleave',e=>{
-    // Releasing outside the scan circle is handled by pointer capture.
-    // Keep pressing until the pointer is released, even if it drifts slightly.
-  });
+  function pointerRelease(e){if(pointerId===e.pointerId)endHold();}
+  touch.addEventListener('pointerup',pointerRelease);
+  touch.addEventListener('pointercancel',pointerRelease);
+  touch.addEventListener('lostpointercapture',pointerRelease);
   touch.addEventListener('contextmenu',e=>e.preventDefault());
   touch.addEventListener('keydown',e=>{
     if(phase!=='finger'||(e.code!=='Space'&&e.code!=='Enter'))return;
-    e.preventDefault();
-    if(e.repeat||keyboardHold)return;
-    keyboardHold=true;
-    beginHold();
+    e.preventDefault();if(e.repeat||keyboardHold)return;
+    keyboardHold=true;beginHold();
   });
   touch.addEventListener('keyup',e=>{
     if(e.code!=='Space'&&e.code!=='Enter')return;
-    e.preventDefault();
-    if(keyboardHold)clearHold();
+    e.preventDefault();if(keyboardHold)endHold();
   });
-  touch.addEventListener('blur',()=>{if(holding)clearHold()});
-  if(skip) skip.addEventListener('click',finish);
-  document.body.classList.add('nx-gate-active');
-  gate.hidden=false;
-  setPhase('face','FACIAL SCAN IN PROGRESS','안면 윤곽 분석 및 초기 식별 절차를 진행 중이다.','FACIAL RECOGNITION // SCANNING',10);
-  if(reduced){
-    schedule(()=>setPhase('finger','FINGERPRINT VERIFICATION','오른손 검지손가락을 센서 중앙에 올리고 길게 눌러 인증을 완료하세요.','FINGERPRINT // RIGHT INDEX HOLD',58),450);
-  }else{
-    schedule(()=>meter.style.width='42%',800);
-    schedule(()=>setPhase('finger','FINGERPRINT VERIFICATION','오른손 검지손가락을 센서 중앙에 올리고 길게 눌러 인증을 완료하세요.','FINGERPRINT // RIGHT INDEX HOLD',58),2400);
+  touch.addEventListener('blur',()=>{if(holding)endHold();});
+  gate.hidden=false;document.body.classList.add('nx-gate-active');
+  setPhase('face','SCANNING FACE','안면 스캔 중','FACIAL SCAN // ACTIVE',12);
+  if(reduced)later(()=>setPhase('finger','FINGERPRINT REQUIRED','오른손 검지로 중앙을 길게 누르세요','INDEX FINGER // HOLD',58),500);
+  else{
+    later(()=>{if(phase==='face')meter.style.width='46%';},750);
+    later(()=>setPhase('finger','FINGERPRINT REQUIRED','오른손 검지로 중앙을 길게 누르세요','INDEX FINGER // HOLD',58),2200);
   }
-  document.addEventListener('keydown',e=>{if(!closed&&e.key==='Escape')finish()});
 })();
 </script>
 </body></html>
